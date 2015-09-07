@@ -3,7 +3,8 @@ package com.is.model;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-public  class  Product {
+public class Product {
+	
 	private int id;
 	private String productCode;
 	private String SKU;
