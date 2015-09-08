@@ -1,4 +1,4 @@
-package com.is.model;
+package com.is.inventory.model;
 
 public class Status {
    private Boolean status;

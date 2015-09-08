@@ -1,7 +1,7 @@
 package com.is.model.service.impl;
 
 
-import com.is.model.Product;
+import com.is.inventory.model.Product;
 import com.is.model.service.ProductService;
 
 public  class ProductServiceImpl implements ProductService {

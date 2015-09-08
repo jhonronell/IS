@@ -2,7 +2,7 @@ package com.is.dao;
 
 import java.awt.List;
 
-import com.is.model.Product;
+import com.is.inventory.model.Product;
 
 public interface ProductDao {
 	

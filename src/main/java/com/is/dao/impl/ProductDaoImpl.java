@@ -4,7 +4,7 @@ package com.is.dao.impl;
 import java.awt.List;
 
 import com.is.dao.ProductDao;
-import com.is.model.Product;
+import com.is.inventory.model.Product;
 
 public class ProductDaoImpl implements ProductDao {
 	

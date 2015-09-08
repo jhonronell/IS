@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.is.model.FullSuspensionFrame;
+import com.is.inventory.model.FullSuspensionFrame;
 import com.is.model.service.impl.ProductServiceImpl;
 
 /**

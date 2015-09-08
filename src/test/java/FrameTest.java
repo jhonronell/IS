@@ -1,8 +1,8 @@
 import org.junit.Test;
 
-import com.is.model.Frame;
-import com.is.model.FrameFactory;
-import com.is.model.FullSuspensionFrame;
+import com.is.inventory.model.Frame;
+import com.is.inventory.model.FrameFactory;
+import com.is.inventory.model.FullSuspensionFrame;
 
 public class FrameTest {
 

@@ -1,6 +1,6 @@
 package com.is.model.service;
 
-import com.is.model.Product;
+import com.is.inventory.model.Product;
 
 public interface ProductService{
 	
