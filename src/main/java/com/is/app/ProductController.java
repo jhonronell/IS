@@ -16,7 +16,8 @@ import com.is.model.service.impl.ProductServiceImpl;
 public class ProductController {
 	
 	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
-	public String productAdd(Locale locale, Model model,HttpServletRequest request) {
+	public String addProduct(Locale locale, Model model,HttpServletRequest request) {
+	// addProduct(@RequestParam("name") String name, @RequestParam("productId") long productId)
 				
 		ProductServiceImpl productService = new ProductServiceImpl();
 		String id = request.getParameter("id"); 
@@ -30,9 +31,8 @@ public class ProductController {
 		productService.createProduct(product);
 		return "home";
 	}
-	@RequestMapping(value = "/product", method = RequestMethod.GET)
-	public String product(Locale locale, Model model,HttpServletRequest request) {
-				
+	@RequestMapping(value = "/product/{productId}", method = RequestMethod.GET)
+	public String viewProduct(@PathVariable("productId") Long productId){
 		
 		return "product";
 	}
