@@ -4,6 +4,7 @@ public class Price {
 
 	private float price;
 	private float msrp;
+	
 	/**
 	 * @return the price
 	 */

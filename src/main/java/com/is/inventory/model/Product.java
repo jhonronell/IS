@@ -20,8 +20,8 @@ public class Product {
 	
 	private Date datePurchased;
 	private Date dateReceived;
-	
 	private Date dateShipped;
+	private float investmentCapital;
 	private Price price;
 	private String productType;
 	private Brand brand;
@@ -287,6 +287,20 @@ public class Product {
 	 */
 	public void setList(List<Attribute> list) {
 		this.list = list;
+	}
+
+	/**
+	 * @return the capital
+	 */
+	public float getInvestmentCapital() {
+		return investmentCapital;
+	}
+
+	/**
+	 * @param capital the capital to set
+	 */
+	public void setInvestmentCapital(float capital) {
+		this.investmentCapital = capital;
 	}
 	
 	

@@ -9,7 +9,7 @@ public  class ProductServiceImpl implements ProductService {
 	@Override
 	public void createProduct(Product product) {
 		// TODO Auto-generated method stub
-		System.out.println(product.getProductCode() + product.getName());
+		
 	}
 
 	@Override
@@ -23,5 +23,7 @@ public  class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }

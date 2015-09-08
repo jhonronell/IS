@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.is.inventory.model.Price;
 import com.is.inventory.model.Product;
 import com.is.model.service.impl.ProductServiceImpl;
 
@@ -21,14 +22,25 @@ public class ProductController {
 				
 		ProductServiceImpl productService = new ProductServiceImpl();
 		String id = request.getParameter("id"); 
-		String productCode = request.getParameter("productCode");
+		String code = request.getParameter("productCode");
 		String name = request.getParameter("name");
 		
 		Product product = new Product();
 		product.setName(name);
-		product.setProductCode(productCode);
+		product.setCode(name);
 		
-		productService.createProduct(product);
+		Price price = new Price();
+		price.setMsrp(1000);
+		price.setPrice(900);
+		product.setPrice(price);
+		product.setInvestmentCapital(900);
+		
+		product.setProductType("Frame");
+		
+		
+		
+		
+		//productService.createProduct(product);
 		return "home";
 	}
 	@RequestMapping(value = "/product/{productId}", method = RequestMethod.GET)
