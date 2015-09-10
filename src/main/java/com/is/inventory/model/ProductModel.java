@@ -1,21 +1,20 @@
 package com.is.inventory.model;
 
 public class ProductModel {
-	private String model;
-	private int year;
+	private String modelName;
+	private int yearModel;
 	
-	public String getModel() {
-		return model;
+	public String getModelName() {
+		return modelName;
 	}
-	public void setModel(String model) {
-		this.model = model;
+	public void setModelName(String modelName) {
+		this.modelName = modelName;
 	}
-	public int getYear() {
-		return year;
+	public int getYearModel() {
+		return yearModel;
 	}
-	public void setYear(int year) {
-		this.year = year;
+	public void setYearModel(int year) {
+		this.yearModel = year;
 	}
-	
 	
 }

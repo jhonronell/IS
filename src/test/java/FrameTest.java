@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import com.is.inventory.model.Attribute;
+import com.is.inventory.model.ProductAttribute;
 import com.is.inventory.model.Distributor;
 import com.is.inventory.model.Price;
 import com.is.inventory.model.Product;
@@ -18,7 +18,7 @@ public class FrameTest {
 		
 		Product product = new Product();
 		product.setName(name);
-		product.setCode(name);
+		product.setCode(code);
 		
 		Price price = new Price();
 		price.setMsrp(1000);
@@ -29,11 +29,11 @@ public class FrameTest {
 		product.setPrice(price);
 		product.setInvestmentCapital(900);
 		
-	    Attribute attribute = new Attribute();
+	    ProductAttribute attribute = new ProductAttribute();
 	    product.addAttribute(attribute);
-		
-		
+	  
 		product.setProductType("Frame");
+		
 		
 	}
 

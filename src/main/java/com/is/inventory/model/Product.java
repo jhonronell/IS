@@ -1,23 +1,20 @@
 package com.is.inventory.model;
 
-
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
 
-	private int id; 
-	private String name; 
-	private String description; 
-	private float weight; 
-	private float height; 
-	private String color; 
-	private String code; 
-	private String Sku; 
-
+	private int id;
+	private String name;
+	private String description;
+	private float weight;
+	private float height;
+	private String color;
+	private String code;
+	private String Sku;
 	private Distributor distributor;
-	
 	private Date datePurchased;
 	private Date dateReceived;
 	private Date dateShipped;
@@ -25,15 +22,66 @@ public class Product {
 	private Price price;
 	private String productType;
 	private Brand brand;
-	private ProductModel model; 
+	private ProductModel productModel;
 	
-	private Attribute Attribute;
-	//private ArrayList AttributeList = new ArrayList<Attribute>();
-	
-	private List<Attribute> list = new ArrayList<Attribute>();
-	
-	public void addAttribute(Attribute attribute){
+	// private ArrayList AttributeList = new ArrayList<Attribute>();
+
+	private List<ProductAttribute> list = new ArrayList<ProductAttribute>();
+
+	public void addAttribute(ProductAttribute attribute) {
 		list.add(attribute);
+	}
+
+	public void remoteAttribute(ProductAttribute attribute) {
+		list.remove(attribute);
+	}
+
+	public List<ProductAttribute> getAttributeList() {
+		return list;
+	}
+
+	public int getAttributeListSize() {
+		return list.size();
+	}
+
+	public int getAttributeId(int listIndex) {
+		return list.get(listIndex).getId();
+	}
+
+	public String getAttributeDescription(int listIndex) {
+		return list.get(listIndex).getDescription();
+	}
+
+	public String getAttributeName(int listIndex) {
+		return list.get(listIndex).getName();
+	}
+
+	public String getBrandName() {
+		return this.brand.getName();
+	}
+
+	public int getBrandId() {
+		return this.brand.getId();
+	}
+
+	public String getBrandDescription() {
+		return this.brand.getDescription();
+	}
+
+	public String getProductModelName() {
+		return this.productModel.getModelName();
+	}
+
+	public int getProductYearModel() {
+		return this.productModel.getYearModel();
+	}
+
+	public float getProductPrice() {
+		return this.price.getPrice();
+	}
+
+	public float getProductMSRP() {
+		return this.price.getMsrp();
 	}
 
 	/**
@@ -44,7 +92,8 @@ public class Product {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -58,7 +107,8 @@ public class Product {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -72,7 +122,8 @@ public class Product {
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -86,7 +137,8 @@ public class Product {
 	}
 
 	/**
-	 * @param weight the weight to set
+	 * @param weight
+	 *            the weight to set
 	 */
 	public void setWeight(float weight) {
 		this.weight = weight;
@@ -100,7 +152,8 @@ public class Product {
 	}
 
 	/**
-	 * @param height the height to set
+	 * @param height
+	 *            the height to set
 	 */
 	public void setHeight(float height) {
 		this.height = height;
@@ -114,7 +167,8 @@ public class Product {
 	}
 
 	/**
-	 * @param color the color to set
+	 * @param color
+	 *            the color to set
 	 */
 	public void setColor(String color) {
 		this.color = color;
@@ -128,7 +182,8 @@ public class Product {
 	}
 
 	/**
-	 * @param code the code to set
+	 * @param code
+	 *            the code to set
 	 */
 	public void setCode(String code) {
 		this.code = code;
@@ -142,12 +197,12 @@ public class Product {
 	}
 
 	/**
-	 * @param sku the sku to set
+	 * @param sku
+	 *            the sku to set
 	 */
 	public void setSku(String sku) {
 		Sku = sku;
 	}
-
 
 	/**
 	 * @return the distributor
@@ -157,7 +212,8 @@ public class Product {
 	}
 
 	/**
-	 * @param distributor the distributor to set
+	 * @param distributor
+	 *            the distributor to set
 	 */
 	public void setDistributor(Distributor distributor) {
 		this.distributor = distributor;
@@ -171,7 +227,8 @@ public class Product {
 	}
 
 	/**
-	 * @param datePurchased the datePurchased to set
+	 * @param datePurchased
+	 *            the datePurchased to set
 	 */
 	public void setDatePurchased(Date datePurchased) {
 		this.datePurchased = datePurchased;
@@ -185,7 +242,8 @@ public class Product {
 	}
 
 	/**
-	 * @param dateReceived the dateReceived to set
+	 * @param dateReceived
+	 *            the dateReceived to set
 	 */
 	public void setDateReceived(Date dateReceived) {
 		this.dateReceived = dateReceived;
@@ -199,7 +257,8 @@ public class Product {
 	}
 
 	/**
-	 * @param dateShipped the dateShipped to set
+	 * @param dateShipped
+	 *            the dateShipped to set
 	 */
 	public void setDateShipped(Date dateShipped) {
 		this.dateShipped = dateShipped;
@@ -213,7 +272,8 @@ public class Product {
 	}
 
 	/**
-	 * @param price the price to set
+	 * @param price
+	 *            the price to set
 	 */
 	public void setPrice(Price price) {
 		this.price = price;
@@ -227,7 +287,8 @@ public class Product {
 	}
 
 	/**
-	 * @param productType the productType to set
+	 * @param productType
+	 *            the productType to set
 	 */
 	public void setProductType(String productType) {
 		this.productType = productType;
@@ -241,7 +302,8 @@ public class Product {
 	}
 
 	/**
-	 * @param brand the brand to set
+	 * @param brand
+	 *            the brand to set
 	 */
 	public void setBrand(Brand brand) {
 		this.brand = brand;
@@ -250,42 +312,30 @@ public class Product {
 	/**
 	 * @return the model
 	 */
-	public ProductModel getModel() {
-		return model;
+	public ProductModel getProductModel() {
+		return productModel;
 	}
 
 	/**
-	 * @param model the model to set
+	 * @param model
+	 *            the model to set
 	 */
 	public void setModel(ProductModel model) {
-		this.model = model;
-	}
-
-	/**
-	 * @return the attribute
-	 */
-	public Attribute getAttribute() {
-		return Attribute;
-	}
-
-	/**
-	 * @param attribute the attribute to set
-	 */
-	public void setAttribute(Attribute attribute) {
-		Attribute = attribute;
+		this.productModel = model;
 	}
 
 	/**
 	 * @return the list
 	 */
-	public List<Attribute> getList() {
+	public List<ProductAttribute> getList() {
 		return list;
 	}
 
 	/**
-	 * @param list the list to set
+	 * @param list
+	 *            the list to set
 	 */
-	public void setList(List<Attribute> list) {
+	public void setList(List<ProductAttribute> list) {
 		this.list = list;
 	}
 
@@ -297,12 +347,11 @@ public class Product {
 	}
 
 	/**
-	 * @param capital the capital to set
+	 * @param capital
+	 *            the capital to set
 	 */
 	public void setInvestmentCapital(float capital) {
 		this.investmentCapital = capital;
 	}
-	
-	
-	
+
 }

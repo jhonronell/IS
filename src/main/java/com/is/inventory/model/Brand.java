@@ -5,6 +5,7 @@ public class Brand {
 	private int id;
 	private String Name;
 	private String dateAdded;
+	private String description;
 	private boolean isActive;
 	/**
 	 * @return the id
@@ -54,5 +55,14 @@ public class Brand {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return this.description;
+	}
+	public void setDescription(String description) {
+		// TODO Auto-generated method stub
+		this.description = description;
+	}
+	
 	
 }
