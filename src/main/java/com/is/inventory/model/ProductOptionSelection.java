@@ -4,7 +4,7 @@ public class ProductOptionSelection {
 
 	private int ID;
 	private int value;
-	private int ProductOptionNameID;
+	private ProductOptionName productOptionName;
 	/**
 	 * @return the iD
 	 */
@@ -32,14 +32,14 @@ public class ProductOptionSelection {
 	/**
 	 * @return the productOptionNameID
 	 */
-	public int getProductOptionNameID() {
-		return ProductOptionNameID;
+	public ProductOptionName getProductOptionName() {
+		return productOptionName;
 	}
 	/**
 	 * @param productOptionNameID the productOptionNameID to set
 	 */
-	public void setProductOptionNameID(int productOptionNameID) {
-		ProductOptionNameID = productOptionNameID;
+	public void setProductOptionName(ProductOptionName productOptionName) {
+		this.productOptionName = productOptionName;
 	}
 
 	

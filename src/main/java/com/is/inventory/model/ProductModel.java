@@ -1,6 +1,7 @@
 package com.is.inventory.model;
 
 public class ProductModel {
+	
 	private String modelName;
 	private int yearModel;
 	

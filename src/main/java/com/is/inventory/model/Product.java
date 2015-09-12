@@ -20,39 +20,13 @@ public class Product {
 	private Date dateShipped;
 	private float investmentCapital;
 	private Price price;
-	private String productType;
+	private ProductType productType;
 	private Brand brand;
 	private ProductModel productModel;
 	
 	// private ArrayList AttributeList = new ArrayList<Attribute>();
 
-	private List<ProductOption> productOptionList = new ArrayList<ProductOption>();
-
-	public void addProductOption(ProductOption attribute) {
-		productOptionList.add(attribute);
-	}
-
-	public void remoteProductOption(ProductOption attribute) {
-		productOptionList.remove(attribute);
-	}
-
-	public List<ProductOption> getProductOptionList() {
-		return productOptionList;
-	}
-	public void setProductOptionList(List<ProductOption> productOptionList) {
-		this.productOptionList = productOptionList;
-	}
-	public int getAttributeListSize() {
-		return productOptionList.size();
-	}
-
-	public int getAttributeId(int listIndex) {
-		return productOptionList.get(listIndex).getID();
-	}
-
-	public String getAttributeName(int listIndex) {
-		return productOptionList.get(listIndex).getName();
-	}
+	
 
 	public String getBrandName() {
 		return this.brand.getName();
@@ -280,7 +254,7 @@ public class Product {
 	/**
 	 * @return the productType
 	 */
-	public String getProductType() {
+	public ProductType getProductType() {
 		return productType;
 	}
 
@@ -288,7 +262,7 @@ public class Product {
 	 * @param productType
 	 *            the productType to set
 	 */
-	public void setProductType(String productType) {
+	public void setProductType(ProductType productType) {
 		this.productType = productType;
 	}
 

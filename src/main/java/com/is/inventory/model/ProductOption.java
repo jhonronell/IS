@@ -3,31 +3,30 @@ package com.is.inventory.model;
 public class ProductOption {
 
 	private int ID;
-	private String Name;
+	private ProductOptionName productOptionName;
 	/**
-	 * @return the ID
+	 * @return the iD
 	 */
 	public int getID() {
 		return ID;
 	}
 	/**
-	 * @param ID the ID to set
+	 * @param iD the iD to set
 	 */
-	public void setID(int ID) {
-		this.ID = ID;
+	public void setID(int iD) {
+		ID = iD;
 	}
 	/**
-	 * @return the name
+	 * @return the productOptionName
 	 */
-	public String getName() {
-		return Name;
+	public ProductOptionName getProductOptionName() {
+		return productOptionName;
 	}
 	/**
-	 * @param name the name to set
+	 * @param productOptionName the productOptionName to set
 	 */
-	public void setName(String name) {
-		Name = name;
+	public void setProductOptionName(ProductOptionName productOptionName) {
+		this.productOptionName = productOptionName;
 	}
-	
 	
 }

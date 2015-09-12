@@ -54,7 +54,7 @@ public class ProductDaoImpl implements ProductDao {
 			myStatement.executeUpdate(query);
 			
 			String query2 = "";
-			for(int i = 0; i < product.getAttribute().size(); i++ )
+			//for(int i = 0; i < product.getAttribute().size(); i++ )
 			{
 				query = query2 + "INSERT INTO InventorySystem.ProductTypeAttributesTable (ID, AttributeName, ProductTypeId, ProductId) "
 						+ "VALUES(1, NULL, NULL, NULL); ";
@@ -63,7 +63,7 @@ public class ProductDaoImpl implements ProductDao {
 			myStatement.executeUpdate(query2);
 			
 			String query3 = "";
-			for(int i = 0; i < product.getAttribute().getAttributeValues().size(); i++ )
+			//for(int i = 0; i < product.getAttribute().getAttributeValues().size(); i++ )
 			{
 				query = query3 + "INSERT INTO InventorySystem.ProductTypeAttributeValueTable "
 						+ "(ID, ProductAttributeId, ProductId, AttributeValue,"
