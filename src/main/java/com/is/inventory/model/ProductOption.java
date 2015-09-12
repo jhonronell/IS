@@ -4,6 +4,8 @@ public class ProductOption {
 
 	private int ID;
 	private ProductOptionName productOptionName;
+	private ProductType productType;;
+	
 	/**
 	 * @return the iD
 	 */
@@ -27,6 +29,18 @@ public class ProductOption {
 	 */
 	public void setProductOptionName(ProductOptionName productOptionName) {
 		this.productOptionName = productOptionName;
+	}
+	/**
+	 * @return the productType
+	 */
+	public ProductType getProductType() {
+		return productType;
+	}
+	/**
+	 * @param productType the productType to set
+	 */
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
 	}
 	
 }

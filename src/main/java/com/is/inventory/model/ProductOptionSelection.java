@@ -6,16 +6,16 @@ public class ProductOptionSelection {
 	private int value;
 	private ProductOptionName productOptionName;
 	/**
-	 * @return the iD
+	 * @return the ID
 	 */
 	public int getID() {
 		return ID;
 	}
 	/**
-	 * @param iD the iD to set
+	 * @param ID the ID to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 	/**
 	 * @return the value
