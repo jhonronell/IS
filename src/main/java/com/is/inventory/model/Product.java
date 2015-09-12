@@ -26,34 +26,32 @@ public class Product {
 	
 	// private ArrayList AttributeList = new ArrayList<Attribute>();
 
-	private List<ProductAttribute> list = new ArrayList<ProductAttribute>();
+	private List<ProductOption> productOptionList = new ArrayList<ProductOption>();
 
-	public void addAttribute(ProductAttribute attribute) {
-		list.add(attribute);
+	public void addProductOption(ProductOption attribute) {
+		productOptionList.add(attribute);
 	}
 
-	public void remoteAttribute(ProductAttribute attribute) {
-		list.remove(attribute);
+	public void remoteProductOption(ProductOption attribute) {
+		productOptionList.remove(attribute);
 	}
 
-	public List<ProductAttribute> getAttributeList() {
-		return list;
+	public List<ProductOption> getProductOptionList() {
+		return productOptionList;
 	}
-
+	public void setProductOptionList(List<ProductOption> productOptionList) {
+		this.productOptionList = productOptionList;
+	}
 	public int getAttributeListSize() {
-		return list.size();
+		return productOptionList.size();
 	}
 
 	public int getAttributeId(int listIndex) {
-		return list.get(listIndex).getId();
-	}
-
-	public String getAttributeDescription(int listIndex) {
-		return list.get(listIndex).getDescription();
+		return productOptionList.get(listIndex).getID();
 	}
 
 	public String getAttributeName(int listIndex) {
-		return list.get(listIndex).getName();
+		return productOptionList.get(listIndex).getName();
 	}
 
 	public String getBrandName() {
@@ -324,20 +322,6 @@ public class Product {
 		this.productModel = model;
 	}
 
-	/**
-	 * @return the list
-	 */
-	public List<ProductAttribute> getList() {
-		return list;
-	}
-
-	/**
-	 * @param list
-	 *            the list to set
-	 */
-	public void setList(List<ProductAttribute> list) {
-		this.list = list;
-	}
 
 	/**
 	 * @return the capital
