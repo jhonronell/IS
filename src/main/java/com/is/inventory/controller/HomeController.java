@@ -1,4 +1,4 @@
-package com.is.app;
+package com.is.inventory.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.is.inventory.model.FullSuspensionFrame;
+
 import com.is.model.service.impl.ProductServiceImpl;
 
 /**

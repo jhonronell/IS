@@ -4,8 +4,8 @@ import com.is.inventory.model.Product;
 
 public interface ProductService{
 	
-	public void saveProduct(Product product);
-	public void deleteProduct(int productId);
+	public void addProduct(Product product);
+	public void deleteProduct(Product productId);
 	public void updateProducts(Product product);
 	
 }

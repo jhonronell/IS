@@ -1,6 +1,7 @@
 package com.is.inventory.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +12,14 @@ public class Product {
 	private String description;
 	private float weight;
 	private double height;
-	private String color;
+	private Color color;
 	private String code;
 	private String Sku;
 	private Distributor distributor;
 	private Date datePurchased;
 	private Date dateReceived;
 	private Date dateShipped;
-	private float investmentCapital;
+	
 	private Price price;
 	private ProductType productType;
 	private Brand brand;
@@ -90,13 +91,13 @@ public class Product {
 	/**
 	 * @return the color
 	 */
-	public String getColor() {
+	public Color getColor() {
 		return color;
 	}
 	/**
 	 * @param color the color to set
 	 */
-	public void setColor(String color) {
+	public void setColor(Color color) {
 		this.color = color;
 	}
 	/**
@@ -170,18 +171,6 @@ public class Product {
 	 */
 	public void setDateShipped(Date dateShipped) {
 		this.dateShipped = dateShipped;
-	}
-	/**
-	 * @return the investmentCapital
-	 */
-	public float getInvestmentCapital() {
-		return investmentCapital;
-	}
-	/**
-	 * @param investmentCapital the investmentCapital to set
-	 */
-	public void setInvestmentCapital(float investmentCapital) {
-		this.investmentCapital = investmentCapital;
 	}
 	/**
 	 * @return the price

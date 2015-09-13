@@ -1,32 +1,60 @@
 package com.is.inventory.model;
 
+import java.math.BigDecimal;
+
 public class Price {
 
-	private float price;
-	private float msrp;
+	private BigDecimal price;
+	private BigDecimal msrp;
+	private BigDecimal capitalPrice;
+	private int ID;
 	
+	/**
+	 * @return the iD
+	 */
+	public int getID() {
+		return ID;
+	}
+	/**
+	 * @param iD the iD to set
+	 */
+	public void setID(int iD) {
+		this.ID = iD;
+	}
+	/**
+	 * @return the capitalPrice
+	 */
+	public BigDecimal getCapitalPrice() {
+		return capitalPrice;
+	}
+	/**
+	 * @param capitalPrice the capitalPrice to set
+	 */
+	public void setCapitalPrice(BigDecimal capitalPrice) {
+		this.capitalPrice = capitalPrice;
+	}
 	/**
 	 * @return the price
 	 */
-	public float getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(float price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 	/**
 	 * @return the msrp
 	 */
-	public float getMsrp() {
+	public BigDecimal getMsrp() {
 		return msrp;
 	}
 	/**
 	 * @param msrp the msrp to set
 	 */
-	public void setMsrp(float msrp) {
+	public void setMsrp(BigDecimal msrp) {
 		this.msrp = msrp;
 	}
 	

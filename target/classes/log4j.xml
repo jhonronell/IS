@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.is.app">
+	<logger name="com.is.inventory">
 		<level value="info" />
 	</logger>
 	

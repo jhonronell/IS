@@ -13,7 +13,7 @@ public class TestProductOption {
 		
 		ProductOptionName productOptionName = new ProductOptionName();
 		productOptionName.setID(1);
-		productOptionName.setName("Colors");
+		productOptionName.setName("Frame Size");
 
 		ProductType productType = new ProductType();
 		productType.setName("Frame");
