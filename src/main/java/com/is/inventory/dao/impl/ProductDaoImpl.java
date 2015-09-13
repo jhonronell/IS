@@ -41,7 +41,7 @@ public class ProductDaoImpl implements ProductDao {
 						 + product.getProductType().getID() + ")";
 			
 			myStatement.executeUpdate(query);
-			
+			conn.close();
 		
 		} catch ( SQLException e) {
 			// TODO Auto-generated catch block

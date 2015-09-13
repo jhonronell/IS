@@ -4,6 +4,7 @@ public class Brand {
 
 	private int id;
 	private String Name;
+	private int CountryOfOrigin;
 	private String dateAdded;
 	private String description;
 	private boolean isActive;
@@ -62,6 +63,18 @@ public class Brand {
 	public void setDescription(String description) {
 		// TODO Auto-generated method stub
 		this.description = description;
+	}
+	/**
+	 * @return the countryOfOrigin
+	 */
+	public int getCountryOfOrigin() {
+		return CountryOfOrigin;
+	}
+	/**
+	 * @param countryOfOrigin the countryOfOrigin to set
+	 */
+	public void setCountryOfOrigin(int countryOfOrigin) {
+		CountryOfOrigin = countryOfOrigin;
 	}
 	
 	

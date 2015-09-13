@@ -1,25 +1,24 @@
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 import com.is.inventory.model.ProductOptionName;
 import com.is.inventory.model.ProductOptionSelection;
+import com.is.model.service.impl.ProductOptionSelectionServiceImpl;
 
 public class TestProductOptionSelection {
 
 	@Test
 	public void createProductOptionSelection() {
 	
-		ProductOptionSelection selection = new ProductOptionSelection();
+		ProductOptionSelection productOptionSelection = new ProductOptionSelection();
 		
-		ProductOptionName optionName1 = new ProductOptionName();
-		optionName1.setID(1);
-		optionName1.setName("Colors");
+		ProductOptionName productOptionName = new ProductOptionName();
+		productOptionName.setID(10);
+		productOptionSelection.setProductOptionName(productOptionName);
+		productOptionSelection.setValue("DEMO VALUE");
 		
-		selection.setProductOptionName(optionName1);
-		
-		assertTrue( selection.getProductOptionName().getName() == "Colors" );
+		ProductOptionSelectionServiceImpl productOptionSelectionService = new ProductOptionSelectionServiceImpl();
+		productOptionSelectionService.addProductOptionSelection(productOptionSelection);
 		
 	}
 

@@ -1,26 +1,21 @@
-import static org.junit.Assert.fail;
-
-import org.junit.Assert;
 import org.junit.Test;
 
 import com.is.inventory.model.ProductOptionName;
+import com.is.model.service.impl.ProductOptionNameServiceImpl;
+import com.is.model.service.impl.ProductOptionServiceImpl;
 
 public class OptionNameTest {
 
 	@Test
 	public void CreateOptionNameTest() {
 		
-		ProductOptionName optionName1 = new ProductOptionName();
-		optionName1.setID(1);
-		optionName1.setName("Colors");
+		ProductOptionName productOptionName = new ProductOptionName();
+		productOptionName.setID(1);
+		productOptionName.setName("Colors");
 		
-
-		ProductOptionName optionName2 = new ProductOptionName();
-		optionName2.setID(2);
-		optionName2.setName("Colors");
-
-		Assert.assertTrue(optionName2.getName().equalsIgnoreCase("Colors"));
-		Assert.assertTrue(optionName1.getName().equalsIgnoreCase("Colors"));
+		ProductOptionNameServiceImpl productOptionNameService = new ProductOptionNameServiceImpl();
+		productOptionNameService.addProductOptionName(productOptionName);
+		
 		
 	}
 
