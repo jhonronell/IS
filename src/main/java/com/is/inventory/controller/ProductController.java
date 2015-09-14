@@ -77,6 +77,7 @@ public class ProductController {
 		
 		return "home";
 	}
+	
 	@RequestMapping(value = "/product/{productId}", method = RequestMethod.GET)
 	public String viewProduct(@PathVariable("productId") int productId){
 		

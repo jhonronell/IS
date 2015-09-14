@@ -4,9 +4,10 @@ public class Address {
 
 	private int ID;
 	private int country;
-	private int city;
-	private int zipcode;
+	private String city;
+	private String zipcode;
 	private String Address;
+	private String region;
 	/**
 	 * @return the iD
 	 */
@@ -34,25 +35,25 @@ public class Address {
 	/**
 	 * @return the city
 	 */
-	public int getCity() {
+	public String getCity() {
 		return city;
 	}
 	/**
 	 * @param city the city to set
 	 */
-	public void setCity(int city) {
+	public void setCity(String city) {
 		this.city = city;
 	}
 	/**
 	 * @return the zipcode
 	 */
-	public int getZipcode() {
+	public String getZipcode() {
 		return zipcode;
 	}
 	/**
 	 * @param zipcode the zipcode to set
 	 */
-	public void setZipcode(int zipcode) {
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 	/**
@@ -67,5 +68,17 @@ public class Address {
 	public void setAddress(String address) {
 		Address = address;
 	}
+	/**
+	 * @return the region
+	 */
+	public String getRegion() {
+		return region;
+	}
+	/**
+	 * @param region the region to set
+	 */
+	public void setRegion(String region) {
+		this.region = region;
+	} 
 	
 }

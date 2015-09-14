@@ -6,8 +6,7 @@ import com.is.model.service.ProductOptionNameService;
 
 public class ProductOptionNameServiceImpl implements ProductOptionNameService {
 
-	ProductOptionNameDaoImpl productOptionNameDao= new ProductOptionNameDaoImpl();
-	
+	ProductOptionNameDaoImpl productOptionNameDao = new ProductOptionNameDaoImpl();
 	
 	@Override
 	public void addProductOptionName(ProductOptionName productOptionName) {

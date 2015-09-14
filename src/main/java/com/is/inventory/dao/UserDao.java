@@ -6,8 +6,8 @@ import com.is.inventory.model.ProductType;
 import com.is.inventory.model.User;
 
 public interface UserDao {
-	public void addUserDao(ProductType productType);
-	public void setUserDao(ProductType productType);
-	public void deleteUserDao(ProductType productType);
+	public void saveUser(ProductType productType);
+	public void setUser(ProductType productType);
+	public void deleteUser(ProductType productType);
 	public List<User> getUser(User user);
 }

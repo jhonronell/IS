@@ -1,10 +1,10 @@
-package com.is.inventory.dao;
+package com.is.model.service;
 
 import com.is.inventory.model.Price;
 
-public interface ProductPriceDao {
+public interface ProductPriceService {
 
-	public void saveProductPrice(Price price);
+	public void addProductPrice(Price price);
 	public void updateProductPrice(Price price);
 	public void deleteProductPrice(Price price);
 	public void getProductPrice(Price price);
