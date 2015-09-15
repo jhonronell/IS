@@ -1,31 +1,32 @@
-package com.is.model.service.impl;
+package com.is.inventory.service.impl;
 
 import java.util.List;
 
-import com.is.inventory.dao.impl.UserDaoImpl;
-import com.is.inventory.model.ProductType;
-import com.is.model.service.ProductTypeService;
 
-public class UserServiceImpl implements ProductTypeService {
-	
-	UserDaoImpl userDao = new UserDaoImpl();
+import com.is.inventory.dao.impl.ProductTypeDaoImpl;
+import com.is.inventory.model.ProductType;
+import com.is.inventory.service.ProductTypeService;
+
+public class ProductTypeServiceImpl implements ProductTypeService {
+
+	ProductTypeDaoImpl productTypeDao = new ProductTypeDaoImpl();
 	
 	@Override
-	public void addProductTypeDao(User user) {
+	public void addProductTypeDao(ProductType productType) {
 		// TODO Auto-generated method stub
-		userDao.saveUser(user);
+		productTypeDao.saveProductType(productType);
 	}
 
 	@Override
 	public void updateProductTypeDao(ProductType productType) {
 		// TODO Auto-generated method stub
-
+		productTypeDao.updateProductType(productType);
 	}
 
 	@Override
 	public void deleteProductTypeDao(ProductType productType) {
 		// TODO Auto-generated method stub
-
+		productTypeDao.deleteProductType(productType);
 	}
 
 	@Override

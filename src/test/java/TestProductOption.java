@@ -5,7 +5,7 @@ import org.junit.Test;
 import com.is.inventory.model.ProductOption;
 import com.is.inventory.model.ProductOptionName;
 import com.is.inventory.model.ProductType;
-import com.is.model.service.impl.ProductOptionServiceImpl;
+import com.is.inventory.service.impl.ProductOptionServiceImpl;
 
 public class TestProductOption {
 

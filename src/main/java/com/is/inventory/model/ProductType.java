@@ -7,6 +7,19 @@ public class ProductType {
 	private String dateAdded;
 	private String addedBy;
 	private boolean isActive;
+	private String details;
+	/**
+	 * @return the details
+	 */
+	public String getDetails() {
+		return details;
+	}
+	/**
+	 * @param details the details to set
+	 */
+	public void setDetails(String details) {
+		this.details = details;
+	}
 	/**
 	 * @return the iD
 	 */

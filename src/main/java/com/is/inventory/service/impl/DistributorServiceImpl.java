@@ -1,10 +1,10 @@
-package com.is.model.service.impl;
+package com.is.inventory.service.impl;
 
 import java.util.List;
 
 import com.is.inventory.dao.impl.DistributorDaoImpl;
 import com.is.inventory.model.Distributor;
-import com.is.model.service.DistributorService;
+import com.is.inventory.service.DistributorService;
 
 public class DistributorServiceImpl implements DistributorService {
 

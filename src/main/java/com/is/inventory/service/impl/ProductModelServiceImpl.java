@@ -1,10 +1,10 @@
-package com.is.model.service.impl;
+package com.is.inventory.service.impl;
 
 import java.util.List;
 
 import com.is.inventory.dao.impl.ProductModelDaoImpl;
 import com.is.inventory.model.ProductModel;
-import com.is.model.service.ProductModelService;
+import com.is.inventory.service.ProductModelService;
 
 public class ProductModelServiceImpl implements ProductModelService {
 

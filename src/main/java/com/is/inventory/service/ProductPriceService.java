@@ -1,4 +1,4 @@
-package com.is.model.service;
+package com.is.inventory.service;
 
 import com.is.inventory.model.Price;
 

@@ -1,10 +1,10 @@
-package com.is.model.service.impl;
+package com.is.inventory.service.impl;
 
 import java.awt.List;
 
 import com.is.inventory.dao.impl.BrandDaoImpl;
 import com.is.inventory.model.Brand;
-import com.is.model.service.BrandService;
+import com.is.inventory.service.BrandService;
 
 public class BrandServiceImpl implements BrandService {
 

@@ -6,11 +6,13 @@ public class Distributor {
 	
 	private int ID;
 	private String name;
-	private Person person;
+	private User person;
+	private User addedBy;
 	private ContactInformation contactInformation;
 	private Status status;
 	private Date dateAdded;
-	private String notes;
+	private int notes;
+	private Address address;
 	/**
 	 * @return the id
 	 */
@@ -38,13 +40,13 @@ public class Distributor {
 	/**
 	 * @return the person
 	 */
-	public Person getPerson() {
+	public User getUser() {
 		return person;
 	}
 	/**
 	 * @param person the person to set
 	 */
-	public void setPerson(Person person) {
+	public void setUser(User person) {
 		this.person = person;
 	}
 	/**
@@ -86,14 +88,38 @@ public class Distributor {
 	/**
 	 * @return the notes
 	 */
-	public String getNotes() {
+	public int getNotes() {
 		return notes;
 	}
 	/**
 	 * @param notes the notes to set
 	 */
-	public void setNotes(String notes) {
+	public void setNotes(int notes) {
 		this.notes = notes;
+	}
+	/**
+	 * @return the addedBy
+	 */
+	public User getAddedBy() {
+		return addedBy;
+	}
+	/**
+	 * @param addedBy the addedBy to set
+	 */
+	public void setAddedBy(User addedBy) {
+		this.addedBy = addedBy;
+	}
+	/**
+	 * @return the address
+	 */
+	public Address getAddress() {
+		return address;
+	}
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 }

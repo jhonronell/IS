@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import com.is.inventory.model.ProductOptionName;
 import com.is.inventory.model.ProductOptionSelection;
-import com.is.model.service.impl.ProductOptionSelectionServiceImpl;
+import com.is.inventory.service.impl.ProductOptionSelectionServiceImpl;
 
 public class TestProductOptionSelection {
 

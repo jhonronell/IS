@@ -13,8 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-import com.is.model.service.impl.ProductServiceImpl;
+import com.is.inventory.service.impl.ProductServiceImpl;
 
 /**
  * Handles requests for the application home page.

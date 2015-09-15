@@ -1,8 +1,8 @@
 import org.junit.Test;
 
 import com.is.inventory.model.ProductOptionName;
-import com.is.model.service.impl.ProductOptionNameServiceImpl;
-import com.is.model.service.impl.ProductOptionServiceImpl;
+import com.is.inventory.service.impl.ProductOptionNameServiceImpl;
+import com.is.inventory.service.impl.ProductOptionServiceImpl;
 
 public class OptionNameTest {
 

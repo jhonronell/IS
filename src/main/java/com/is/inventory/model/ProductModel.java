@@ -6,7 +6,20 @@ public class ProductModel {
 	private int yearModel;
 	private Brand brand;
 	private int ID;
+	private String details;
 	
+	/**
+	 * @return the details
+	 */
+	public String getDetails() {
+		return details;
+	}
+	/**
+	 * @param details the details to set
+	 */
+	public void setDetails(String details) {
+		this.details = details;
+	}
 	public String getModelName() {
 		return modelName;
 	}

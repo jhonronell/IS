@@ -7,8 +7,34 @@ public class Price {
 	private BigDecimal price;
 	private BigDecimal msrp;
 	private BigDecimal capitalPrice;
+	private User addedBy;
+	private String dateAdded;
 	private int ID;
 	
+	/**
+	 * @return the addedBy
+	 */
+	public User getAddedBy() {
+		return addedBy;
+	}
+	/**
+	 * @param addedBy the addedBy to set
+	 */
+	public void setAddedBy(User addedBy) {
+		this.addedBy = addedBy;
+	}
+	/**
+	 * @return the dateAdded
+	 */
+	public String getDateAdded() {
+		return dateAdded;
+	}
+	/**
+	 * @param dateAdded the dateAdded to set
+	 */
+	public void setDateAdded(String dateAdded) {
+		this.dateAdded = dateAdded;
+	}
 	/**
 	 * @return the iD
 	 */

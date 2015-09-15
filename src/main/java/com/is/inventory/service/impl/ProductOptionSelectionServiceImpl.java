@@ -1,8 +1,8 @@
-package com.is.model.service.impl;
+package com.is.inventory.service.impl;
 
 import com.is.inventory.dao.impl.ProductOptionSelectionDaoImpl;
 import com.is.inventory.model.ProductOptionSelection;
-import com.is.model.service.ProductOptionSelectionService;
+import com.is.inventory.service.ProductOptionSelectionService;
 
 public class ProductOptionSelectionServiceImpl implements ProductOptionSelectionService {
 

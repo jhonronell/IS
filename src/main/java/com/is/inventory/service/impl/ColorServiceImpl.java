@@ -1,10 +1,10 @@
-package com.is.model.service.impl;
+package com.is.inventory.service.impl;
 
 import java.util.List;
 
 import com.is.inventory.dao.impl.ColorDaoImpl;
 import com.is.inventory.model.Color;
-import com.is.model.service.ColorService;
+import com.is.inventory.service.ColorService;
 
 public class ColorServiceImpl implements ColorService {
 

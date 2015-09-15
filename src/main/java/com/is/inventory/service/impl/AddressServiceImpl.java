@@ -1,10 +1,10 @@
-package com.is.model.service.impl;
+package com.is.inventory.service.impl;
 
 import java.awt.List;
 
 import com.is.inventory.dao.impl.AddressDaoImpl;
 import com.is.inventory.model.Address;
-import com.is.model.service.AddressService;
+import com.is.inventory.service.AddressService;
 
 public class AddressServiceImpl implements AddressService {
 	AddressDaoImpl addressDao= new AddressDaoImpl();

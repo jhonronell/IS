@@ -16,7 +16,7 @@ import com.is.inventory.model.Price;
 import com.is.inventory.model.Product;
 import com.is.inventory.model.ProductModel;
 import com.is.inventory.model.ProductType;
-import com.is.model.service.impl.ProductServiceImpl;
+import com.is.inventory.service.impl.ProductServiceImpl;
 
 @Controller
 public class ProductController {
