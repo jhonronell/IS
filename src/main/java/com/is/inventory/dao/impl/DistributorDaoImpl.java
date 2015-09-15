@@ -6,8 +6,8 @@ import java.sql.Statement;
 import java.util.List;
 
 import com.is.inventory.dao.DistributorDao;
+import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.Distributor;
-import com.is.jdbc.ConnectionManager;
 
 public class DistributorDaoImpl implements DistributorDao {
 

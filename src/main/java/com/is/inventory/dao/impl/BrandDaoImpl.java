@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.is.inventory.dao.BrandDao;
+import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.Brand;
-import com.is.jdbc.ConnectionManager;
 
 public class BrandDaoImpl implements BrandDao {
 

@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.is.inventory.dao.ProductOptionSelectionDao;
+import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.ProductOptionSelection;
-import com.is.jdbc.ConnectionManager;
 
 public class ProductOptionSelectionDaoImpl implements ProductOptionSelectionDao {
 

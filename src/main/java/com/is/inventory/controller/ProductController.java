@@ -21,7 +21,7 @@ import com.is.inventory.service.impl.ProductServiceImpl;
 @Controller
 public class ProductController {
 	
-	@RequestMapping(value = "/product/new", method = RequestMethod.POST)
+	@RequestMapping(value = "/product/action/new", method = RequestMethod.POST)
 	public String addProduct(@RequestParam("id") int id, @RequestParam("name") String name, 
 							 @RequestParam("description") String description, @RequestParam("weight") float weight, 
 							 @RequestParam("height") float height, @RequestParam("color") int colorID, 

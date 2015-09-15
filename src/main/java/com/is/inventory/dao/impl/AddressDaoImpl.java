@@ -5,12 +5,20 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.sql.DataSource;
+
 import com.is.inventory.dao.AddressDao;
+import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.Address;
-import com.is.jdbc.ConnectionManager;
+import org.springframework.jdbc.core;
 
 public class AddressDaoImpl implements AddressDao {
-
+	private DataSource dataSource;
+	 
+	public void setDataSource(DataSource dataSource) {
+	      this.dataSource = dataSource;
+	      
+	 }
 	@Override
 	public void saveAddress(Address address) {
 		// TODO Auto-generated method stub

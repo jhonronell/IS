@@ -6,9 +6,9 @@ import java.sql.Statement;
 import java.util.List;
 
 import com.is.inventory.dao.UserDao;
+import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.ProductType;
 import com.is.inventory.model.User;
-import com.is.jdbc.ConnectionManager;
 
 public class UserDaoImpl implements UserDao {
 

@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.is.inventory.dao.ProductDao;
+import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.Product;
-import com.is.jdbc.ConnectionManager;
 
 public class ProductDaoImpl implements ProductDao {
 	
