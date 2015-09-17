@@ -16,6 +16,7 @@ public class TestProductOption {
 		productOptionName.setID(1);
 		productOptionName.setName("Frame Size");
 		ProductType productType = new ProductType();
+		productType.setID(1);
 		productType.setName("Frame");
 		ProductOption productOption = new ProductOption();
 		productOption.setID(100);

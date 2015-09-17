@@ -1,12 +1,12 @@
 package com.is.inventory.dao;
 
-import java.awt.List;
+import java.util.List;
 
 import com.is.inventory.model.Product;
 
 public interface ProductDao {
 	
-	public List getProducts();
+	public List<Product> getProducts();
 	public void saveProduct(Product product);
 	public void deleteProduct(Product Product);
 	public void updateProducts(Product product);

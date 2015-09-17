@@ -5,7 +5,7 @@ public class ProductType {
 	private int ID;
 	private String name;
 	private String dateAdded;
-	private String addedBy;
+	private User addedBy;
 	private boolean isActive;
 	private String details;
 	/**
@@ -59,14 +59,14 @@ public class ProductType {
 	/**
 	 * @return the addedBy
 	 */
-	public String getAddedBy() {
+	public User getAddedBy() {
 		return addedBy;
 	}
 	/**
-	 * @param addedBy the addedBy to set
+	 * @param user the addedBy to set
 	 */
-	public void setAddedBy(String addedBy) {
-		this.addedBy = addedBy;
+	public void setAddedBy(User user) {
+		this.addedBy = user;
 	}
 	/**
 	 * @return the isActive

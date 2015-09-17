@@ -9,5 +9,6 @@ public interface ProductTypeDao {
 	public void saveProductType(ProductType productType);
 	public void updateProductType(ProductType productType);
 	public void deleteProductType(ProductType productType);
-	public List<ProductType> getProductType(ProductType productType);
+	public List<ProductType> getProductTypeList();
+	public ProductType getProductType(ProductType productType);
 }

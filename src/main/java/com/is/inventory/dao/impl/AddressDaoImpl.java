@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 import com.is.inventory.dao.AddressDao;
 import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.Address;
-import org.springframework.jdbc.core;
+
 
 public class AddressDaoImpl implements AddressDao {
 	private DataSource dataSource;

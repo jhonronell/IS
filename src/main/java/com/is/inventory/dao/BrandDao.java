@@ -1,8 +1,7 @@
 package com.is.inventory.dao;
-
-import java.awt.List;
-
+import java.util.List;
 import com.is.inventory.model.Brand;
+import com.is.inventory.model.ProductType;
 
 public interface BrandDao {
 
@@ -10,4 +9,5 @@ public interface BrandDao {
 	public void updateBrand(Brand brand);
 	public void delete(Brand brand);
 	public List getBrands();
+	public Brand getBrand(Brand brand);
 }

@@ -1,12 +1,15 @@
 package com.is.inventory.dao.impl;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.is.inventory.dao.ColorDao;
 import com.is.inventory.jdbc.ConnectionManager;
+import com.is.inventory.model.Brand;
 import com.is.inventory.model.Color;
 
 public class ColorDaoImpl implements ColorDao {
@@ -55,9 +58,37 @@ public class ColorDaoImpl implements ColorDao {
 	}
 
 	@Override
-	public List<Color> getColorList(Color color) {
+	public List<Color> getColorList() {
 		// TODO Auto-generated method stub
-		return null;
+		List<Color> colors = new ArrayList<Color>();
+		
+		try {
+			
+			ConnectionManager conManager = new ConnectionManager();
+			Connection conn = conManager.getConnection();
+			Statement myStatement = conn.createStatement();
+			String sql = "SELECT * FROM `ColorTable`";
+		    ResultSet rs = myStatement.executeQuery(sql);
+		    
+		    while(rs.next()){
+		    	Color color = new Color();
+		    	color.setID(rs.getInt("ID"));
+		    	color.setColorPhoto(rs.getString("ColorPhoto"));
+		    	color.setColorHex(rs.getString("ColorHex"));
+		    	color.setColorName(rs.getString("Name"));
+		    	colors.add(color);
+		    }
+		    rs.close();
+		    return colors;
+		  
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return colors;
 	}
 
 }

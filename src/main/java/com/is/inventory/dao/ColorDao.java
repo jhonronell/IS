@@ -9,6 +9,6 @@ public interface ColorDao {
 	public void saveColor(Color color);
 	public void updateColor(Color color);
 	public void deleteColor(Color color);
-	public List<Color> getColorList(Color color);
+	public List<Color> getColorList();
 	
 }
