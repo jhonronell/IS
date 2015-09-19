@@ -8,6 +8,7 @@ public class Address {
 	private String zipcode;
 	private String Address;
 	private String region;
+	private int addressOf;
 	/**
 	 * @return the iD
 	 */
@@ -79,6 +80,14 @@ public class Address {
 	 */
 	public void setRegion(String region) {
 		this.region = region;
+	}
+	public int getAddressOf() {
+		// TODO Auto-generated method stub
+		return addressOf;
+	} 
+	public void setAddressOf(int addressOf) {
+		// TODO Auto-generated method stub
+		this.addressOf = addressOf; 
 	} 
 	
 }

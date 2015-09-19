@@ -8,5 +8,5 @@ public interface AddressDao {
 	public void saveAddress(Address address);
 	public void updateAddress(Address address);
 	public void deleteAddress(Address address);
-	public List getAddress(Address address);
+	public Address getAddress(Address address);
 }

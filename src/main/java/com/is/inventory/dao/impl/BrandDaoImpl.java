@@ -107,6 +107,7 @@ public class BrandDaoImpl implements BrandDao {
 			String sql = "SELECT * FROM `Brand` where ID=" + brand.getId();
 		
 		    ResultSet rs = myStatement.executeQuery(sql);
+		    while(rs.next()){
 		    Brand brandRecord = new Brand();
 		    brandRecord.setCountryOfOrigin( rs.getInt("CountryOfOrigin") );
 		    brandRecord.setId(rs.getInt("ID")  );
@@ -114,8 +115,10 @@ public class BrandDaoImpl implements BrandDao {
 		    brandRecord.setName( rs.getString("Name")    );
 	    	brandRecord.setDateAdded( rs.getString("DateAdded") );
 	    	brandRecord.setActive(  rs.getBoolean("DateAdded") );
+	    	return brandRecord;
+		    }
 	    	rs.close();
-		    return brandRecord;
+		    
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

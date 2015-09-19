@@ -98,4 +98,40 @@ public class DistributorDaoImpl implements DistributorDao {
 		
 	}
 
+	@Override
+	public Distributor getDistributor(Distributor distributor) {
+		// TODO Auto-generated method stub
+		try {
+			
+			ConnectionManager conManager = new ConnectionManager();
+			Connection conn = conManager.getConnection();
+			Statement myStatement = conn.createStatement();
+			String sql = "SELECT * FROM `Distributors` where id=" + distributor.getID();
+		    ResultSet rs = myStatement.executeQuery(sql);
+		    
+		    while(rs.next()){
+		    	Distributor distributorRs = new Distributor();
+		    	distributorRs.setID( rs.getInt("ID"));
+		    	distributorRs.setName( rs.getString("Name"));
+		    	ContactInformation contactInfo = new ContactInformation();
+		    	contactInfo.setID(1);
+		    	contactInfo.setContactInfoType("Email");
+		    	contactInfo.setContactInfoValue("JhonronelL@gmail.com");
+		    	distributorRs.setContactInformation(contactInfo);
+		    	distributorRs.setID( rs.getInt("DateAdded"));
+		    	distributorRs.setID( rs.getInt("AddedBy"));
+		    	return distributorRs;
+		    }
+		    rs.close();
+		  
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

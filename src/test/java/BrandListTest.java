@@ -29,7 +29,7 @@ public class BrandListTest {
 		
 		ProductType productType = new ProductType();
 		
-		System.out.println(brandDao.getBrands(productType).toString());
+		System.out.println(brandDao.getBrands().toString());
 	}
 
 }
