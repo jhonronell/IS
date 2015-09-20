@@ -1,6 +1,6 @@
 package com.is.inventory.service.impl;
 
-import java.awt.List;
+import java.util.List;
 
 import com.is.inventory.dao.impl.BrandDaoImpl;
 import com.is.inventory.model.Brand;
@@ -30,7 +30,7 @@ public class BrandServiceImpl implements BrandService {
 	}
 
 	@Override
-	public List getBrands() {
+	public List<Brand> getBrands() {
 		// TODO Auto-generated method stub
 		return brandDao.getBrands();
 	}

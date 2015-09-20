@@ -8,6 +8,6 @@ public interface BrandDao {
 	public void saveBrand(Brand brand);
 	public void updateBrand(Brand brand);
 	public void delete(Brand brand);
-	public List getBrands();
+	public List<Brand> getBrands();
 	public Brand getBrand(Brand brand);
 }

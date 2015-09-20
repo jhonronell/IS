@@ -31,7 +31,7 @@ public class ColorServiceImpl implements ColorService {
 	@Override
 	public List<Color> getColorList(Color color) {
 		// TODO Auto-generated method stub
-		return null;
+		return colorDao.getColorList();
 	}
 
 }

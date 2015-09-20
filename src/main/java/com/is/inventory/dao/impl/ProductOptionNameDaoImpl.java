@@ -49,4 +49,10 @@ public class ProductOptionNameDaoImpl implements ProductOptionNameDao {
 
 	}
 
+	@Override
+	public ProductOptionName getProductOptionName(ProductOptionName productOptionName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

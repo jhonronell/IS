@@ -9,5 +9,5 @@ public interface DistributorDao {
 	public void updateDistributor(Distributor distributor);
 	public void deleteDistributor(Distributor distributor);
 	public Distributor getDistributor(Distributor distributor);
-	public List<Distributor> getDistributorList();
+	public List<Distributor> getDistributors();
 }

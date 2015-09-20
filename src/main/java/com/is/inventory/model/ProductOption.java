@@ -6,7 +6,7 @@ public class ProductOption {
 
 	private int ID;
 	private ProductOptionName productOptionName;
-	private ProductType productType;;
+	private ProductType productType;
 	private int addedBy;
 	private Date addedDate;
 	/**

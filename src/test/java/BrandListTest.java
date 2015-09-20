@@ -1,3 +1,5 @@
+import java.util.List;
+
 import org.junit.Test;
 
 import com.is.inventory.dao.impl.BrandDaoImpl;
@@ -30,6 +32,18 @@ public class BrandListTest {
 		ProductType productType = new ProductType();
 		
 		System.out.println(brandDao.getBrands().toString());
+	}
+	@Test
+	public void BrandList() {
+		
+		BrandDaoImpl brandDao = new BrandDaoImpl();
+		
+		List<Brand> brandList = brandDao.getBrands();
+		System.out.println(brandList.size());
+		for(Brand i : brandList){
+			System.out.println(i.getName());
+		}
+		
 	}
 
 }

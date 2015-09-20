@@ -57,7 +57,7 @@ public class DistributorDaoImpl implements DistributorDao {
 	}
 
 	@Override
-	public List<Distributor> getDistributorList() {
+	public List<Distributor> getDistributors() {
 		
 		List<Distributor> distributors = new ArrayList<Distributor>();
 		
@@ -66,23 +66,15 @@ public class DistributorDaoImpl implements DistributorDao {
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `Distributors`";
+			String sql = "SELECT * FROM `Distributor`";
 		    ResultSet rs = myStatement.executeQuery(sql);
 		    
 		    while(rs.next()){
 		    	
 		    	Distributor distributor = new Distributor();
-		    	
 		    	distributor.setID( rs.getInt("ID"));
 		    	distributor.setName( rs.getString("Name"));
-		    	ContactInformation contactInfo = new ContactInformation();
-		    	contactInfo.setID(1);
-		    	contactInfo.setContactInfoType("Email");
-		    	contactInfo.setContactInfoValue("JhonronelL@gmail.com");
-		    	distributor.setContactInformation(contactInfo);
-		    	distributor.setID( rs.getInt("DateAdded"));
-		    	distributor.setID( rs.getInt("AddedBy"));
-
+		    	distributors.add(distributor);
 		    }
 		    rs.close();
 		    return distributors;
@@ -106,18 +98,37 @@ public class DistributorDaoImpl implements DistributorDao {
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `Distributors` where id=" + distributor.getID();
+			String sql = "SELECT"
+					+ "  `Distributor`.`ID`"
+					+ " , `Distributor`.`Name`"
+					+ "    , `Distributor`.`ContactInformation`"
+					+ "    , `Distributor`.`DateAdded`"
+					+ "    , `Distributor`.`AddedBy`"
+					+ "    , `Distributor`.`Status`"
+					+ "    , `Distributor`.`isActive`"
+					+ "    , `Distributor`.`Addres`"
+					+ "    , `AddressComplete`.`country`"
+					+ "    , `AddressComplete`.`major_area`"
+					+ "    , `AddressComplete`.`zip_code`"
+					+ "    , `AddressComplete`.`city`"
+					+ "    , `Address`.`Region`"
+					+ "    , `Address`.`Address`"
+					+ "FROM"
+					+ "    `Distributor`"
+					+ "    LEFT JOIN `Address`"
+					+ ""
+					+ "   ON (`Distributor`.`ID` = `Address`.`ID`)"
+					+ "  LEFT JOIN `AddressComplete`"
+					+ "  ON (`Address`.`AddressFk` = `AddressComplete`.`id`)"
+					+ "  where Distributor.ID=" + distributor.getID();
+			
+			System.out.println(sql);
 		    ResultSet rs = myStatement.executeQuery(sql);
 		    
 		    while(rs.next()){
 		    	Distributor distributorRs = new Distributor();
 		    	distributorRs.setID( rs.getInt("ID"));
 		    	distributorRs.setName( rs.getString("Name"));
-		    	ContactInformation contactInfo = new ContactInformation();
-		    	contactInfo.setID(1);
-		    	contactInfo.setContactInfoType("Email");
-		    	contactInfo.setContactInfoValue("JhonronelL@gmail.com");
-		    	distributorRs.setContactInformation(contactInfo);
 		    	distributorRs.setID( rs.getInt("DateAdded"));
 		    	distributorRs.setID( rs.getInt("AddedBy"));
 		    	return distributorRs;

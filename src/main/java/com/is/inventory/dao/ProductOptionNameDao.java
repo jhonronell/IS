@@ -7,5 +7,5 @@ public interface ProductOptionNameDao {
 	void saveProductOptionName(ProductOptionName productOptionName);
 	void updateProductOptionName(ProductOptionName productOptionName);
 	void deleteProductOptionName(ProductOptionName productOptionName);
-
+	ProductOptionName getProductOptionName(ProductOptionName productOptionName);
 }

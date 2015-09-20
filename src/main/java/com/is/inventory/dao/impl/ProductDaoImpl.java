@@ -9,10 +9,12 @@ import java.util.List;
 
 import com.is.inventory.dao.ProductDao;
 import com.is.inventory.jdbc.ConnectionManager;
+import com.is.inventory.model.Brand;
 import com.is.inventory.model.Color;
 import com.is.inventory.model.Distributor;
 import com.is.inventory.model.Price;
 import com.is.inventory.model.Product;
+import com.is.inventory.model.ProductModel;
 import com.is.inventory.model.ProductType;
 
 public class ProductDaoImpl implements ProductDao {
@@ -67,47 +69,83 @@ public class ProductDaoImpl implements ProductDao {
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `ProductTable`";
+			String sql = "SELECT"
+					   +" `ProductTable`.`ID` "
+					   +" , `ProductTable`.`Name`"
+					   +" , `ProductTable`.`Description`"
+					   +" , `ProductTable`.`Weight`"
+					   +" , `ProductTable`.`Height`"
+					   +" , `ProductTable`.`Code`"
+					   +" , `ProductTable`.`Sku`"
+					   +" , `ColorTable`.`ColorName`" 
+					   +" , `ProductPriceTable`.`Price`"
+					   +" , `ProductPriceTable`.`Msrp`"
+					   +" , `Distributor`.`ID` AS 'distributorId'"
+					   +" , `Distributor`.`Name` AS 'distributorName'"
+					   +" , `ProductType`.`Name` AS 'productTypeName'"
+					   +" , `ProductModel`.`Name` AS 'productModelName'"
+					   +" , `ProductModel`.`YearModel` AS 'productYearModel'"
+					   +" , `Brand`.`Name` AS 'brandName'"
+					   +" , `ProductTable`.`AddedBy`"
+					   +"  FROM"
+					   +"  `ProductTable`"
+					   +"  LEFT JOIN `ProductModel` "
+					   +"      ON (`ProductTable`.`Model` = `ProductModel`.`ID`)"
+					   +"  LEFT JOIN `Brand` "
+					   +"       ON (`ProductModel`.`BrandID` = `Brand`.`ID`)"
+					   +"   LEFT JOIN `ProductType` "
+					   +"      ON (`ProductTable`.`ProductType` = `ProductType`.`ID`)"
+					   +"  LEFT JOIN `UserTable` "
+					   +"      ON (`ProductTable`.`AddedBy` = `UserTable`.`ID`)"
+					   +"  LEFT JOIN `Distributor` "
+					   +"      ON (`Distributor`.`ID` = `ProductTable`.`DistributorId`)"
+					   +"  LEFT JOIN `ProductPriceTable` "
+					   +"      ON (`ProductTable`.`Price` = `ProductPriceTable`.`Id`)"
+					   +"  LEFT JOIN `ColorTable` "
+					   +"      ON (`ProductTable`.`Color` = `ColorTable`.`ID`);";
+			System.out.println(sql);
 			ResultSet rs = myStatement.executeQuery(sql);
-
+			
 			while (rs.next()) {
 
-				Product product = new Product("name");
+				Product product = new Product("Name");
 				product.setId(rs.getInt("ID"));
 				product.setName(rs.getString("Name"));
 				product.setDescription(rs.getString("Description"));
-				product.setWeight(rs.getFloat("weigth"));
+				product.setWeight(rs.getFloat("Weight"));
 				product.setHeight(rs.getDouble("Height"));
 
 				Color color = new Color();
 				color.setColorName(rs.getString("ColorName"));
-				color.setID(rs.getInt("ID"));
-				color.setColorHex(rs.getString("ColorHex"));
-
+				
 				product.setColor(color);
 				product.setCode(rs.getString("Code"));
 				product.setSku(rs.getString("Sku"));
 
 				Price price = new Price();
 				price.setPrice(rs.getBigDecimal("Price"));
-				price.setCapitalPrice(rs.getBigDecimal("capitalPrice"));
-				price.setDateAdded(rs.getString("dateAdded"));
-				price.setID(rs.getInt("Id"));
-				price.setMsrp(rs.getBigDecimal("Msrp"));
-
+				price.setMsrp(rs.getBigDecimal("Price"));
 				product.setPrice(price);
 
 				Distributor distributor = new Distributor();
-				distributor.setID(11);
+				distributor.setName(rs.getString("DistributorName"));
+				
 				product.setDistributor(distributor);
-				product.setDatePurchased(rs.getDate("datePurchased"));
-				product.setDateReceived(rs.getDate("dateReceived"));
+				
+				/*product.setDatePurchased(rs.getDate("datePurchased"));
+				product.setDateReceived(rs.getDate("dateReceived"));*/
 
 				ProductType productType = new ProductType();
-				productType.setID(11);
-				productType.setName("Hello");
+				productType.setName("ProductTypeName");
 				product.setProductType(productType);
 
+				ProductModel productModel = new ProductModel();
+				productModel.setModelName(rs.getString("productModelName"));
+				productModel.setYearModel( rs.getInt("productYearModel"));
+				Brand brand = new Brand();
+				brand.setName(rs.getString("BrandName"));
+				productModel.setBrand(brand);
+				
 				products.add(product);
 			}
 			rs.close();
@@ -144,96 +182,42 @@ public class ProductDaoImpl implements ProductDao {
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
-			String sql = "SELECT `Distributor`.`ID` AS 'DistributorID',"
-					+ " `Distributor`.`Name` AS 'DistributorName', `Distributor`.`ContactInformation` AS 'DistributorContactInformation'"
-					+ ",`Distributor`.`DateAdded` AS 'DistributorDateAdded'"
-					+ ", `Distributor`.`AddedBy` AS 'DistributorAddedBy'"
-					+ ", `Distributor`.`Status` AS 'DistributorStatus'"
-					+ ", `Distributor`.`isActive` AS 'DistributorisActive'" + ", "
-					+ "`  Brand`.`ID` AS 'BrandID'"
-					+ ", `Brand`.`Name` AS 'BrandName'" + ", "
-					+ "`  Brand`.`CountryOfOrigin` AS 'BrandCountryOfOrigin'"
-					+ ", `Brand`.`DateAdded` AS 'BrandDateAdded'" + ", `Brand`.`Status` AS 'BrandStatus'"
-					+ ", `Brand`.`isActive` AS 'BrandisActive'" + ", `Brand`.`description` AS 'Branddescription'"
-					+ ", `ProductType`.`Name` AS 'ProductypeName'"
-					+ ", `ProductType`.`DateAdded` AS 'ProductTypeDateAdded'"
-					+ ", `ProductType`.`AddedBy` AS 'ProductTypeAddedBy'"
-					+ ", `ProductType`.`isActive` AS 'ProductTypeisActive'"
-					+ ", `ProductType`.`Details` AS 'ProductTypeDetails'"
-					+ ", `ProductModel`.`Name` AS 'ProductModelName'"
-					+ ", `ProductModel`.`YearModel` AS 'ProductModelYearModel'"
-					+ ", `ProductModel`.`Details` AS 'ProductModelDetails'"
-					+ ", `ProductModel`.`BrandID` AS 'ProductModelBrandID'"
-					+ ", `ProductModel`.`ID` AS 'ProductModelID'" + ", `UserTable`.`ID` AS 'UserID'"
-					+ ", `UserTable`.`FirstName` AS 'UserFirstName'" + ", `UserTable`.`LastName` AS 'UserLastName'"
-					+ ", `ProductPriceTable`.`Id` AS 'ProductPriceId'"
-					+ ", `ProductPriceTable`.`ProductId` AS 'ProductPriceProductId'"
-					+ ", `ProductPriceTable`.`Msrp` AS 'ProductPriceMsrp'"
-					+ ", `ProductPriceTable`.`Price` AS 'ProductPricePrice'"
-					+ ", `ProductPriceTable`.`dateAdded` AS 'ProductPricedateAdded'"
-					+ ", `ProductPriceTable`.`addedBy` AS 'ProductPriceaddedBy'"
-					+ ", `ProductPriceTable`.`capitalPrice` AS 'ProductPricecapitalPrice'"
-					+ ", `ProductTable`.`ID` AS 'ProductID'" + ", `ProductTable`.`Name` AS 'ProductName'"
-					+ ", `ProductTable`.`Description` AS 'ProductDescription'"
-					+ ", `ProductTable`.`Weight` AS 'ProductWeight'" + ", `ProductTable`.`Height` AS 'ProductHeight'"
-					+ ", `ProductTable`.`Code` AS 'ProductCode'" + ", `ProductTable`.`Color` AS 'ProductColor'"
-					+ ", `ProductTable`.`Sku` AS 'ProductSku'" + ", `ProductTable`.`Price` AS 'ProductPrice'"
-					+ ", `ProductTable`.`DistributorId` AS 'ProductDistributorId'"
-					+ ", `ProductTable`.`DatePurchased` AS 'ProductDatePurchased'"
-					+ ", `ProductTable`.`OriginalPrice` AS 'ProductOriginalPrice'"
-					+ ", `ProductTable`.`DateReceived` AS 'ProductDateReceived'"
-					+ ", `ProductTable`.`ProductType` AS 'ProductProductType'"
-					+ ", `ProductTable`.`DateShipped` AS 'ProductDateShipped'"
-					+ ", `ProductTable`.`Manufacturer` AS 'ProductManufacturer'"
-					+ ", `ProductTable`.`Brand` AS 'ProductBrand'" + ", `ProductTable`.`Brand` AS 'ProductBrand'"
-					+ ", `ProductTable`.`Model` AS 'ProductModel'" + ", `ProductTable`.`AddedBy` AS 'ProductAddedBy'"
-					+ "FROM   `ProductTable`"
-					+ "  LEFT JOIN `ProductModel`  ON (`ProductTable`.`Model` = `ProductModel`.`ID`)"
-					+ "  LEFT JOIN `Brand` ON (`ProductModel`.`BrandID` = `Brand`.`ID`) LEFT JOIN `ProductType`"
-					+ "  ON (`ProductTable`.`ProductType` = `ProductType`.`ID`) LEFT JOIN `UserTable`"
-					+ "  ON (`ProductTable`.`AddedBy` = `UserTable`.`ID`)  LEFT JOIN `Distributor`"
-					+ "  ON (`Distributor`.`ID` = `ProductTable`.`DistributorId`)" + "  LEFT JOIN `ProductPriceTable`  "
-					+ "  ON (`ProductTable`.`Price` = `ProductPriceTable`.`Id`)" + "  where productTable.id="
-					+ product.getId();
-
+			String sql = "SELECT * from ProductTable where id="+ product.getId();
+			
 			ResultSet rs = myStatement.executeQuery(sql);
-
 			while (rs.next()) {
 
-				/*
-				 * Product productRs = new Product("name"); productRs.setId(
-				 * rs.getInt("ID") ); productRs.setName(rs.getString("Name"));
-				 * productRs.setDescription(rs.getString("Description"));
-				 * productRs.setWeight(rs.getFloat("weight"));
-				 * productRs.setHeight(rs.getDouble("Height"));
-				 * 
-				 * Color color = new Color();
-				 * color.setColorName(rs.getString("ColorName"));
-				 * color.setID(rs.getInt("ID"));
-				 * color.setColorHex(rs.getString("ColorHex"));
-				 * 
-				 * productRs.setColor(color); productRs.setCode(
-				 * rs.getString("Code")); productRs.setSku(rs.getString("Sku"));
-				 * 
-				 * Price price = new Price(); price.setPrice(
-				 * rs.getBigDecimal("Price") ); price.setCapitalPrice(
-				 * rs.getBigDecimal("capitalPrice") ); price.setDateAdded(
-				 * rs.getString("dateAdded")); price.setID( rs.getInt("Id"));
-				 * price.setMsrp( rs.getBigDecimal("Msrp"));
-				 * 
-				 * productRs.setPrice(price);
-				 * 
-				 * Distributor distributor = new Distributor();
-				 * distributor.setID(11); productRs.setDistributor(distributor);
-				 * productRs.setDatePurchased( rs.getDate("datePurchased"));
-				 * productRs.setDateReceived( rs.getDate("dateReceived"));
-				 * 
-				 * ProductType productType = new ProductType();
-				 * productType.setID(11); productType.setName("Hello");
-				 * productRs.setProductType(productType);
-				 */
+				
+				  Product productRs = new Product(rs.getString("Name")); 
+				  productRs.setId( rs.getInt("ID") ); 
+				  productRs.setName(rs.getString("Name"));
+				  productRs.setDescription(rs.getString("Description"));
+				  productRs.setWeight(rs.getFloat("weight"));
+				  productRs.setHeight(rs.getDouble("Height"));
+				  
+				  Color color = new Color();
+				  color.setID(rs.getInt("Color"));
+				  
+				  productRs.setColor(color);
+				  productRs.setCode( rs.getString("Code")); 
+				  productRs.setSku(rs.getString("Sku"));
+				  
+				  Price price = new Price();
+				  price.setID( rs.getInt("Price") ); 
+				  
+				  productRs.setPrice(price);
+				  
+				  Distributor distributor = new Distributor();
+				  distributor.setID(11); productRs.setDistributor(distributor);
 
-//				return productRs;
+				  productRs.setDatePurchased( rs.getDate("datePurchased"));
+				  productRs.setDateReceived( rs.getDate("dateReceived"));
+				  
+				  ProductType productType = new ProductType();
+				  productType.setID(11); productType.setName("Hello");
+				  productRs.setProductType(productType);
+				 
+				return productRs;
 			}
 			rs.close();
 

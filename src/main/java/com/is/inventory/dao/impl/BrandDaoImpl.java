@@ -71,7 +71,7 @@ public class BrandDaoImpl implements BrandDao {
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `Brands` where isActive = 1";
+			String sql = "SELECT * FROM `Brand` where isActive = true";
 		    ResultSet rs = myStatement.executeQuery(sql);
 		    
 		    while(rs.next()){
