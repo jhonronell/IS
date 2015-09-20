@@ -1,6 +1,7 @@
 package com.is.inventory.dao.impl;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -47,8 +48,36 @@ public class ProductPriceDaoImpl implements ProductPriceDao {
 	}
 
 	@Override
-	public void getProductPrice(Price price) {
-		// TODO Auto-generated method stub
+	public Price getProductPrice(Price price) {
+
+		try {
+			
+			ConnectionManager conManager = new ConnectionManager();
+			Connection conn = conManager.getConnection();
+			Statement myStatement = conn.createStatement();
+			String sql = "SELECT * FROM `ProductPriceTable` where productId = " + price.getID();
+		    ResultSet rs = myStatement.executeQuery(sql);
+		    
+		    while(rs.next()){
+		         
+		    	Price priceRs = new Price();
+		    	priceRs.setID( rs.getInt("ID"));
+		    	priceRs.setPrice( rs.getBigDecimal("Price"));
+		    	priceRs.setMsrp(rs.getBigDecimal("MSRP"));
+		    	priceRs.setCapitalPrice( rs.getBigDecimal("capitalPrice") );
+		    	return priceRs;
+		    }
+		   
+		    rs.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 
 	}
 

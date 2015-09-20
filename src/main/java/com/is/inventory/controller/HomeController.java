@@ -25,22 +25,24 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/starter", method = RequestMethod.GET)
 	public String home(Locale locale, Model model,HttpServletRequest request) {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate );
-/*		
-		ProductServiceImpl productService = new ProductServiceImpl();
 		
-		String suspension = request.getParameter("frameType");
+		
+		
+		ProductServiceImpl productService = new ProductServiceImpl();
+
+/*		String suspension = request.getParameter("frameType");
 		if(suspension.equals(true)){
 			FullSuspensionFrame product = new FullSuspensionFrame();
 			productService.createProduct(product,Request);	
 		}*/
 		
-		return "home";
+		return "starter";
 	}
 	
 }
