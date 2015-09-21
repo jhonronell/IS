@@ -3,7 +3,7 @@ package com.is.inventory.model;
 public class Brand {
 
 	private int id;
-	private String Name;
+	private String name;
 	private int CountryOfOrigin;
 	private String dateAdded;
 	private String description;
@@ -24,13 +24,13 @@ public class Brand {
 	 * @return the name
 	 */
 	public String getName() {
-		return Name;
+		return name;
 	}
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	/**
 	 * @return the dateAdded

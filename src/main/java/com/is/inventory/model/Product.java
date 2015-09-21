@@ -28,6 +28,9 @@ public class Product {
 		// TODO Auto-generated constructor stub
 		this.setName(string);
 	}
+	public Product() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * @return the id
 	 */

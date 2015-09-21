@@ -8,11 +8,9 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd
 	">
-	
 	<context:annotation-config />
 	<bean id="productServiceImpl" class="com.is.inventory.service.impl.ProductServiceImpl" >
-   		<property name="productDaoImpl" ref="productDaoImpl"/>
-   		<property name="demoString" value="productDaoImpl"/>
+   		<property name="productDao" ref="productDaoImpl"/>
     </bean>
    	<bean  id="productDaoImpl" class="com.is.inventory.dao.impl.ProductDaoImpl">
    </bean>		

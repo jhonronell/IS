@@ -11,6 +11,9 @@ public class ProductModel {
 	/**
 	 * @return the details
 	 */
+	public String getBrandName() {
+		return brand.getName();
+	}
 	public String getDetails() {
 		return details;
 	}

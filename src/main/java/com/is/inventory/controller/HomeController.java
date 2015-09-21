@@ -2,18 +2,21 @@ package com.is.inventory.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.is.inventory.service.impl.ProductServiceImpl;
+
+import com.is.inventory.model.Product;
+import com.is.inventory.service.ProductService;
 
 /**
  * Handles requests for the application home page.
@@ -21,27 +24,20 @@ import com.is.inventory.service.impl.ProductServiceImpl;
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	@Autowired 
+	@Qualifier("productServiceImpl")
+	private ProductService productService;
+	
 	@RequestMapping(value = "/starter", method = RequestMethod.GET)
 	public String home(Locale locale, Model model,HttpServletRequest request) {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
+		
+		List<Product> productList = productService.getProducts();
+		
 		model.addAttribute("serverTime", formattedDate );
-		
-		
-		
-		ProductServiceImpl productService = new ProductServiceImpl();
-
-/*		String suspension = request.getParameter("frameType");
-		if(suspension.equals(true)){
-			FullSuspensionFrame product = new FullSuspensionFrame();
-			productService.createProduct(product,Request);	
-		}*/
-		
+		model.addAttribute("productList", productList );
 		return "starter";
 	}
 	

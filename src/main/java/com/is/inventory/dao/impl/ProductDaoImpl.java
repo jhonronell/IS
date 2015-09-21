@@ -143,9 +143,10 @@ public class ProductDaoImpl implements ProductDao {
 				productModel.setModelName(rs.getString("productModelName"));
 				productModel.setYearModel( rs.getInt("productYearModel"));
 				Brand brand = new Brand();
-				brand.setName(rs.getString("BrandName"));
+				brand.setName(rs.getString("brandName"));
+				System.out.println(brand.getName());
 				productModel.setBrand(brand);
-				
+				product.setProductModel(productModel);
 				products.add(product);
 			}
 			rs.close();
