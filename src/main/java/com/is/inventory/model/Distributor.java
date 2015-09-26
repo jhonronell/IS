@@ -1,125 +1,117 @@
 package com.is.inventory.model;
 
-import java.util.Date;
-
 public class Distributor {
-	
-	private int ID;
+	private int id;
 	private String name;
-	private User person;
-	private User addedBy;
-	private ContactInformation contactInformation;
-	private Status status;
-	private Date dateAdded;
-	private int notes;
+	private Integer contactId;
+	private Integer dateAdded;
+	private Integer addedBy;
+	private Boolean isactive;
 	private Address address;
+
 	/**
 	 * @return the id
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setID(int ID) {
-		this.ID = ID;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
-	 * @return the person
+	 * @return the contactId
 	 */
-	public User getUser() {
-		return person;
+	public Integer getContactId() {
+		return contactId;
 	}
+
 	/**
-	 * @param person the person to set
+	 * @param contactId
+	 *            the contactId to set
 	 */
-	public void setUser(User person) {
-		this.person = person;
+	public void setContactId(Integer contactId) {
+		this.contactId = contactId;
 	}
-	/**
-	 * @return the contactInformation
-	 */
-	public ContactInformation getContactInformation() {
-		return contactInformation;
-	}
-	/**
-	 * @param contactInformation the contactInformation to set
-	 */
-	public void setContactInformation(ContactInformation contactInformation) {
-		this.contactInformation = contactInformation;
-	}
-	/**
-	 * @return the status
-	 */
-	public Status getStatus() {
-		return status;
-	}
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+
 	/**
 	 * @return the dateAdded
 	 */
-	public Date getDateAdded() {
+	public Integer getDateAdded() {
 		return dateAdded;
 	}
+
 	/**
-	 * @param dateAdded the dateAdded to set
+	 * @param dateAdded
+	 *            the dateAdded to set
 	 */
-	public void setDateAdded(Date dateAdded) {
+	public void setDateAdded(Integer dateAdded) {
 		this.dateAdded = dateAdded;
 	}
-	/**
-	 * @return the notes
-	 */
-	public int getNotes() {
-		return notes;
-	}
-	/**
-	 * @param notes the notes to set
-	 */
-	public void setNotes(int notes) {
-		this.notes = notes;
-	}
+
 	/**
 	 * @return the addedBy
 	 */
-	public User getAddedBy() {
+	public Integer getAddedBy() {
 		return addedBy;
 	}
+
 	/**
-	 * @param addedBy the addedBy to set
+	 * @param addedBy
+	 *            the addedBy to set
 	 */
-	public void setAddedBy(User addedBy) {
+	public void setAddedBy(Integer addedBy) {
 		this.addedBy = addedBy;
 	}
+
+	/**
+	 * @return the isactive
+	 */
+	public Boolean getIsactive() {
+		return isactive;
+	}
+
+	/**
+	 * @param isactive
+	 *            the isactive to set
+	 */
+	public void setIsactive(Boolean isactive) {
+		this.isactive = isactive;
+	}
+
 	/**
 	 * @return the address
 	 */
 	public Address getAddress() {
 		return address;
 	}
+
 	/**
-	 * @param address the address to set
+	 * @param address
+	 *            the address to set
 	 */
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
 }

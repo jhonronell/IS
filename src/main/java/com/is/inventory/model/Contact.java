@@ -1,84 +1,69 @@
 package com.is.inventory.model;
 
 public class Contact {
+	private int id;
+	private String contactType;
+	private String value;
+	private Integer contactFk;
 
-	private int ID;
-	private String officePhone;
-	private String phone;
-	private String mobilePhone;
-	private String email;
-	private String email2;
 	/**
-	 * @return the iD
+	 * @return the id
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param iD the iD to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	/**
-	 * @return the officePhone
+	 * @return the contactType
 	 */
-	public String getOfficePhone() {
-		return officePhone;
+	public String getContactType() {
+		return contactType;
 	}
+
 	/**
-	 * @param officePhone the officePhone to set
+	 * @param contactType
+	 *            the contactType to set
 	 */
-	public void setOfficePhone(String officePhone) {
-		this.officePhone = officePhone;
+	public void setContactType(String contactType) {
+		this.contactType = contactType;
 	}
+
 	/**
-	 * @return the phone
+	 * @return the value
 	 */
-	public String getPhone() {
-		return phone;
+	public String getValue() {
+		return value;
 	}
+
 	/**
-	 * @param phone the phone to set
+	 * @param value
+	 *            the value to set
 	 */
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setValue(String value) {
+		this.value = value;
 	}
+
 	/**
-	 * @return the mobilePhone
+	 * @return the contactFk
 	 */
-	public String getMobilePhone() {
-		return mobilePhone;
+	public Integer getContactFk() {
+		return contactFk;
 	}
+
 	/**
-	 * @param mobilePhone the mobilePhone to set
+	 * @param contactFk
+	 *            the contactFk to set
 	 */
-	public void setMobilePhone(String mobilePhone) {
-		this.mobilePhone = mobilePhone;
+	public void setContactFk(Integer contactFk) {
+		this.contactFk = contactFk;
 	}
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	/**
-	 * @return the email2
-	 */
-	public String getEmail2() {
-		return email2;
-	}
-	/**
-	 * @param email2 the email2 to set
-	 */
-	public void setEmail2(String email2) {
-		this.email2 = email2;
-	}
-	
+
 }

@@ -1,81 +1,103 @@
 package com.is.inventory.model;
 
-public class Brand {
+import java.util.Set;
 
+public class Brand {
 	private int id;
 	private String name;
-	private int CountryOfOrigin;
+	private Country countryOfOrigin;
 	private String dateAdded;
+	private Boolean isActive;
 	private String description;
-	private boolean isActive;
+
 	/**
 	 * @return the id
 	 */
 	public int getId() {
 		return id;
 	}
+
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	/**
+	 * @return the countryOfOrigin
+	 */
+	public Country getCountryOfOrigin() {
+		return countryOfOrigin;
+	}
+
+	/**
+	 * @param countryOfOrigin
+	 *            the countryOfOrigin to set
+	 */
+	public void setCountryOfOrigin(Country countryOfOrigin) {
+		this.countryOfOrigin = countryOfOrigin;
+	}
+
 	/**
 	 * @return the dateAdded
 	 */
 	public String getDateAdded() {
 		return dateAdded;
 	}
+
 	/**
-	 * @param dateAdded the dateAdded to set
+	 * @param dateAdded
+	 *            the dateAdded to set
 	 */
 	public void setDateAdded(String dateAdded) {
 		this.dateAdded = dateAdded;
 	}
+
 	/**
 	 * @return the isActive
 	 */
-	public boolean isActive() {
+	public Boolean getIsActive() {
 		return isActive;
 	}
+
 	/**
-	 * @param isActive the isActive to set
+	 * @param isActive
+	 *            the isActive to set
 	 */
-	public void setActive(boolean isActive) {
+	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+
+	/**
+	 * @return the description
+	 */
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return this.description;
+		return description;
 	}
+
+	/**
+	 * @param description
+	 *            the description to set
+	 */
 	public void setDescription(String description) {
-		// TODO Auto-generated method stub
 		this.description = description;
 	}
-	/**
-	 * @return the countryOfOrigin
-	 */
-	public int getCountryOfOrigin() {
-		return CountryOfOrigin;
-	}
-	/**
-	 * @param countryOfOrigin the countryOfOrigin to set
-	 */
-	public void setCountryOfOrigin(int countryOfOrigin) {
-		CountryOfOrigin = countryOfOrigin;
-	}
-	
-	
+
 }

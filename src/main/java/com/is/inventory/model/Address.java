@@ -1,93 +1,69 @@
 package com.is.inventory.model;
 
 public class Address {
+	private int id;
+	private String address_1;
+	private String address_2;
+	private AddressLookup addressLookup;
 
-	private int ID;
-	private int country;
-	private String city;
-	private String zipcode;
-	private String Address;
-	private String region;
-	private int addressOf;
 	/**
-	 * @return the iD
+	 * @return the id
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param iD the iD to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	/**
-	 * @return the country
+	 * @return the address_1
 	 */
-	public int getCountry() {
-		return country;
+	public String getAddress_1() {
+		return address_1;
 	}
+
 	/**
-	 * @param country the country to set
+	 * @param address_1
+	 *            the address_1 to set
 	 */
-	public void setCountry(int country) {
-		this.country = country;
+	public void setAddress_1(String address_1) {
+		this.address_1 = address_1;
 	}
+
 	/**
-	 * @return the city
+	 * @return the address_2
 	 */
-	public String getCity() {
-		return city;
+	public String getAddress_2() {
+		return address_2;
 	}
+
 	/**
-	 * @param city the city to set
+	 * @param address_2
+	 *            the address_2 to set
 	 */
-	public void setCity(String city) {
-		this.city = city;
+	public void setAddress_2(String address_2) {
+		this.address_2 = address_2;
 	}
+
 	/**
-	 * @return the zipcode
+	 * @return the addressLookup
 	 */
-	public String getZipcode() {
-		return zipcode;
+	public AddressLookup getAddressLookup() {
+		return addressLookup;
 	}
+
 	/**
-	 * @param zipcode the zipcode to set
+	 * @param addressLookup
+	 *            the addressLookup to set
 	 */
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
+	public void setAddressLookup(AddressLookup addressLookup) {
+		this.addressLookup = addressLookup;
 	}
-	/**
-	 * @return the address
-	 */
-	public String getAddress() {
-		return Address;
-	}
-	/**
-	 * @param address the address to set
-	 */
-	public void setAddress(String address) {
-		Address = address;
-	}
-	/**
-	 * @return the region
-	 */
-	public String getRegion() {
-		return region;
-	}
-	/**
-	 * @param region the region to set
-	 */
-	public void setRegion(String region) {
-		this.region = region;
-	}
-	public int getAddressOf() {
-		// TODO Auto-generated method stub
-		return addressOf;
-	} 
-	public void setAddressOf(int addressOf) {
-		// TODO Auto-generated method stub
-		this.addressOf = addressOf; 
-	} 
-	
+
 }

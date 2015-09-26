@@ -1,58 +1,87 @@
 package com.is.inventory.model;
 
-public class Color {
+import java.util.Set;
 
-	private int ID;
+public class Color {
+	private int id;
 	private String colorName;
 	private String colorPhoto;
 	private String colorHex;
+	private String colorCode;
+
 	/**
-	 * @return the iD
+	 * @return the id
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param iD the iD to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	/**
 	 * @return the colorName
 	 */
 	public String getColorName() {
 		return colorName;
 	}
+
 	/**
-	 * @param colorName the colorName to set
+	 * @param colorName
+	 *            the colorName to set
 	 */
 	public void setColorName(String colorName) {
 		this.colorName = colorName;
 	}
+
 	/**
 	 * @return the colorPhoto
 	 */
 	public String getColorPhoto() {
 		return colorPhoto;
 	}
+
 	/**
-	 * @param colorPhoto the colorPhoto to set
+	 * @param colorPhoto
+	 *            the colorPhoto to set
 	 */
 	public void setColorPhoto(String colorPhoto) {
 		this.colorPhoto = colorPhoto;
 	}
+
 	/**
 	 * @return the colorHex
 	 */
 	public String getColorHex() {
 		return colorHex;
 	}
+
 	/**
-	 * @param colorHex the colorHex to set
+	 * @param colorHex
+	 *            the colorHex to set
 	 */
 	public void setColorHex(String colorHex) {
 		this.colorHex = colorHex;
 	}
-	
+
+	/**
+	 * @return the colorCode
+	 */
+	public String getColorCode() {
+		return colorCode;
+	}
+
+	/**
+	 * @param colorCode
+	 *            the colorCode to set
+	 */
+	public void setColorCode(String colorCode) {
+		this.colorCode = colorCode;
+	}
+
 }

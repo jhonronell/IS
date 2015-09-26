@@ -1,230 +1,234 @@
 package com.is.inventory.model;
 
-
 import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 public class Product {
-
 	private int id;
-	private String name;
-	private String description;
-	private float weight;
-	private double height;
-	private Color color;
 	private String code;
-	private String Sku;
-	private Distributor distributor;
-	private Date datePurchased;
-	private Date dateReceived;
-	private Date dateShipped;
-	
-	private Price price;
-	private ProductType productType;
+	private String sku;
+	private String description;
+	private Boolean status;
+	private Integer stock;
+	private Date dateAdded;
+	private Date dateLastModified;
+	private Integer dateAddedBy;
+	private String barcode;
 	private Brand brand;
 	private ProductModel productModel;
-	public Product(String string) {
-		// TODO Auto-generated constructor stub
-		this.setName(string);
-	}
-	public Product() {
-		// TODO Auto-generated constructor stub
-	}
+	private ProductType productType;
+	private Set<ProductItem> productItems;
+
 	/**
 	 * @return the id
 	 */
 	public int getId() {
 		return id;
 	}
+
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	/**
-	 * @return the weight
-	 */
-	public float getWeight() {
-		return weight;
-	}
-	/**
-	 * @param weight the weight to set
-	 */
-	public void setWeight(float weight) {
-		this.weight = weight;
-	}
-	/**
-	 * @return the height
-	 */
-	public double getHeight() {
-		return height;
-	}
-	/**
-	 * @param height the height to set
-	 */
-	public void setHeight(double height) {
-		this.height = height;
-	}
-	/**
-	 * @return the color
-	 */
-	public Color getColor() {
-		return color;
-	}
-	/**
-	 * @param color the color to set
-	 */
-	public void setColor(Color color) {
-		this.color = color;
-	}
+
 	/**
 	 * @return the code
 	 */
 	public String getCode() {
 		return code;
 	}
+
 	/**
-	 * @param code the code to set
+	 * @param code
+	 *            the code to set
 	 */
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 	/**
 	 * @return the sku
 	 */
 	public String getSku() {
-		return Sku;
+		return sku;
 	}
+
 	/**
-	 * @param sku the sku to set
+	 * @param sku
+	 *            the sku to set
 	 */
 	public void setSku(String sku) {
-		Sku = sku;
+		this.sku = sku;
 	}
+
 	/**
-	 * @return the distributor
+	 * @return the description
 	 */
-	public Distributor getDistributor() {
-		return distributor;
+	public String getDescription() {
+		return description;
 	}
+
 	/**
-	 * @param distributor the distributor to set
+	 * @param description
+	 *            the description to set
 	 */
-	public void setDistributor(Distributor distributor) {
-		this.distributor = distributor;
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
 	/**
-	 * @return the datePurchased
+	 * @return the status
 	 */
-	public Date getDatePurchased() {
-		return datePurchased;
+	public Boolean getStatus() {
+		return status;
 	}
+
 	/**
-	 * @param datePurchased the datePurchased to set
+	 * @param status
+	 *            the status to set
 	 */
-	public void setDatePurchased(Date datePurchased) {
-		this.datePurchased = datePurchased;
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
+
 	/**
-	 * @return the dateReceived
+	 * @return the stock
 	 */
-	public Date getDateReceived() {
-		return dateReceived;
+	public Integer getStock() {
+		return stock;
 	}
+
 	/**
-	 * @param dateReceived the dateReceived to set
+	 * @param stock
+	 *            the stock to set
 	 */
-	public void setDateReceived(Date dateReceived) {
-		this.dateReceived = dateReceived;
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
+
 	/**
-	 * @return the dateShipped
+	 * @return the dateAdded
 	 */
-	public Date getDateShipped() {
-		return dateShipped;
+	public Date getDateAdded() {
+		return dateAdded;
 	}
+
 	/**
-	 * @param dateShipped the dateShipped to set
+	 * @param dateAdded
+	 *            the dateAdded to set
 	 */
-	public void setDateShipped(Date dateShipped) {
-		this.dateShipped = dateShipped;
+	public void setDateAdded(Date dateAdded) {
+		this.dateAdded = dateAdded;
 	}
+
 	/**
-	 * @return the price
+	 * @return the dateLastModified
 	 */
-	public Price getPrice() {
-		return price;
+	public Date getDateLastModified() {
+		return dateLastModified;
 	}
+
 	/**
-	 * @param price the price to set
+	 * @param dateLastModified
+	 *            the dateLastModified to set
 	 */
-	public void setPrice(Price price) {
-		this.price = price;
+	public void setDateLastModified(Date dateLastModified) {
+		this.dateLastModified = dateLastModified;
 	}
+
 	/**
-	 * @return the productType
+	 * @return the dateAddedBy
 	 */
-	public ProductType getProductType() {
-		return productType;
+	public Integer getDateAddedBy() {
+		return dateAddedBy;
 	}
+
 	/**
-	 * @param productType the productType to set
+	 * @param dateAddedBy
+	 *            the dateAddedBy to set
 	 */
-	public void setProductType(ProductType productType) {
-		this.productType = productType;
+	public void setDateAddedBy(Integer dateAddedBy) {
+		this.dateAddedBy = dateAddedBy;
 	}
+
+	/**
+	 * @return the barcode
+	 */
+	public String getBarcode() {
+		return barcode;
+	}
+
+	/**
+	 * @param barcode
+	 *            the barcode to set
+	 */
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
+	}
+
 	/**
 	 * @return the brand
 	 */
 	public Brand getBrand() {
 		return brand;
 	}
+
 	/**
-	 * @param brand the brand to set
+	 * @param brand
+	 *            the brand to set
 	 */
 	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
+
 	/**
 	 * @return the productModel
 	 */
 	public ProductModel getProductModel() {
 		return productModel;
 	}
+
 	/**
-	 * @param productModel the productModel to set
+	 * @param productModel
+	 *            the productModel to set
 	 */
 	public void setProductModel(ProductModel productModel) {
 		this.productModel = productModel;
 	}
+
+	/**
+	 * @return the productType
+	 */
+	public ProductType getProductType() {
+		return productType;
+	}
+
+	/**
+	 * @param productType
+	 *            the productType to set
+	 */
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
+	}
+
+	/**
+	 * @return the productItems
+	 */
+	public Set<ProductItem> getProductItems() {
+		return productItems;
+	}
+
+	/**
+	 * @param productItems
+	 *            the productItems to set
+	 */
+	public void setProductItems(Set<ProductItem> productItems) {
+		this.productItems = productItems;
+	}
+
 	
-
-
 
 }

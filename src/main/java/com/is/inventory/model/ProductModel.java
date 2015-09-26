@@ -1,63 +1,75 @@
 package com.is.inventory.model;
 
-public class ProductModel {
-	
-	private String modelName;
-	private int yearModel;
-	private Brand brand;
-	private int ID;
-	private String details;
-	
-	/**
-	 * @return the details
-	 */
-	public String getBrandName() {
-		return brand.getName();
-	}
-	public String getDetails() {
-		return details;
-	}
-	/**
-	 * @param details the details to set
-	 */
-	public void setDetails(String details) {
-		this.details = details;
-	}
-	public String getModelName() {
-		return modelName;
-	}
-	public void setModelName(String modelName) {
-		this.modelName = modelName;
-	}
-	public int getYearModel() {
-		return yearModel;
-	}
-	public void setYearModel(int year) {
-		this.yearModel = year;
-	}
-	/**
-	 * @return the brand
-	 */
-	public Brand getBrand() {
-		return brand;
-	}
-	/**
-	 * @param brand the brand to set
-	 */
-	public void setBrand(Brand brand) {
-		this.brand = brand;
-	}
-	/**
-	 * @return the iD
-	 */
-	public int getID() {
-		return ID;
-	}
-	/**
-	 * @param iD the iD to set
-	 */
-	public void setID(int iD) {
-		ID = iD;
-	}
-	
+import java.util.Set;
+
+
+public class ProductModel
+{
+  private int id;
+  private String name;
+  private Integer yearModel;
+  private String details;
+  private Set<Product> products;
+/**
+ * @return the id
+ */
+public int getId() {
+	return id;
+}
+/**
+ * @param id the id to set
+ */
+public void setId(int id) {
+	this.id = id;
+}
+/**
+ * @return the name
+ */
+public String getName() {
+	return name;
+}
+/**
+ * @param name the name to set
+ */
+public void setName(String name) {
+	this.name = name;
+}
+/**
+ * @return the yearModel
+ */
+public Integer getYearModel() {
+	return yearModel;
+}
+/**
+ * @param yearModel the yearModel to set
+ */
+public void setYearModel(Integer yearModel) {
+	this.yearModel = yearModel;
+}
+/**
+ * @return the details
+ */
+public String getDetails() {
+	return details;
+}
+/**
+ * @param details the details to set
+ */
+public void setDetails(String details) {
+	this.details = details;
+}
+/**
+ * @return the products
+ */
+public Set<Product> getProducts() {
+	return products;
+}
+/**
+ * @param products the products to set
+ */
+public void setProducts(Set<Product> products) {
+	this.products = products;
+}
+
+ 
 }

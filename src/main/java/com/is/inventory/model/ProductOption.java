@@ -1,66 +1,104 @@
 package com.is.inventory.model;
 
 import java.util.Date;
+import java.util.Set;
 
 public class ProductOption {
-
-	private int ID;
-	private ProductOptionName productOptionName;
+	private int id;
+	private Integer productOptionNameId;
+	private Date dateAdded;
+	private Integer dateAddedBy;
 	private ProductType productType;
-	private int addedBy;
-	private Date addedDate;
+	private Set<ProductOptionName> productOptionNames;
+
 	/**
-	 * @return the iD
+	 * @return the id
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param iD the iD to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	/**
-	 * @return the productOptionName
+	 * @return the productOptionNameId
 	 */
-	public ProductOptionName getProductOptionName() {
-		return productOptionName;
+	public Integer getProductOptionNameId() {
+		return productOptionNameId;
 	}
+
 	/**
-	 * @param productOptionName the productOptionName to set
+	 * @param productOptionNameId
+	 *            the productOptionNameId to set
 	 */
-	public void setProductOptionName(ProductOptionName productOptionName) {
-		this.productOptionName = productOptionName;
+	public void setProductOptionNameId(Integer productOptionNameId) {
+		this.productOptionNameId = productOptionNameId;
 	}
+
+	/**
+	 * @return the dateAdded
+	 */
+	public Date getDateAdded() {
+		return dateAdded;
+	}
+
+	/**
+	 * @param dateAdded
+	 *            the dateAdded to set
+	 */
+	public void setDateAdded(Date dateAdded) {
+		this.dateAdded = dateAdded;
+	}
+
+	/**
+	 * @return the dateAddedBy
+	 */
+	public Integer getDateAddedBy() {
+		return dateAddedBy;
+	}
+
+	/**
+	 * @param dateAddedBy
+	 *            the dateAddedBy to set
+	 */
+	public void setDateAddedBy(Integer dateAddedBy) {
+		this.dateAddedBy = dateAddedBy;
+	}
+
 	/**
 	 * @return the productType
 	 */
 	public ProductType getProductType() {
 		return productType;
 	}
+
 	/**
-	 * @param productType the productType to set
+	 * @param productType
+	 *            the productType to set
 	 */
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
 	}
-	public int getAddedBy() {
-		// TODO Auto-generated method stub
-		return this.addedBy;
+
+	/**
+	 * @return the productOptionNames
+	 */
+	public Set getProductOptionNames() {
+		return productOptionNames;
 	}
-	public void setAddedBy(int addedBy) {
-		// TODO Auto-generated method stub
-		this.addedBy = addedBy;
+
+	/**
+	 * @param productOptionNames
+	 *            the productOptionNames to set
+	 */
+	public void setProductOptionNames(Set productOptionNames) {
+		this.productOptionNames = productOptionNames;
 	}
-	public Date getAddedDate() {
-		// TODO Auto-generated method stub
-		return addedDate;
-	}
-	public void setAddedDate(Date addedDate) {
-		// TODO Auto-generated method stub
-		this.addedDate = addedDate;
-	}
-	
-	
+
 }

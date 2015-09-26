@@ -5,39 +5,123 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import com.is.inventory.dao.DAOException;
 import com.is.inventory.dao.ProductDao;
 import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.Brand;
-import com.is.inventory.model.Color;
-import com.is.inventory.model.Distributor;
-import com.is.inventory.model.Price;
 import com.is.inventory.model.Product;
-import com.is.inventory.model.ProductModel;
-import com.is.inventory.model.ProductType;
 
 public class ProductDaoImpl implements ProductDao {
 
+	
 	@Override
-	public void saveProduct(Product product) {
+	public Product getByPrimaryKey(int id) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-		System.out.println(product.getName());
 
+	@Override
+	public List selectAll() throws DAOException {
+
+		List<Product> products = new ArrayList<products>();
+		
+		try {
+			
+			ConnectionManager conManager = new ConnectionManager();
+			Connection conn = conManager.getConnection();
+			Statement myStatement = conn.createStatement();
+			String sql = "SELECT * FROM `products` where isActive = true";
+		    ResultSet rs = myStatement.executeQuery(sql);
+		    
+		    while(rs.next()){
+		    	
+		    	Product product = new Product();
+		    	product.setId(rs.getInt("id"));
+		    	product.setCode( rs.getString("code"));
+		    	product.setSku( rs.getString("sku"));
+		    	product.setDescription( rs.getString("description"));
+		    	product.setStatus(1);
+		    	product.setModelId(modelId);
+		    	product.setBrand
+		    	product.setStock
+		    	product.setProductType
+		    	product.setDateAdded
+		    	product.setDateLastModified
+		    	product.setDate
+		    	product.
+		    	product.
+		    	
+		    	    stdColumns.add("sku");
+		    	    stdColumns.add("description");
+		    	    stdColumns.add("status");
+		    	    stdColumns.add("model_id");
+		    	    stdColumns.add("brand_id");
+		    	    stdColumns.add("stock");
+		    	    stdColumns.add("product_type_id");
+		    	    stdColumns.add("date_added");
+		    	    stdColumns.add("date_last_modified");
+		    	    stdColumns.add("date_added_by");
+		    	    stdColumns.add("barcode");
+		    	    allColumns.addAll(pkColumns);
+		    	    allColumns.addAll(stdColumns);
+		    	
+		    }
+			return products;
+		    
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		return null;
+	}
+
+
+	@Override
+	public List select(String whereStatement, Object[] bindVariables) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public long selectCount() throws DAOException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public long selectCount(String whereStatement, Object[] bindVariables) throws DAOException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int update(Product obj) throws DAOException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int insert(Product obj) throws DAOException {
 		try {
 
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
 
-			String query = "INSERT INTO InventorySystem.ProductTable (Name, Description, Weight, Height, Color, Code, "
-					+ "Sku, DistributorId, DatePurchased, DateReceived, DateShipped, Model, PriceID, productTypeID)"
-					+ "VALUES('" + product.getName() + "','" + product.getDescription() + "', " + product.getWeight()
-					+ ", " + product.getHeight() + ", " + product.getColor().getID() + ",'" + product.getCode() + "', '"
-					+ product.getSku() + "', " + product.getDistributor().getID() + ",'" + product.getDatePurchased()
-					+ "', '" + product.getDateReceived() + "', '" + product.getDateShipped() + "', "
-					+ product.getProductModel().getID() + "," + product.getPrice().getID() + ", "
-					+ product.getProductType().getID() + ")";
+			String query = "";
 
 			myStatement.executeUpdate(query);
 			conn.close();
@@ -52,183 +136,97 @@ public class ProductDaoImpl implements ProductDao {
 
 		}
 
+		return 0;
 	}
 
+
 	@Override
-	public void updateProducts(Product product) {
+	public int delete(Product obj) throws DAOException {
 		// TODO Auto-generated method stub
+		return 0;
 	}
 
+
 	@Override
-	public List<Product> getProducts() {
-
-		List<Product> products = new ArrayList<Product>();
-
-		try {
-
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-			String sql = "SELECT"
-					   +" `ProductTable`.`ID` "
-					   +" , `ProductTable`.`Name`"
-					   +" , `ProductTable`.`Description`"
-					   +" , `ProductTable`.`Weight`"
-					   +" , `ProductTable`.`Height`"
-					   +" , `ProductTable`.`Code`"
-					   +" , `ProductTable`.`Sku`"
-					   +" , `ColorTable`.`ColorName`" 
-					   +" , `ProductPriceTable`.`Price`"
-					   +" , `ProductPriceTable`.`Msrp`"
-					   +" , `Distributor`.`ID` AS 'distributorId'"
-					   +" , `Distributor`.`Name` AS 'distributorName'"
-					   +" , `ProductType`.`Name` AS 'productTypeName'"
-					   +" , `ProductModel`.`Name` AS 'productModelName'"
-					   +" , `ProductModel`.`YearModel` AS 'productYearModel'"
-					   +" , `Brand`.`Name` AS 'brandName'"
-					   +" , `ProductTable`.`AddedBy`"
-					   +"  FROM"
-					   +"  `ProductTable`"
-					   +"  LEFT JOIN `ProductModel` "
-					   +"      ON (`ProductTable`.`Model` = `ProductModel`.`ID`)"
-					   +"  LEFT JOIN `Brand` "
-					   +"       ON (`ProductModel`.`BrandID` = `Brand`.`ID`)"
-					   +"   LEFT JOIN `ProductType` "
-					   +"      ON (`ProductTable`.`ProductType` = `ProductType`.`ID`)"
-					   +"  LEFT JOIN `UserTable` "
-					   +"      ON (`ProductTable`.`AddedBy` = `UserTable`.`ID`)"
-					   +"  LEFT JOIN `Distributor` "
-					   +"      ON (`Distributor`.`ID` = `ProductTable`.`DistributorId`)"
-					   +"  LEFT JOIN `ProductPriceTable` "
-					   +"      ON (`ProductTable`.`Price` = `ProductPriceTable`.`Id`)"
-					   +"  LEFT JOIN `ColorTable` "
-					   +"      ON (`ProductTable`.`Color` = `ColorTable`.`ID`);";
-			System.out.println(sql);
-			ResultSet rs = myStatement.executeQuery(sql);
-			
-			while (rs.next()) {
-
-				Product product = new Product("Name");
-				product.setId(rs.getInt("ID"));
-				product.setName(rs.getString("Name"));
-				product.setDescription(rs.getString("Description"));
-				product.setWeight(rs.getFloat("Weight"));
-				product.setHeight(rs.getDouble("Height"));
-
-				Color color = new Color();
-				color.setColorName(rs.getString("ColorName"));
-				
-				product.setColor(color);
-				product.setCode(rs.getString("Code"));
-				product.setSku(rs.getString("Sku"));
-
-				Price price = new Price();
-				price.setPrice(rs.getBigDecimal("Price"));
-				price.setMsrp(rs.getBigDecimal("Price"));
-				product.setPrice(price);
-
-				Distributor distributor = new Distributor();
-				distributor.setName(rs.getString("DistributorName"));
-				
-				product.setDistributor(distributor);
-				
-				/*product.setDatePurchased(rs.getDate("datePurchased"));
-				product.setDateReceived(rs.getDate("dateReceived"));*/
-
-				ProductType productType = new ProductType();
-				productType.setName("ProductTypeName");
-				product.setProductType(productType);
-
-				ProductModel productModel = new ProductModel();
-				productModel.setModelName(rs.getString("productModelName"));
-				productModel.setYearModel( rs.getInt("productYearModel"));
-				Brand brand = new Brand();
-				brand.setName(rs.getString("brandName"));
-				System.out.println(brand.getName());
-				productModel.setBrand(brand);
-				product.setProductModel(productModel);
-				products.add(product);
-			}
-			rs.close();
-			return products;
-
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public List getByCode(String code) throws DAOException {
+		// TODO Auto-generated method stub
 		return null;
-
 	}
 
-	@Override
-	public void deleteProduct(Product Product) {
-		// TODO Auto-generated method stub
 
+	@Override
+	public List getBySku(String sku) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
-	public void addProduct(Product product) {
-		// TODO Auto-generated method stub
 
+	@Override
+	public List getByDescription(String description) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
+
 	@Override
-	public Product getProduct(Product product) {
+	public List getByStatus(Byte status) throws DAOException {
 		// TODO Auto-generated method stub
-		try {
+		return null;
+	}
 
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * from ProductTable where id="+ product.getId();
-			
-			ResultSet rs = myStatement.executeQuery(sql);
-			while (rs.next()) {
 
-				
-				  Product productRs = new Product(rs.getString("Name")); 
-				  productRs.setId( rs.getInt("ID") ); 
-				  productRs.setName(rs.getString("Name"));
-				  productRs.setDescription(rs.getString("Description"));
-				  productRs.setWeight(rs.getFloat("weight"));
-				  productRs.setHeight(rs.getDouble("Height"));
-				  
-				  Color color = new Color();
-				  color.setID(rs.getInt("Color"));
-				  
-				  productRs.setColor(color);
-				  productRs.setCode( rs.getString("Code")); 
-				  productRs.setSku(rs.getString("Sku"));
-				  
-				  Price price = new Price();
-				  price.setID( rs.getInt("Price") ); 
-				  
-				  productRs.setPrice(price);
-				  
-				  Distributor distributor = new Distributor();
-				  distributor.setID(11); productRs.setDistributor(distributor);
+	@Override
+	public List getByModelId(Integer modelId) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-				  productRs.setDatePurchased( rs.getDate("datePurchased"));
-				  productRs.setDateReceived( rs.getDate("dateReceived"));
-				  
-				  ProductType productType = new ProductType();
-				  productType.setID(11); productType.setName("Hello");
-				  productRs.setProductType(productType);
-				 
-				return productRs;
-			}
-			rs.close();
 
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	@Override
+	public List getByBrandId(Integer brandId) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List getByStock(Integer stock) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List getByProductTypeId(Integer productTypeId) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List getByDateAdded(Date dateAdded) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List getByDateLastModified(Date dateLastModified) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List getByDateAddedBy(Integer dateAddedBy) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List getByBarcode(String barcode) throws DAOException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

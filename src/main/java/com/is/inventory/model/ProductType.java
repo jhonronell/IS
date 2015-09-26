@@ -1,84 +1,120 @@
 package com.is.inventory.model;
 
-public class ProductType {
+import java.util.Set;
 
-	private int ID;
+public class ProductType {
+	private int id;
 	private String name;
-	private String dateAdded;
-	private User addedBy;
-	private boolean isActive;
+	private Integer dateAdded;
+	private Integer addedBy;
+	private Boolean isactive;
 	private String details;
+
+	private Set<ProductOption> productOptions;
+
 	/**
-	 * @return the details
+	 * @return the id
 	 */
-	public String getDetails() {
-		return details;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param details the details to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setDetails(String details) {
-		this.details = details;
+	public void setId(int id) {
+		this.id = id;
 	}
-	/**
-	 * @return the iD
-	 */
-	public int getID() {
-		return ID;
-	}
-	/**
-	 * @param iD the iD to set
-	 */
-	public void setID(int iD) {
-		ID = iD;
-	}
+
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * @return the dateAdded
 	 */
-	public String getDateAdded() {
+	public Integer getDateAdded() {
 		return dateAdded;
 	}
+
 	/**
-	 * @param dateAdded the dateAdded to set
+	 * @param dateAdded
+	 *            the dateAdded to set
 	 */
-	public void setDateAdded(String dateAdded) {
+	public void setDateAdded(Integer dateAdded) {
 		this.dateAdded = dateAdded;
 	}
+
 	/**
 	 * @return the addedBy
 	 */
-	public User getAddedBy() {
+	public Integer getAddedBy() {
 		return addedBy;
 	}
+
 	/**
-	 * @param user the addedBy to set
+	 * @param addedBy
+	 *            the addedBy to set
 	 */
-	public void setAddedBy(User user) {
-		this.addedBy = user;
+	public void setAddedBy(Integer addedBy) {
+		this.addedBy = addedBy;
 	}
+
 	/**
-	 * @return the isActive
+	 * @return the isactive
 	 */
-	public boolean isActive() {
-		return isActive;
+	public Boolean getIsactive() {
+		return isactive;
 	}
+
 	/**
-	 * @param isActive the isActive to set
+	 * @param isactive
+	 *            the isactive to set
 	 */
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setIsactive(Boolean isactive) {
+		this.isactive = isactive;
 	}
-	
+
+	/**
+	 * @return the details
+	 */
+	public String getDetails() {
+		return details;
+	}
+
+	/**
+	 * @param details
+	 *            the details to set
+	 */
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
+	/**
+	 * @return the productOptions
+	 */
+	public Set<ProductOption> getProductOptions() {
+		return productOptions;
+	}
+
+	/**
+	 * @param productOptions
+	 *            the productOptions to set
+	 */
+	public void setProductOptions(Set<ProductOption> productOptions) {
+		this.productOptions = productOptions;
+	}
+
 }

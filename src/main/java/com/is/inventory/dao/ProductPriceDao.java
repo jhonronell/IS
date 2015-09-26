@@ -1,13 +1,45 @@
 package com.is.inventory.dao;
 
-import com.is.inventory.model.Price;
+import java.util.Date;
+import java.util.List;
 
-public interface ProductPriceDao {
+import com.is.inventory.model.ProductPrice;
 
-	public void saveProductPrice(Price price);
-	public void updateProductPrice(Price price);
-	public void deleteProductPrice(Price price);
-	public Price getProductPrice(Price price);
-	
-	
+
+public interface ProductPriceDAO
+{
+  // CRUD methods
+  public ProductPrice getByPrimaryKey(int id) throws DAOException;
+
+  public List selectAll() throws DAOException;
+
+  public List select(String whereStatement, Object[] bindVariables)
+    throws DAOException;
+
+  public long selectCount() throws DAOException;
+
+  public long selectCount(String whereStatement, Object[] bindVariables)
+    throws DAOException;
+
+  public int update(ProductPrice obj) throws DAOException;
+
+  public int insert(ProductPrice obj) throws DAOException;
+
+  public int delete(ProductPrice obj) throws DAOException;
+
+  // Finders
+  public List getByProductId(Integer productId) throws DAOException;
+
+  public List getByPrice(Double price) throws DAOException;
+
+  public List getByMsrp(Double msrp) throws DAOException;
+
+  public List getByCapital(Double capital) throws DAOException;
+
+  public List getByDateAdded(Date dateAdded) throws DAOException;
+
+  public List getByDateLastModified(Date dateLastModified)
+    throws DAOException;
+
+  public List getByDateAddedBy(Integer dateAddedBy) throws DAOException;
 }

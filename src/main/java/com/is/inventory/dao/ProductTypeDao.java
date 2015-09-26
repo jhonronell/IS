@@ -4,11 +4,36 @@ import java.util.List;
 
 import com.is.inventory.model.ProductType;
 
-public interface ProductTypeDao {
-	
-	public void saveProductType(ProductType productType);
-	public void updateProductType(ProductType productType);
-	public void deleteProductType(ProductType productType);
-	public List<ProductType> getProductTypeList();
-	public ProductType getProductType(ProductType productType);
+
+public interface ProductTypeDAO
+{
+  // CRUD methods
+  public ProductType getByPrimaryKey(int id) throws DAOException;
+
+  public List selectAll() throws DAOException;
+
+  public List select(String whereStatement, Object[] bindVariables)
+    throws DAOException;
+
+  public long selectCount() throws DAOException;
+
+  public long selectCount(String whereStatement, Object[] bindVariables)
+    throws DAOException;
+
+  public int update(ProductType obj) throws DAOException;
+
+  public int insert(ProductType obj) throws DAOException;
+
+  public int delete(ProductType obj) throws DAOException;
+
+  // Finders
+  public List getByName(String name) throws DAOException;
+
+  public List getByDateAdded(Integer dateAdded) throws DAOException;
+
+  public List getByAddedBy(Integer addedBy) throws DAOException;
+
+  public List getByIsactive(Byte isactive) throws DAOException;
+
+  public List getByDetails(String details) throws DAOException;
 }
