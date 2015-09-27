@@ -11,15 +11,7 @@ public interface ProductPriceDAO
   // CRUD methods
   public ProductPrice getByPrimaryKey(int id) throws DAOException;
 
-  public List selectAll() throws DAOException;
-
-  public List select(String whereStatement, Object[] bindVariables)
-    throws DAOException;
-
-  public long selectCount() throws DAOException;
-
-  public long selectCount(String whereStatement, Object[] bindVariables)
-    throws DAOException;
+ 
 
   public int update(ProductPrice obj) throws DAOException;
 

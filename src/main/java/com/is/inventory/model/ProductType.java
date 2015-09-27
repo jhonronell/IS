@@ -2,12 +2,29 @@ package com.is.inventory.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name = "`product_type`")
 public class ProductType {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
+	
+	@Column(name="date_added")
 	private Integer dateAdded;
+	
+	@Column(name="added_by")
 	private Integer addedBy;
+	
+	@Column(name="is_active")
 	private Boolean isactive;
+	
 	private String details;
 
 	private Set<ProductOption> productOptions;

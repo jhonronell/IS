@@ -2,13 +2,13 @@ package com.is.inventory.service.impl;
 
 import java.util.List;
 
-import com.is.inventory.dao.impl.DistributorDaoImpl;
+import com.is.inventory.dao.impl.DistributorDAOImpl;
 import com.is.inventory.model.Distributor;
 import com.is.inventory.service.DistributorService;
 
 public class DistributorServiceImpl implements DistributorService {
 
-	private final DistributorDaoImpl distributorDao = new DistributorDaoImpl();
+	private final DistributorDAOImpl distributorDao = new DistributorDAOImpl();
 	
 	@Override
 	public void addDistributor(Distributor distributor) {

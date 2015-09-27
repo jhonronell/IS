@@ -3,7 +3,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.is.inventory.dao.impl.ProductOptionDaoImpl;
+import com.is.inventory.dao.impl.ProductOptionDAOImpl;
 import com.is.inventory.model.ProductOption;
 import com.is.inventory.model.ProductOptionName;
 import com.is.inventory.model.ProductType;
@@ -34,7 +34,7 @@ public class TestProductOption {
 	@Test
 	public void getProductOPtionBasedOnType() {
 		
-		ProductOptionDaoImpl productOptionDao = new ProductOptionDaoImpl();
+		ProductOptionDAOImpl productOptionDao = new ProductOptionDAOImpl();
 		ProductType productType = new ProductType();
 		productType.setID(1);
 		List<ProductOption> productOptions = productOptionDao.getProductOptions(productType);

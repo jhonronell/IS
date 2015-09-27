@@ -3,13 +3,45 @@ package com.is.inventory.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "`product_model`")
+
 public class ProductOption {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private Integer productOptionNameId;
+	
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "product_option_name_id", unique = false, nullable = true, insertable = true, updatable = true)
+	private ProductOptionName productOptionName;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="date_added")
 	private Date dateAdded;
-	private Integer dateAddedBy;
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "added_by", unique = false, nullable = true, insertable = true, updatable = true)
+	private User addedBy;
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductType productType;
-	private Set<ProductOptionName> productOptionNames;
+	
+	
 
 	/**
 	 * @return the id
@@ -26,20 +58,6 @@ public class ProductOption {
 		this.id = id;
 	}
 
-	/**
-	 * @return the productOptionNameId
-	 */
-	public Integer getProductOptionNameId() {
-		return productOptionNameId;
-	}
-
-	/**
-	 * @param productOptionNameId
-	 *            the productOptionNameId to set
-	 */
-	public void setProductOptionNameId(Integer productOptionNameId) {
-		this.productOptionNameId = productOptionNameId;
-	}
 
 	/**
 	 * @return the dateAdded
@@ -56,21 +74,7 @@ public class ProductOption {
 		this.dateAdded = dateAdded;
 	}
 
-	/**
-	 * @return the dateAddedBy
-	 */
-	public Integer getDateAddedBy() {
-		return dateAddedBy;
-	}
-
-	/**
-	 * @param dateAddedBy
-	 *            the dateAddedBy to set
-	 */
-	public void setDateAddedBy(Integer dateAddedBy) {
-		this.dateAddedBy = dateAddedBy;
-	}
-
+	
 	/**
 	 * @return the productType
 	 */
@@ -86,19 +90,5 @@ public class ProductOption {
 		this.productType = productType;
 	}
 
-	/**
-	 * @return the productOptionNames
-	 */
-	public Set getProductOptionNames() {
-		return productOptionNames;
-	}
-
-	/**
-	 * @param productOptionNames
-	 *            the productOptionNames to set
-	 */
-	public void setProductOptionNames(Set productOptionNames) {
-		this.productOptionNames = productOptionNames;
-	}
 
 }

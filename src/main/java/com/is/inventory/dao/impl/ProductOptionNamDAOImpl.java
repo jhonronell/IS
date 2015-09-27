@@ -8,7 +8,7 @@ import com.is.inventory.dao.ProductOptionNameDao;
 import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.ProductOptionName;
 
-public class ProductOptionNameDaoImpl implements ProductOptionNameDao {
+public class ProductOptionNamDAOImpl implements ProductOptionNameDao {
 
 	@Override
 	public void saveProductOptionName(ProductOptionName productOptionName) {

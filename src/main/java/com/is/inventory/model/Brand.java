@@ -2,11 +2,31 @@ package com.is.inventory.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "`brand`")
 public class Brand {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "country_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Country countryOfOrigin;
+	
+	@Column(name="date_added")
 	private String dateAdded;
+	@Column(name="is_active")
 	private Boolean isActive;
 	private String description;
 

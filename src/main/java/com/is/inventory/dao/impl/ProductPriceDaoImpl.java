@@ -9,7 +9,7 @@ import com.is.inventory.dao.ProductPriceDao;
 import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.Price;
 
-public class ProductPriceDaoImpl implements ProductPriceDao {
+public class ProductPriceDAOImpl implements ProductPriceDao {
 
 	@Override
 	public void saveProductPrice(Price price) {

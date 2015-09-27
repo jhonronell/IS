@@ -15,7 +15,7 @@ import com.is.inventory.model.ProductOption;
 import com.is.inventory.model.ProductOptionName;
 import com.is.inventory.model.ProductType;
 
-public class ProductOptionDaoImpl implements ProductOptionDao {
+public class ProductOptionDAOImpl implements ProductOptionDao {
 
 	@Override
 	public void saveProductOption(ProductOption productOption) {

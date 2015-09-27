@@ -1,134 +1,92 @@
 package com.is.inventory.dao.impl;
 
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.is.inventory.dao.BrandDao;
-import com.is.inventory.jdbc.ConnectionManager;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.is.inventory.dao.BrandDAO;
+import com.is.inventory.dao.DAOException;
 import com.is.inventory.model.Brand;
-import com.is.inventory.model.ProductType;
-import com.is.inventory.model.User;
 
-public class BrandDaoImpl implements BrandDao {
+public class BrandDAOImpl implements BrandDAO {
 
+	private final String EM_LINK = "IS";
+	
 	@Override
-	public void saveBrand(Brand brand) {
-		// TODO Auto-generated method stub
-		try {
-			
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
+	public Brand getByPrimaryKey(Brand brand) throws DAOException {
 
-			String query = "INSERT INTO InventorySystem.Brand"
-					+ "(Name, CountryOfOrigin, DateAdded, isActive)"
-					+ "VALUES('"
-					+ brand.getName()  + "', '"
-					+ brand.getCountryOfOrigin() + "', '"
-					+ brand.getDateAdded()  + "', "
-					+ brand.isActive() + ")";
-
-			System.out.println(query);
-			myStatement.executeUpdate(query);
-			
-		} catch ( SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			
-		}	
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		Brand brandRecord = entitymanager.find(Brand.class, brand.getId() );
+		entitymanager.close();
+		emfactory.close();
+		return brandRecord;
 	}
 
+	
 	@Override
-	public void updateBrand(Brand brand) {
-		// TODO Auto-generated method stub
+	public void update(Brand brand) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		Brand brandRecord = entitymanager.find(Brand.class, brand.getId());
+		
+		brandRecord.setDescription(brand.getDescription());
+		brandRecord.setCountryOfOrigin(brand.getCountryOfOrigin());
+		brandRecord.setDateAdded(brand.getDateAdded());
+		brandRecord.setIsActive(brand.getIsActive());
+		brandRecord.setName( brand.getName() );
+		
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
 
 	}
 
 	@Override
-	public void delete(Brand brand) {
-		// TODO Auto-generated method stub
-
+	public void insert(Brand brand) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		entitymanager.persist(brand);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
+	
 	}
 
-
-
 	@Override
-	public List getBrands() {
-		// TODO Auto-generated method stub
-		List<Brand> brands = new ArrayList<Brand>();
+	public void delete(Brand brand) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		Brand brandRecord = entitymanager.find(Brand.class, brand.getId());
+		entitymanager.remove(brandRecord);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
 		
-		try {
-			
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `Brand` where isActive = true";
-		    ResultSet rs = myStatement.executeQuery(sql);
-		    
-		    while(rs.next()){
-		    	Brand brand = new Brand();
-		    	brand.setCountryOfOrigin( rs.getInt("CountryOfOrigin") );
-		    	brand.setId(rs.getInt("ID")  );
-		    	brand.setDescription( rs.getString("Description"));
-		    	brand.setName( rs.getString("Name")    );
-		    	brand.setDateAdded( rs.getString("DateAdded") );
-		    	brand.setActive(  rs.getBoolean("DateAdded") );
-		    	brands.add(brand);
-		    }
-		    rs.close();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return brands;
+		emfactory.close();
 		
 	}
 
 	@Override
-	public Brand getBrand(Brand brand) {
+	public List getByName(String name) throws DAOException {
+		return null;
 		// TODO Auto-generated method stub
-		try {
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `Brand` where ID=" + brand.getId();
-		
-		    ResultSet rs = myStatement.executeQuery(sql);
-		    while(rs.next()){
-		    Brand brandRecord = new Brand();
-		    brandRecord.setCountryOfOrigin( rs.getInt("CountryOfOrigin") );
-		    brandRecord.setId(rs.getInt("ID")  );
-		    brandRecord.setDescription( rs.getString("Description"));
-		    brandRecord.setName( rs.getString("Name")    );
-	    	brandRecord.setDateAdded( rs.getString("DateAdded") );
-	    	brandRecord.setActive(  rs.getBoolean("DateAdded") );
-	    	return brandRecord;
-		    }
-	    	rs.close();
-		    
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	
+	}
+
+	@Override
+	public List getByStatus(Byte isActive) throws DAOException {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 
 

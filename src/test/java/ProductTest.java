@@ -1,30 +1,70 @@
-import java.util.List;
+import java.sql.Date;
 
 import org.junit.Test;
 
-import com.is.inventory.dao.impl.ProductDaoImpl;
+import com.is.inventory.dao.DAOException;
+import com.is.inventory.dao.ProductDAO;
+import com.is.inventory.dao.impl.ProductDAOImpl;
+import com.is.inventory.model.Brand;
 import com.is.inventory.model.Product;
+import com.is.inventory.model.ProductModel;
+import com.is.inventory.model.ProductType;
 
 public class ProductTest {
 
 	@Test
-	public void test() {
-		ProductDaoImpl productDao = new ProductDaoImpl();
-		Product product = new Product(null);
-		product.setId(1);
-		Product result = productDao.getProduct(product);
-		System.out.println(result.getName() + "- "+ result.getDescription());
+	public void insertProductTest() throws DAOException {
+		ProductDAO productDao = new ProductDAOImpl();
+		
+		Product product = new Product();
+		product.setBarcode("111");
+
+		Brand brand = new Brand();
+		brand.setId(1);
+		product.setBrand(brand);
+		
+		product.setCode("CODE");
+		
+		ProductModel productModel = new ProductModel();
+		productModel.setId(2);
+		product.setProductModel(productModel);
+	
+		ProductType productType = new ProductType();
+		productType.setId(1);
+		product.setProductType(productType);
+		Date date = new Date(111);
+		
+		product.setDateLastModified(date);
+		product.setDateAdded(date);
+		
+		productDao.insert(product);
+	}
+	@Test
+	public void getProduct() throws DAOException {
+		
+		ProductDAO productDao = new ProductDAOImpl();
+		Product product = new Product();
+		product.setId(1401);
+		Product productRecord = productDao.getByPrimaryKey(product);
 		
 	}
 	@Test
-	public void testProductList() {
-		ProductDaoImpl productDao = new ProductDaoImpl();
-		List<Product> result = productDao.getProducts();
+	public void deleteProduct() throws DAOException {
 		
-		for(Product i : result){
-			System.out.println(i.getName());
-		}
+		ProductDAO productDao = new ProductDAOImpl();
+		Product product = new Product();
+		product.setId(1501);
+		productDao.delete(product);
 	}
-
-
+	
+	@Test
+	public void updateProduct() throws DAOException {
+		
+		ProductDAO productDao = new ProductDAOImpl();
+		Product product = new Product();
+		product.setId(2401);
+	
+		productDao.update(product);
+		
+	}
 }

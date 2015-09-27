@@ -9,23 +9,13 @@ import com.is.inventory.model.ProductModel;
 public interface ProductModelDAO
 {
   // CRUD methods
-  public ProductModel getByPrimaryKey(int id) throws DAOException;
+  public ProductModel getByPrimaryKey(ProductModel productModel) throws DAOException;
 
-  public List selectAll() throws DAOException;
+  public void update(ProductModel productModel) throws DAOException;
 
-  public List select(String whereStatement, Object[] bindVariables)
-    throws DAOException;
+  public void insert(ProductModel productModel) throws DAOException;
 
-  public long selectCount() throws DAOException;
-
-  public long selectCount(String whereStatement, Object[] bindVariables)
-    throws DAOException;
-
-  public int update(ProductModel obj) throws DAOException;
-
-  public int insert(ProductModel obj) throws DAOException;
-
-  public int delete(ProductModel obj) throws DAOException;
+  public void delete(ProductModel productModel) throws DAOException;
 
   // Finders
   public List getByName(String name) throws DAOException;

@@ -1,24 +1,71 @@
 package com.is.inventory.model;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "`product`")
 public class Product {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String code;
 	private String sku;
 	private String description;
 	private Boolean status;
 	private Integer stock;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="date_added")
 	private Date dateAdded;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="date_last_modified")
 	private Date dateLastModified;
-	private Integer dateAddedBy;
+ 
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "added_by", unique = false, nullable = true, insertable = true, updatable = true)
+	private User addedBy;
 	private String barcode;
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "brand_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Brand brand;
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "model_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductModel productModel;
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductType productType;
-	private Set<ProductItem> productItems;
+	
+	/**
+	 * @return the addedBy
+	 */
+	public User getAddedBy() {
+		return addedBy;
+	}
 
+	/**
+	 * @param addedBy the addedBy to set
+	 */
+	public void setAddedBy(User addedBy) {
+		this.addedBy = addedBy;
+	}
 	/**
 	 * @return the id
 	 */
@@ -140,21 +187,6 @@ public class Product {
 	}
 
 	/**
-	 * @return the dateAddedBy
-	 */
-	public Integer getDateAddedBy() {
-		return dateAddedBy;
-	}
-
-	/**
-	 * @param dateAddedBy
-	 *            the dateAddedBy to set
-	 */
-	public void setDateAddedBy(Integer dateAddedBy) {
-		this.dateAddedBy = dateAddedBy;
-	}
-
-	/**
 	 * @return the barcode
 	 */
 	public String getBarcode() {
@@ -213,22 +245,5 @@ public class Product {
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
 	}
-
-	/**
-	 * @return the productItems
-	 */
-	public Set<ProductItem> getProductItems() {
-		return productItems;
-	}
-
-	/**
-	 * @param productItems
-	 *            the productItems to set
-	 */
-	public void setProductItems(Set<ProductItem> productItems) {
-		this.productItems = productItems;
-	}
-
-	
 
 }

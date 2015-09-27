@@ -1,9 +1,22 @@
 package com.is.inventory.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "`contact`")
 public class Contact {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Column(name="contact_type")
 	private String contactType;
 	private String value;
+	@Column(name="contact_fk")
 	private Integer contactFk;
 
 	/**

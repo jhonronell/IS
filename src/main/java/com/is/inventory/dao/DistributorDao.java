@@ -9,23 +9,13 @@ import com.is.inventory.model.Distributor;
 public interface DistributorDAO
 {
   // CRUD methods
-  public Distributor getByPrimaryKey(int id) throws DAOException;
+  public Distributor getByPrimaryKey(Distributor Distributor) throws DAOException;
 
-  public List selectAll() throws DAOException;
+  public void update(Distributor Distributor) throws DAOException;
 
-  public List select(String whereStatement, Object[] bindVariables)
-    throws DAOException;
+  public void insert(Distributor Distributor) throws DAOException;
 
-  public long selectCount() throws DAOException;
-
-  public long selectCount(String whereStatement, Object[] bindVariables)
-    throws DAOException;
-
-  public int update(Distributor obj) throws DAOException;
-
-  public int insert(Distributor obj) throws DAOException;
-
-  public int delete(Distributor obj) throws DAOException;
+  public void delete(Distributor Distributor) throws DAOException;
 
   // Finders
   public List getByName(String name) throws DAOException;

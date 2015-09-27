@@ -11,7 +11,7 @@ import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.ProductType;
 import com.is.inventory.model.User;
 
-public class ProductTypeDaoImpl implements com.is.inventory.dao.ProductTypeDao {
+public class ProductTypeDAOImpl implements com.is.inventory.dao.ProductTypeDao {
 	@Override
 	public void saveProductType(ProductType productType) {
 		// TODO Auto-generated method stub

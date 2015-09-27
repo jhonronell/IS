@@ -2,13 +2,13 @@ package com.is.inventory.service.impl;
 
 import java.util.List;
 
-import com.is.inventory.dao.impl.ColorDaoImpl;
+import com.is.inventory.dao.impl.ColorDAOImpl;
 import com.is.inventory.model.Color;
 import com.is.inventory.service.ColorService;
 
 public class ColorServiceImpl implements ColorService {
 
-	private final ColorDaoImpl colorDao = new ColorDaoImpl();
+	private final ColorDAOImpl colorDao = new ColorDAOImpl();
 	
 	@Override
 	public void addColor(Color color) {

@@ -1,10 +1,27 @@
 package com.is.inventory.model;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "`product_option_selection`")
 public class ProductOptionSelection {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
 	private String productOptionValue;
 	private String productOptionText;
 	private Boolean isactive;
+	
+	@ManyToOne(fetch=FetchType.LAZY )
+	@JoinColumn(name = "product_code", referencedColumnName="code" , unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOptionName productOptionName;
 
 	/**

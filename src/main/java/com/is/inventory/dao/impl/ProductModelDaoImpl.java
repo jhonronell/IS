@@ -1,97 +1,86 @@
 package com.is.inventory.dao.impl;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.is.inventory.jdbc.ConnectionManager;
-import com.is.inventory.model.Brand;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.is.inventory.dao.DAOException;
+import com.is.inventory.dao.ProductModelDAO;
 import com.is.inventory.model.ProductModel;
 
-public class ProductModelDaoImpl implements com.is.inventory.dao.ProductModelDao {
+public class ProductModelDAOImpl implements ProductModelDAO  {
+
+	private final String EM_LINK = "IS";
 
 	@Override
-	public void saveProductModel(ProductModel productModel) {
-		// TODO Auto-generated method stub
-		try {
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-
-			String query = "INSERT INTO `InventorySystem`.`ProductModel` ( `Name`, `YearModel`, `Details`, `BrandID`) VALUES"
-					+ " ('" + productModel.getModelName() + "','" + productModel.getYearModel() + "','"+ productModel.getDetails() +"',"+ productModel.getBrand().getId() +");";
-		
-			System.out.println(query);
-			myStatement.executeUpdate(query);
-			conn.close();
-		} catch ( SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			
-		}
-		
-		
-		
+	public ProductModel getByPrimaryKey(ProductModel productModel) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductModel productModelRecord = entitymanager.find(ProductModel.class, productModel.getId());
+		entitymanager.close();
+		emfactory.close();
+		return productModelRecord;
 	}
 
 	@Override
-	public void updateProductModel(ProductModel productModel) {
-		// TODO Auto-generated method stub
+	public void update(ProductModel productModel) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductModel productModelRecord = entitymanager.find(ProductModel.class, productModel.getId());
+		productModelRecord.setId(productModel.getId());
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
+	}
+
+	@Override
+	public void insert(ProductModel productModel) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		entitymanager.persist(productModel);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
 
 	}
 
 	@Override
-	public void deleteProductModel(ProductModel productModel) {
-		// TODO Auto-generated method stub
+	public void delete(ProductModel productModel) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductModel productModelRecord = entitymanager.find(ProductModel.class, productModel.getId());
+		entitymanager.remove(productModelRecord);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
 
 	}
 
 	@Override
-	public List<ProductModel> getProductModel(ProductModel productModel) {
-		
-		List<ProductModel> productModels = new ArrayList<ProductModel>();
-		
-		try {
-			
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `ProductModel`";
-		    ResultSet rs = myStatement.executeQuery(sql);
-		    
-		    while(rs.next()){
-		    	ProductModel productModelRs= new ProductModel();
-		    	productModelRs.setModelName(rs.getString("undefined"));
-		    	productModelRs.setYearModel(rs.getInt("yearModel;"));
-		    	
-		    	Brand brand = new Brand();
-		    	brand.setId(rs.getInt("BrandID"));
-		    	
-		    	productModelRs.setBrand(brand);
-		    	productModelRs.setID(rs.getInt("ID;"));
-		    	
-		    	productModelRs.setDetails(rs.getString("details;"));
-		    	productModels.add(productModelRs);
-		    }
-		    rs.close();
-		    return productModels;
-		  
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public List getByName(String name) throws DAOException {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List getByYearModel(Integer yearModel) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getByDetails(String details) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 
 }

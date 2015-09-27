@@ -12,7 +12,7 @@ import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.ProductOptionName;
 import com.is.inventory.model.ProductOptionSelection;
 
-public class ProductOptionSelectionDaoImpl implements ProductOptionSelectionDao {
+public class ProductOptionSelectionDAOImpl implements ProductOptionSelectionDao {
 
 	@Override
 	public void saveProductOptionSelection(ProductOptionSelection productOptionSelection) {

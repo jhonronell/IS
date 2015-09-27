@@ -3,7 +3,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.is.inventory.dao.impl.ProductOptionSelectionDaoImpl;
+import com.is.inventory.dao.impl.ProductOptionSelectionDAOImpl;
 import com.is.inventory.model.ProductOption;
 import com.is.inventory.model.ProductOptionName;
 import com.is.inventory.model.ProductOptionSelection;
@@ -28,7 +28,7 @@ public class TestProductOptionSelection {
 	@Test
 	public void displayProductOptionSelection() {
 
-		ProductOptionSelectionDaoImpl productOptionSelectionDao = new ProductOptionSelectionDaoImpl();
+		ProductOptionSelectionDAOImpl productOptionSelectionDao = new ProductOptionSelectionDAOImpl();
 
 		ProductOptionName productOptionName = new ProductOptionName();
 		productOptionName.setID(10);

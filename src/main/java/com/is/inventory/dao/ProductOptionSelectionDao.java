@@ -12,16 +12,7 @@ public interface ProductOptionSelectionDAO
   public ProductOptionSelection getByPrimaryKey(int id)
     throws DAOException;
 
-  public List selectAll() throws DAOException;
-
-  public List select(String whereStatement, Object[] bindVariables)
-    throws DAOException;
-
-  public long selectCount() throws DAOException;
-
-  public long selectCount(String whereStatement, Object[] bindVariables)
-    throws DAOException;
-
+ 
   public int update(ProductOptionSelection obj) throws DAOException;
 
   public int insert(ProductOptionSelection obj) throws DAOException;

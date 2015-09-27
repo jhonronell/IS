@@ -1,12 +1,12 @@
 package com.is.inventory.service.impl;
 
-import com.is.inventory.dao.impl.ProductOptionDaoImpl;
+import com.is.inventory.dao.impl.ProductOptionDAOImpl;
 import com.is.inventory.model.ProductOption;
 import com.is.inventory.service.ProductOptionService;
 
 public class ProductOptionServiceImpl implements ProductOptionService {
 
-	ProductOptionDaoImpl productOptionDao = new ProductOptionDaoImpl();
+	ProductOptionDAOImpl productOptionDao = new ProductOptionDAOImpl();
 	
 	@Override
 	public void addProductOption(ProductOption productOption) {

@@ -1,9 +1,27 @@
 package com.is.inventory.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "`address`")
 public class Address {
+
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String address_1;
 	private String address_2;
+
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "address_lookup_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private AddressLookup addressLookup;
 
 	/**
@@ -54,6 +72,7 @@ public class Address {
 	/**
 	 * @return the addressLookup
 	 */
+
 	public AddressLookup getAddressLookup() {
 		return addressLookup;
 	}

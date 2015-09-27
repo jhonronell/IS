@@ -1,13 +1,28 @@
 package com.is.inventory.model;
 
-public class Users {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "`user`")
+public class User {
+
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String username;
 	private String password;
+
+	@Column(name = "first_name")
 	private String firstName;
+	@Column(name = "last_name")
 	private String lastName;
 	private String email;
-	private Integer contactsId;
+
+	private Contact contact;
 
 	private Address address;
 
@@ -19,7 +34,8 @@ public class Users {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -33,7 +49,8 @@ public class Users {
 	}
 
 	/**
-	 * @param username the username to set
+	 * @param username
+	 *            the username to set
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -47,7 +64,8 @@ public class Users {
 	}
 
 	/**
-	 * @param password the password to set
+	 * @param password
+	 *            the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -61,7 +79,8 @@ public class Users {
 	}
 
 	/**
-	 * @param firstName the firstName to set
+	 * @param firstName
+	 *            the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -75,7 +94,8 @@ public class Users {
 	}
 
 	/**
-	 * @param lastName the lastName to set
+	 * @param lastName
+	 *            the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -89,35 +109,21 @@ public class Users {
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	/**
-	 * @return the contactsId
-	 */
-	public Integer getContactsId() {
-		return contactsId;
-	}
 
-	/**
-	 * @param contactsId the contactsId to set
-	 */
-	public void setContactsId(Integer contactsId) {
-		this.contactsId = contactsId;
-	}
-
-	/**
-	 * @return the address
-	 */
 	public Address getAddress() {
 		return address;
 	}
 
 	/**
-	 * @param address the address to set
+	 * @param address
+	 *            the address to set
 	 */
 	public void setAddress(Address address) {
 		this.address = address;

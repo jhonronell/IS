@@ -9,27 +9,15 @@ import com.is.inventory.model.Address;
 public interface AddressDAO
 {
   // CRUD methods
-  public Address getByPrimaryKey(Address address) throws DAOException;
+  public Address getAddress(Address address) throws DAOException;
 
-  public List<?> selectAll() throws DAOException;
+  public Address update(Address address) throws DAOException;
 
-  public List<?> select(String whereStatement, Object[] bindVariables)
-    throws DAOException;
+  public Address insert(Address address) throws DAOException;
 
-  public long selectCount() throws DAOException;
-
-  public long selectCount(String whereStatement, Object[] bindVariables)
-    throws DAOException;
-
-  public Integer update(Address address) throws DAOException;
-
-  public Integer insert(Address address) throws DAOException;
-
-  public Integer delete(Address address) throws DAOException;
+  public Address delete(Address address) throws DAOException;
 
   // Finders
-  public List<?> getById(Integer id) throws DAOException;
-
   public List<?> getByAddress_2(String address_2) throws DAOException;
 
   public List<?> getByAddressLookupId(Integer addressLookupId)

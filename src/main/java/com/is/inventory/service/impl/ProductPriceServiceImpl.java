@@ -1,13 +1,13 @@
 package com.is.inventory.service.impl;
 
 import com.is.inventory.dao.ProductPriceDao;
-import com.is.inventory.dao.impl.ProductPriceDaoImpl;
+import com.is.inventory.dao.impl.ProductPriceDAOImpl;
 import com.is.inventory.model.Price;
 import com.is.inventory.service.ProductPriceService;
 
 public class ProductPriceServiceImpl implements ProductPriceService {
 
-	ProductPriceDao productPriceDao = new ProductPriceDaoImpl();
+	ProductPriceDao productPriceDao = new ProductPriceDAOImpl();
 	@Override
 	public void addProductPrice(Price price) {
 		// TODO Auto-generated method stub

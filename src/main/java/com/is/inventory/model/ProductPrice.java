@@ -3,16 +3,34 @@ package com.is.inventory.model;
 import java.util.Date;
 import java.util.Set;
 
-public class ProductPrice {
-	private int id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+@Entity
+@Table(name = "`product_price`")
+public class ProductPrice {
+
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	private Double price;
 	private Double msrp;
 	private Double capital;
-	private Date dateAdded;
-	private Date dateLastModified;
 	private Integer dateAddedBy;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name="date_added")
+	private Date dateAdded;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="date_last_modified")
+	private Date dateLastModified;
+ 
 	/**
 	 * @return the id
 	 */

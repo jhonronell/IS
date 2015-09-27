@@ -1,12 +1,26 @@
 package com.is.inventory.model;
 
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "`color`")
 public class Color {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@Column(name="color_name")
 	private String colorName;
+	@Column(name="color_photo")
 	private String colorPhoto;
+	@Column(name="color_hex")
 	private String colorHex;
+	@Column(name="color_code")
 	private String colorCode;
 
 	/**

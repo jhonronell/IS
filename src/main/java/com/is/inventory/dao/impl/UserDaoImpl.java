@@ -10,7 +10,7 @@ import com.is.inventory.jdbc.ConnectionManager;
 import com.is.inventory.model.ProductType;
 import com.is.inventory.model.User;
 
-public class UserDaoImpl implements UserDao {
+public class UserDAOImpl implements UserDao {
 
 	@Override
 	public void saveUser(User User) {

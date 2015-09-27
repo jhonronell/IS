@@ -1,94 +1,91 @@
 package com.is.inventory.dao.impl;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.is.inventory.dao.ColorDao;
-import com.is.inventory.jdbc.ConnectionManager;
-import com.is.inventory.model.Brand;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.is.inventory.dao.ColorDAO;
+import com.is.inventory.dao.DAOException;
 import com.is.inventory.model.Color;
 
-public class ColorDaoImpl implements ColorDao {
+public class ColorDAOImpl implements ColorDAO {
+
+	private final String EM_LINK = "IS";
 
 	@Override
-	public void saveColor(Color color) {
-		// TODO Auto-generated method stub
-		
-		try {
-			
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
+	public Color getByPrimaryKey(Color color) throws DAOException {
 
-			String query = "INSERT INTO `InventorySystem`.`ColorTable` (`ColorName`, `ColorPhoto`, `ColorHex`) VALUES ("+ 
-					color.getColorName() +",'" + 
-					color.getColorPhoto() +"','" + 
-					color.getColorHex() +"');";
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		Color colorRecord = entitymanager.find(Color.class, color.getId());
+		entitymanager.close();
+		emfactory.close();
+		return colorRecord;
 
-			System.out.println(query);
-			myStatement.executeUpdate(query);
-			conn.close();
-		} catch ( SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			
-		}
-		
-		
 	}
 
 	@Override
-	public void updateColor(Color color) {
-		// TODO Auto-generated method stub
-		
+	public void update(Color color) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+
+		Color colorRecord = entitymanager.find(Color.class, color.getId());
+
+		colorRecord.setColorCode(color.getColorCode());
+		colorRecord.setColorHex(color.getColorHex());
+		colorRecord.setColorName(color.getColorName());
+		colorRecord.setColorPhoto(color.getColorPhoto());
+		colorRecord.setId(color.getId());
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
+
 	}
 
 	@Override
-	public void deleteColor(Color color) {
-		// TODO Auto-generated method stub
-		
+	public void insert(Color color) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		entitymanager.persist(color);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
 	}
 
 	@Override
-	public List<Color> getColorList() {
+	public void delete(Color color) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		Color colorRecord = entitymanager.find(Color.class, color.getId());
+		entitymanager.remove(colorRecord);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+
+		emfactory.close();
+	}
+
+	@Override
+	public List getByColorName(Color color) throws DAOException {
 		// TODO Auto-generated method stub
-		List<Color> colors = new ArrayList<Color>();
-		
-		try {
-			
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `ColorTable`";
-		    ResultSet rs = myStatement.executeQuery(sql);
-		    
-		    while(rs.next()){
-		    	Color color = new Color();
-		    	color.setID(rs.getInt("ID"));
-		    	color.setColorPhoto(rs.getString("ColorPhoto"));
-		    	color.setColorHex(rs.getString("ColorHex"));
-		    	color.setColorName(rs.getString("Name"));
-		    	colors.add(color);
-		    }
-		    rs.close();
-		    return colors;
-		  
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return colors;
+		return null;
+	}
+
+	@Override
+	public List getByColorHex(Color color) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getByColorCode(Color color) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -2,10 +2,25 @@ package com.is.inventory.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="`address_lookup`")
 public class AddressLookup {
+	
+	@Id	@GeneratedValue(strategy=GenerationType.TABLE)
+	@Column(name = "id")
 	private int id;
+	
 	private String country;
+	@Column(name = "major_area")
 	private String majorArea;
+	@Column(name = "zip_code")
 	private String zipCode;
 	private String city;
 	private Set<Address> addresss;

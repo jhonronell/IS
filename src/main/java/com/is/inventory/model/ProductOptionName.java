@@ -2,12 +2,39 @@ package com.is.inventory.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "`product_Option_name`")
 public class ProductOptionName {
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private Integer productTypeId;
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
+	private ProductType productType;
+	
 	private String name;
+	
+	@OneToMany(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "form_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private FormInputType formInputType;
+	
+	@OneToMany(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "product_option_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOption productOption;
+	
 	private Set<ProductOptionSelection> productOptionSelections;
 
 	/**
@@ -25,20 +52,7 @@ public class ProductOptionName {
 		this.id = id;
 	}
 
-	/**
-	 * @return the productTypeId
-	 */
-	public Integer getProductTypeId() {
-		return productTypeId;
-	}
 
-	/**
-	 * @param productTypeId
-	 *            the productTypeId to set
-	 */
-	public void setProductTypeId(Integer productTypeId) {
-		this.productTypeId = productTypeId;
-	}
 
 	/**
 	 * @return the name

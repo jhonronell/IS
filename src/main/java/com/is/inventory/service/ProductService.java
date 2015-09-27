@@ -2,7 +2,7 @@ package com.is.inventory.service;
 
 import java.util.List;
 
-import com.is.inventory.dao.ProductDao;
+import com.is.inventory.dao.ProductDAO;
 import com.is.inventory.model.Product;
 
 public interface ProductService{
@@ -12,5 +12,5 @@ public interface ProductService{
 	public void updateProducts(Product product);
 	public List<Product> getProducts(Product product);
 	public List<Product> getProducts();
-	void setProductDao(ProductDao productDao);
+	void setProductDao(ProductDAO productDAO);
 }

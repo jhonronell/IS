@@ -2,13 +2,13 @@ package com.is.inventory.service.impl;
 
 import java.util.List;
 
-import com.is.inventory.dao.impl.BrandDaoImpl;
+import com.is.inventory.dao.impl.BrandDAOImpl;
 import com.is.inventory.model.Brand;
 import com.is.inventory.service.BrandService;
 
 public class BrandServiceImpl implements BrandService {
 
-	BrandDaoImpl brandDao = new BrandDaoImpl();
+	BrandDAOImpl brandDao = new BrandDAOImpl();
 	
 	@Override
 	public void addBrand(Brand brand) {

@@ -3,13 +3,13 @@ package com.is.inventory.service.impl;
 import java.util.List;
 
 
-import com.is.inventory.dao.impl.ProductTypeDaoImpl;
+import com.is.inventory.dao.impl.ProductTypeDAOImpl;
 import com.is.inventory.model.ProductType;
 import com.is.inventory.service.ProductTypeService;
 
 public class ProductTypeServiceImpl implements ProductTypeService {
 
-	ProductTypeDaoImpl productTypeDao = new ProductTypeDaoImpl();
+	ProductTypeDAOImpl productTypeDao = new ProductTypeDAOImpl();
 	
 	@Override
 	public void addProductTypeDao(ProductType productType) {

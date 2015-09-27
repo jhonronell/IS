@@ -1,95 +1,80 @@
 package com.is.inventory.dao.impl;
-
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
-import com.is.inventory.dao.AddressDAO;
+import com.is.inventory.dao.ContactDAO;
 import com.is.inventory.dao.DAOException;
-import com.is.inventory.model.Address;
-import com.is.inventory.model.AddressLookup;
+import com.is.inventory.model.Contact;
 
-public class AddressDAOImpl implements AddressDAO {
+public class ContactDAOImpl implements ContactDAO {
 
 	private final String EM_LINK = "IS";
 
 	@Override
-	public Address getAddress(Address address) throws DAOException {
-	
+	public Contact getByPrimaryKey(Contact contact) throws DAOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
-		Address addressRecord = entitymanager.find(Address.class, address.getId());
+		Contact contactRecord = entitymanager.find(Contact.class, contact.getId() );
 		entitymanager.close();
 		emfactory.close();
-		return addressRecord;
+		return contactRecord;
 	}
 
 	@Override
-	public Address update(Address address) throws DAOException {
+	public void update(Contact contact) throws DAOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
-
-		Address addressRecord = entitymanager.find(Address.class, address.getId());
-		addressRecord.setAddress_1(address.getAddress_1());
-		addressRecord.setAddress_2(address.getAddress_2());
-
-		AddressLookup addressLookupRecord = new AddressLookup();
-		addressLookupRecord.setId(451);
-		addressRecord.setAddressLookup(addressLookupRecord);
-
+		Contact contactRecord = entitymanager.find(Contact.class, contact.getId());
+		contactRecord.setId( contact.getId());
+		contactRecord.setContactType( contact.getContactType());
+		contactRecord.setValue( contact.getValue() );
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 		emfactory.close();
-		return null;
 	}
 
 	@Override
-	public Address insert(Address address) throws DAOException {
-
+	public void insert(Contact contact) throws DAOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
-		entitymanager.persist(address);
+		entitymanager.persist(contact);
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 		emfactory.close();
-		return null;
-	}
-
-	@Override
-	public Address delete(Address address) throws DAOException {
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
-		EntityManager entitymanager = emfactory.createEntityManager();
-		entitymanager.getTransaction().begin();
-		Address addressRecord = entitymanager.find(Address.class, address.getId());
-		entitymanager.remove(addressRecord);
-		entitymanager.getTransaction().commit();
-		entitymanager.close();
 		
+	}
+
+	@Override
+	public void delete(Contact contact) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		Contact contactRecord = entitymanager.find(Contact.class, contact.getId());
+		entitymanager.remove(contactRecord);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
 		emfactory.close();
-		return null;
+		
 	}
 
-
-
 	@Override
-	public List getByAddress_2(String address_2) throws DAOException {
+	public List getByContactType(String contactType) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List getByAddressLookupId(Integer addressLookupId) throws DAOException {
+	public List getByValue(String value) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List getByAddress_1(String address_1) throws DAOException {
+	public List getByContactFk(Integer contactFk) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

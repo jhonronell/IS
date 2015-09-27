@@ -1,8 +1,21 @@
 package com.is.inventory.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "`country`")
 public class Country {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Column(name="country_code")
 	private String countryCode;
+	@Column(name="country_name")
 	private String countryName;
 
 	/**

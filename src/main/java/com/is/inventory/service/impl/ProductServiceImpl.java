@@ -1,44 +1,44 @@
 package com.is.inventory.service.impl;
 import java.util.List;
 
-import com.is.inventory.dao.ProductDao;
+import com.is.inventory.dao.ProductDAO;
 import com.is.inventory.model.Product;
 import com.is.inventory.service.ProductService;
 
 public  class ProductServiceImpl implements ProductService {
 	
-	private ProductDao productDao;
+	private ProductDAO productDAO;
 
 	@Override
-	public void setProductDao(ProductDao productDao){
-		this.productDao = productDao;
+	public void setProductDao(ProductDAO productDAO){
+		this.productDAO = productDAO;
 	}
 	
 	@Override
 	public void addProduct(Product product) {
-	 	productDao.saveProduct(product);
+	 	productDAO.saveProduct(product);
 	}
 
 	@Override
 	public void deleteProduct(Product productID) {
 		// TODO Auto-generated method stub
-		productDao.deleteProduct(productID);
+		productDAO.deleteProduct(productID);
 	}
 
 	@Override
 	public void updateProducts(Product product) {
 		// TODO Auto-generated method stub
-		productDao.updateProducts(product);
+		productDAO.updateProducts(product);
 	}
 
 	@Override
 	public List<Product> getProducts(Product product) {
-		productDao.getProducts();
+		productDAO.getProducts();
 		return null;
 	}
 	@Override
 	public List<Product> getProducts() {
-		return productDao.getProducts();
+		return productDAO.getProducts();
 	}
 
 
