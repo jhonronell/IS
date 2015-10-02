@@ -1,84 +1,107 @@
 package com.is.inventory.dao.impl;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Date;
+import java.util.List;
 
-import com.is.inventory.dao.ProductPriceDao;
-import com.is.inventory.jdbc.ConnectionManager;
-import com.is.inventory.model.Price;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-public class ProductPriceDAOImpl implements ProductPriceDao {
+import com.is.inventory.dao.DAOException;
+import com.is.inventory.dao.ProductPriceDAO;
+import com.is.inventory.model.ProductPrice;
+
+public class ProductPriceDAOImpl implements ProductPriceDAO {
+
+	private final String EM_LINK = "IS";
 
 	@Override
-	public void saveProductPrice(Price price) {
-		// TODO Auto-generated method stub
-		try {
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-
-			String query = "INSERT INTO `InventorySystem`.`ProductPriceTable` (`ProductId`, `Price`, `Msrp`, `dateAdded`,`AddedBy`) VALUES"
-						 + " ("+ price.getID() +","+ price.getPrice() +","+ price.getMsrp() +","+ price.getDateAdded() +","+ price.getAddedBy() +");";
-			System.out.println(query);
-			myStatement.executeUpdate(query);
-			
-		} catch ( SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			
-		}
+	public ProductPrice getByPrimaryKey(ProductPrice productPrice) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductPrice productPriceRecord = entitymanager.find(ProductPrice.class, productPrice.getId());
+		entitymanager.close();
+		emfactory.close();
+		return productPriceRecord;
 	}
 
 	@Override
-	public void updateProductPrice(Price price) {
-		// TODO Auto-generated method stub
+	public void update(ProductPrice productPrice) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductPrice productPriceRecord = entitymanager.find(ProductPrice.class, productPrice.getId());
+		productPriceRecord.setId(productPrice.getId());
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
+	}
+
+	@Override
+	public void insert(ProductPrice productPrice) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		entitymanager.persist(productPrice);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
 
 	}
 
 	@Override
-	public void deleteProductPrice(Price price) {
-		// TODO Auto-generated method stub
+	public void delete(ProductPrice productPrice) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductPrice productPriceRecord = entitymanager.find(ProductPrice.class, productPrice.getId());
+		entitymanager.remove(productPriceRecord);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
 
 	}
-
 	@Override
-	public Price getProductPrice(Price price) {
-
-		try {
-			
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `ProductPriceTable` where productId = " + price.getID();
-		    ResultSet rs = myStatement.executeQuery(sql);
-		    
-		    while(rs.next()){
-		         
-		    	Price priceRs = new Price();
-		    	priceRs.setID( rs.getInt("ID"));
-		    	priceRs.setPrice( rs.getBigDecimal("Price"));
-		    	priceRs.setMsrp(rs.getBigDecimal("MSRP"));
-		    	priceRs.setCapitalPrice( rs.getBigDecimal("capitalPrice") );
-		    	return priceRs;
-		    }
-		   
-		    rs.close();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public List getByProductId(Integer productId) throws DAOException {
+		// TODO Auto-generated method stub
 		return null;
+	}
 
+	@Override
+	public List getByPrice(Double price) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getByMsrp(Double msrp) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getByCapital(Double capital) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getByDateAdded(Date dateAdded) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getByDateLastModified(Date dateLastModified) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getByDateAddedBy(Integer dateAddedBy) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

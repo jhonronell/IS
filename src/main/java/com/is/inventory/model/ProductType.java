@@ -22,12 +22,12 @@ public class ProductType {
 	@Column(name="added_by")
 	private Integer addedBy;
 	
-	@Column(name="is_active")
-	private Boolean isactive;
+	@Column(name="isActive")
+	private Boolean isActive;
 	
 	private String details;
 
-	private Set<ProductOption> productOptions;
+/*	private Set<ProductOption> productOptions;*/
 
 	/**
 	 * @return the id
@@ -90,18 +90,18 @@ public class ProductType {
 	}
 
 	/**
-	 * @return the isactive
+	 * @return the isActive
 	 */
 	public Boolean getIsactive() {
-		return isactive;
+		return isActive;
 	}
 
 	/**
-	 * @param isactive
-	 *            the isactive to set
+	 * @param isActive
+	 *            the isActive to set
 	 */
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setIsactive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	/**
@@ -122,16 +122,16 @@ public class ProductType {
 	/**
 	 * @return the productOptions
 	 */
-	public Set<ProductOption> getProductOptions() {
+/*	public Set<ProductOption> getProductOptions() {
 		return productOptions;
 	}
 
-	/**
+	*//**
 	 * @param productOptions
 	 *            the productOptions to set
-	 */
+	 *//*
 	public void setProductOptions(Set<ProductOption> productOptions) {
 		this.productOptions = productOptions;
 	}
-
+*/
 }

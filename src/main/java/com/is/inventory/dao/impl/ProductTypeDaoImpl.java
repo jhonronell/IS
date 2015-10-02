@@ -1,100 +1,96 @@
 package com.is.inventory.dao.impl;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.is.inventory.jdbc.ConnectionManager;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.is.inventory.dao.DAOException;
+import com.is.inventory.dao.ProductTypeDAO;
 import com.is.inventory.model.ProductType;
-import com.is.inventory.model.User;
 
-public class ProductTypeDAOImpl implements com.is.inventory.dao.ProductTypeDao {
+public class ProductTypeDAOImpl implements ProductTypeDAO{
+
+	private final String EM_LINK = "IS";
+
 	@Override
-	public void saveProductType(ProductType productType) {
-		// TODO Auto-generated method stub
-		try {
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-
-			String query = "INSERT INTO `InventorySystem`.`ProductType` ( `Name`, `DateAdded`, `AddedBy`, `isActive`) VALUES ('" + productType.getName() + "', '"+ productType.getDateAdded()  +"', '" + productType.getDateAdded() +"', "+ productType.getAddedBy()  +", "+ productType.getDetails()  +",True);";
-			System.out.println(query);
-			myStatement.executeUpdate(query);
-			
-		} catch ( SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			
-		}
+	public ProductType getByPrimaryKey(ProductType productPrice) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductType productPriceRecord = entitymanager.find(ProductType.class, productPrice.getId());
+		entitymanager.close();
+		emfactory.close();
+		return productPriceRecord;
 	}
 
 	@Override
-	public void updateProductType(ProductType productType) {
-		// TODO Auto-generated method stub
-		
+	public void update(ProductType productPrice) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductType productPriceRecord = entitymanager.find(ProductType.class, productPrice.getId());
+		productPriceRecord.setId(productPrice.getId());
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
 	}
 
 	@Override
-	public void deleteProductType(ProductType productType) {
-		// TODO Auto-generated method stub
-		
+	public void insert(ProductType productPrice) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		entitymanager.persist(productPrice);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
+
 	}
 
 	@Override
-	public List<ProductType> getProductTypeList() {
-		// TODO Auto-generated method stub
-		
-		List<ProductType> productTypes = new ArrayList<ProductType>();
-		
-		try {
-			
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM `ProductType` where isActive = 1";
-		    ResultSet rs = myStatement.executeQuery(sql);
-		    
-		    while(rs.next()){
-		         
-		    	ProductType productType = new ProductType();
-		    	User user = new User();
-		    	user.setID(rs.getInt("AddedBy"));
-		    	productType.setID( rs.getInt("ID") );
-		    	productType.setName( rs.getString("Name") );
-		    	productType.setDateAdded(rs.getString("DateAdded") );
-		    	productType.setAddedBy(user);
-		    	productType.setActive(rs.getBoolean("isActive"));
-		    	productType.setDetails(rs.getString("details")); 
-		    	productTypes.add(productType);
-		    }
-		    rs.close();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return productTypes;
-		
+	public void delete(ProductType productPrice) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductType productPriceRecord = entitymanager.find(ProductType.class, productPrice.getId());
+		entitymanager.remove(productPriceRecord);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
+
 	}
 
+	
+
 	@Override
-	public ProductType getProductType(ProductType productType) {
+	public List getByName(String name) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public List getByDateAdded(Integer dateAdded) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public List getByAddedBy(Integer addedBy) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public List getByIsactive(Byte isactive) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-
+	@Override
+	public List getByDetails(String details) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

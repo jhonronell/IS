@@ -1,15 +1,18 @@
 package com.is.inventory.dao.impl;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.is.inventory.dao.DAOException;
 import com.is.inventory.dao.ProductDAO;
 import com.is.inventory.model.Product;
+import com.is.inventory.model.ProductItem;
 
 public class ProductDAOImpl implements ProductDAO  {
 
@@ -135,6 +138,47 @@ public class ProductDAOImpl implements ProductDAO  {
 		return null;
 	}
 
+	@Override
+	public List<?> getAllProducts() throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+
+		Query query = entitymanager.createQuery("Select p from Product p where p.status = :s");
+		query.setParameter("s", true);
+		List products = query.getResultList();
+		
+		entitymanager.getTransaction().commit();
+		emfactory.close();
+		return products;
+	}
+	
+	public List<?> getProductByStatus(Boolean status) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		//SELECT p FROM Teacher t JOIN t.phones p WHERE t.firstName = :firstName
+		/*
+		 * JOIN keyword says the JPQL consists of an INNER JOIN (as INNER keyword is optional)
+		   t.phones  is a path expression that traverses phone numbers of Teacher.
+		   p is the identification variable for JPA inner join specified using  t.phones  path expression.
+		 */
+		Query query = entitymanager.createQuery("Select p from Product p where p.code = :code");
+		query.setParameter("code", "CODE" );
+		
+		List<Product> products = query.getResultList();
+		entitymanager.getTransaction().commit();
+	    
+	    for(Product product : products){
+			Query ProductItem = entitymanager.createQuery("Select p from ProductItem p where product.code =:pcode");
+			query.setParameter("pcode",  "CODE" );
+			Collection<ProductItem> productItems = ProductItem.getResultList();
+			product.setProductItem(productItems);
+			entitymanager.getTransaction().commit();
+		}
+		emfactory.close();
+		return products;
+	}
 
 
 }

@@ -1,4 +1,6 @@
+package DAO;
 import java.sql.Date;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -65,6 +67,20 @@ public class ProductTest {
 		product.setId(2401);
 	
 		productDao.update(product);
+		
+	}
+	
+	@Test
+	public void getProducs() throws DAOException {
+		
+		ProductDAO productDao = new ProductDAOImpl();
+		List<Product> list = (List<Product>) productDao.getProductByStatus(true);
+		for (Product product : list){
+			System.out.println(product.getStock() + "|||" + product.getId() + "++++" + product.getProductModel().getName() + "111111111" );
+			/*for(ProductItem productItem : product.getProductItem()){
+				System.out.println(productItem.getId() + "AAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			}*/
+		}
 		
 	}
 }

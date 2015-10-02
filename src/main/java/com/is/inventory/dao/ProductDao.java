@@ -17,6 +17,10 @@ public interface ProductDAO {
 	  public void delete(Product product) throws DAOException;
 
 	  // Finders
+	  public List<?> getAllProducts() throws DAOException;
+	  
+	  public List<?> getProductByStatus(Boolean status) throws DAOException;
+	  
 	  public List<?> getByCode(String code) throws DAOException;
 
 	  public List<?> getBySku(String sku) throws DAOException;

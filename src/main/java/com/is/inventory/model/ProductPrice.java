@@ -21,7 +21,10 @@ public class ProductPrice {
 	private Double price;
 	private Double msrp;
 	private Double capital;
-	private Integer dateAddedBy;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="added_by")
+	private Date AddedBy;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_added")
@@ -121,19 +124,14 @@ public class ProductPrice {
 		this.dateLastModified = dateLastModified;
 	}
 
-	/**
-	 * @return the dateAddedBy
-	 */
-	public Integer getDateAddedBy() {
-		return dateAddedBy;
+	public Date getAddedBy() {
+		return AddedBy;
 	}
 
-	/**
-	 * @param dateAddedBy
-	 *            the dateAddedBy to set
-	 */
-	public void setDateAddedBy(Integer dateAddedBy) {
-		this.dateAddedBy = dateAddedBy;
+	public void setAddedBy(Date addedBy) {
+		AddedBy = addedBy;
 	}
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.is.inventory.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,12 +18,17 @@ public class ProductOptionSelection {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@Column(name="product_option_value")
 	private String productOptionValue;
-	private String productOptionText;
-	private Boolean isactive;
 	
-	@ManyToOne(fetch=FetchType.LAZY )
-	@JoinColumn(name = "product_code", referencedColumnName="code" , unique = false, nullable = true, insertable = true, updatable = true)
+	@Column(name="product_option_text")
+	private String productOptionText;
+	
+	@Column(name="isActive")
+	private Boolean isActive;
+	
+	@OneToOne(fetch=FetchType.LAZY )
+	@JoinColumn(name = "product_option_name_id", referencedColumnName="id" , unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOptionName productOptionName;
 
 	/**
@@ -73,15 +80,15 @@ public class ProductOptionSelection {
 	 * @return the isactive
 	 */
 	public Boolean getIsactive() {
-		return isactive;
+		return isActive;
 	}
 
 	/**
 	 * @param isactive
 	 *            the isactive to set
 	 */
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setIsactive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	/**

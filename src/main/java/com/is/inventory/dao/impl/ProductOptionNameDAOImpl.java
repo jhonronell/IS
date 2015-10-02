@@ -7,56 +7,42 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.is.inventory.dao.DAOException;
-import com.is.inventory.dao.ProductOptionSelectionDAO;
-import com.is.inventory.model.ProductOptionSelection;
-import com.is.inventory.model.ProductOptionSelection;
+import com.is.inventory.dao.ProductOptionNameDAO;
+import com.is.inventory.model.ProductOptionName;
 
-public class ProductOptionSelectionDAOImpl implements ProductOptionSelectionDAO {
+public class ProductOptionNameDAOImpl implements ProductOptionNameDAO {
 
 	private final String EM_LINK = "IS";
 
 	@Override
-	public ProductOptionSelection getByPrimaryKey(ProductOptionSelection productOptionSelection) throws DAOException {
+	public ProductOptionName getByPrimaryKey(ProductOptionName productOptionName) throws DAOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
-		ProductOptionSelection productOptionSelectionRecord = entitymanager.find(ProductOptionSelection.class, productOptionSelection.getId());
+		ProductOptionName productOptionNameRecord = entitymanager.find(ProductOptionName.class, productOptionName.getId());
 		entitymanager.close();
 		emfactory.close();
-		return productOptionSelectionRecord;
+		return productOptionNameRecord;
 	}
 
 	@Override
-	public void update(ProductOptionSelection productOptionSelection) throws DAOException {
+	public void update(ProductOptionName productOptionName) throws DAOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
-		ProductOptionSelection productOptionSelectionRecord = entitymanager.find(ProductOptionSelection.class, productOptionSelection.getId());
-		productOptionSelectionRecord.setId(productOptionSelection.getId());
+		ProductOptionName productOptionNameRecord = entitymanager.find(ProductOptionName.class, productOptionName.getId());
+		productOptionNameRecord.setId(productOptionName.getId());
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 		emfactory.close();
 	}
 
 	@Override
-	public void insert(ProductOptionSelection productOptionSelection) throws DAOException {
+	public void insert(ProductOptionName productOptionName) throws DAOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
-		entitymanager.persist(productOptionSelection);
-		entitymanager.getTransaction().commit();
-		entitymanager.close();
-		emfactory.close();
-
-	}
-
-	@Override
-	public void delete(ProductOptionSelection productOptionSelection) throws DAOException {
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
-		EntityManager entitymanager = emfactory.createEntityManager();
-		entitymanager.getTransaction().begin();
-		ProductOptionSelection productOptionSelectionRecord = entitymanager.find(ProductOptionSelection.class, productOptionSelection.getId());
-		entitymanager.remove(productOptionSelectionRecord);
+		entitymanager.persist(productOptionName);
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 		emfactory.close();
@@ -64,28 +50,42 @@ public class ProductOptionSelectionDAOImpl implements ProductOptionSelectionDAO 
 	}
 
 	@Override
-	public List getByProductOptionValue(String productOptionValue) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public void delete(ProductOptionName productOptionName) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		ProductOptionName productOptionNameRecord = entitymanager.find(ProductOptionName.class, productOptionName.getId());
+		entitymanager.remove(productOptionNameRecord);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
 
-
-	@Override
-	public List getByProductOptionText(String productOptionText) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List getByIsactive(Byte isactive) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
-	public List getByProductOptionNameId(Integer productOptionNameId) throws DAOException {
+	public List getByProductTypeId(Integer productTypeId) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List getByFormTypeId(Integer formTypeId) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getByName(String name) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getByProductOptionId(Integer productOptionId) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

@@ -1,10 +1,14 @@
 package com.is.inventory.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,9 +25,13 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 	private String email;
-
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "contact_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Contact contact;
-
+	
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "address", unique = false, nullable = true, insertable = true, updatable = true)
 	private Address address;
 
 	/**

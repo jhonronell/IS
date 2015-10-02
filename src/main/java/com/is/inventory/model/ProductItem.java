@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,8 +36,10 @@ public class ProductItem {
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_last_modified")
 	private Date dateLastModified;
+	
 	@Column(name="serial_number")
 	private String serialNumber;
+	
 	private String sku;
 	
 	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
@@ -51,7 +54,7 @@ public class ProductItem {
 	@JoinColumn(name = "price_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductPrice productPrice;
 
-	@ManyToOne(fetch=FetchType.LAZY )
+	@ManyToOne
 	@JoinColumn(name = "product_code", referencedColumnName="code" , unique = false, nullable = true, insertable = true, updatable = true)
 	private Product Product;
 	

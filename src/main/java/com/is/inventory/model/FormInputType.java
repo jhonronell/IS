@@ -2,7 +2,17 @@ package com.is.inventory.model;
 
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "`distributor`")
 public class FormInputType {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String type;
 	

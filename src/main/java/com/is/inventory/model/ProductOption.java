@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "`product_model`")
+@Table(name = "`product_option`")
 
 public class ProductOption {
 	
@@ -41,8 +41,6 @@ public class ProductOption {
 	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductType productType;
 	
-	
-
 	/**
 	 * @return the id
 	 */

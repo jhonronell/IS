@@ -8,15 +8,13 @@ import com.is.inventory.model.ProductType;
 public interface ProductTypeDAO
 {
   // CRUD methods
-  public ProductType getByPrimaryKey(int id) throws DAOException;
+  public ProductType getByPrimaryKey(ProductType productType) throws DAOException;
 
- 
+  public void update(ProductType productType) throws DAOException;
 
-  public int update(ProductType obj) throws DAOException;
+  public void insert(ProductType productType) throws DAOException;
 
-  public int insert(ProductType obj) throws DAOException;
-
-  public int delete(ProductType obj) throws DAOException;
+  public void delete(ProductType productType) throws DAOException;
 
   // Finders
   public List getByName(String name) throws DAOException;

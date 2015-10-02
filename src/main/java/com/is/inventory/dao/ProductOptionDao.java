@@ -10,13 +10,13 @@ import com.is.inventory.model.ProductOption;
 public interface ProductOptionDAO
 {
   // CRUD methods
-  public ProductOption getByPrimaryKey(int id) throws DAOException;
+  public ProductOption getByPrimaryKey(ProductOption productOption) throws DAOException;
 
- public int update(ProductOption obj) throws DAOException;
+  public void update(ProductOption productOption) throws DAOException;
 
-  public int insert(ProductOption obj) throws DAOException;
+  public void insert(ProductOption productOption) throws DAOException;
 
-  public int delete(ProductOption obj) throws DAOException;
+  public void delete(ProductOption productOption) throws DAOException;
 
   // Finders
   public List getByProductOptionNameId(Integer productOptionNameId)

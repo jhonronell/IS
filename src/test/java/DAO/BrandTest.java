@@ -1,3 +1,4 @@
+package DAO;
 import org.junit.Test;
 
 import com.is.inventory.dao.BrandDAO;

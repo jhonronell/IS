@@ -1,8 +1,8 @@
+package com.is.inventory.dao;
 
 import java.util.List;
 
 import com.is.inventory.model.TaxRate;
-
 
 public interface TaxRateDAO
 {

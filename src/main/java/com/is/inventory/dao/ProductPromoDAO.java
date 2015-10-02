@@ -1,15 +1,13 @@
+package com.is.inventory.dao;
 
 import java.util.List;
 
 import com.is.inventory.model.PromoTable;
 
-
 public interface ProductPromoDAO
 {
   // CRUD methods
   public PromoTable getByPrimaryKey(int id) throws DAOException;
-
-  
 
   public int update(PromoTable obj) throws DAOException;
 

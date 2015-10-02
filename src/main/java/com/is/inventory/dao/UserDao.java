@@ -4,24 +4,19 @@ import java.util.List;
 
 import com.is.inventory.model.User;
 
-
 public interface UserDAO
 {
   // CRUD methods
-  public User getByPrimaryKey(int id) throws DAOException;
+  public User getByPrimaryKey(User user) throws DAOException;
 
- 
+  public void update(User user) throws DAOException;
 
-  public int update(User obj) throws DAOException;
+  public void insert(User user) throws DAOException;
 
-  public int insert(User obj) throws DAOException;
-
-  public int delete(User obj) throws DAOException;
+  public void delete(User user) throws DAOException;
 
   // Finders
   public List getByUsername(String username) throws DAOException;
-
-  public List getByPassword(String password) throws DAOException;
 
   public List getByFirstName(String firstName) throws DAOException;
 

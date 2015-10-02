@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "`product_Option_name`")
+@Table(name = "`product_option_name`")
 public class ProductOptionName {
 	
 	
@@ -27,11 +27,11 @@ public class ProductOptionName {
 	
 	private String name;
 	
-	@OneToMany(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "form_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private FormInputType formInputType;
 	
-	@OneToMany(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "product_option_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOption productOption;
 	

@@ -1,6 +1,8 @@
 package com.is.inventory.model;
 
 public class PromoTable {
+	
+	
 	private int id;
 	private Double percentoff;
 	private String dateadded;

@@ -51,15 +51,13 @@
 							<tbody>
 								<c:forEach var="row" items="${productList}">
 									<tr>
-
-										<td><a href="">${row.productModel.brand.name}</a></td>
-										<td><a href="">${row.name}</a></td>
-										<td><a href="">${row.productModel.modelName}</a></td>
-										<td><a href="">${row.productModel.yearModel}</a></td>
-										<td>${row.productType.name}</td>
-										<td>${row.code}</td>
-										<td>${row.price.price}</td>
-
+									<td><a href="">${row.brand.name}</a></td>
+									<td><a href="">${row.productModel.name}</a></td>
+									<td><a href="">${row.productModel.yearModel}</a></td>
+									<td><a href="">${row.productType.name}</a></td>
+									<td><a href="">${row.stock}</a></td>
+									<td><a href="">${row.code}</a></td>
+									<td><a href="">${row.code}</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>

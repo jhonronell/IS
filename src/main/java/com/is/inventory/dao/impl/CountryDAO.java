@@ -7,43 +7,35 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.is.inventory.dao.DAOException;
-import com.is.inventory.dao.UserDAO;
-import com.is.inventory.model.User;
-import com.is.inventory.model.User;
+import com.is.inventory.model.Country;
 
-public class UserDAOImpl implements UserDAO {
+public class CountryDAO implements com.is.inventory.dao.CountryDAO {
 
 	private final String EM_LINK = "IS";
 
 	@Override
-	public User getByPrimaryKey(User productPrice) throws DAOException {
+	public Country getByPrimaryKey(Country country) throws DAOException {
+
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
-		User productPriceRecord = entitymanager.find(User.class, productPrice.getId());
+		Country countryRecord = entitymanager.find(Country.class, country.getId());
 		entitymanager.close();
 		emfactory.close();
-		return productPriceRecord;
+		return countryRecord;
+
 	}
 
 	@Override
-	public void update(User productPrice) throws DAOException {
+	public void update(Country country) throws DAOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
-		User productPriceRecord = entitymanager.find(User.class, productPrice.getId());
-		productPriceRecord.setId(productPrice.getId());
-		entitymanager.getTransaction().commit();
-		entitymanager.close();
-		emfactory.close();
-	}
 
-	@Override
-	public void insert(User productPrice) throws DAOException {
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
-		EntityManager entitymanager = emfactory.createEntityManager();
-		entitymanager.getTransaction().begin();
-		entitymanager.persist(productPrice);
+		Country countryRecord = entitymanager.find(Country.class, country.getId());
+
+		countryRecord.setCountryCode(country.getCountryCode());
+		countryRecord.setId(country.getId());
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 		emfactory.close();
@@ -51,54 +43,39 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void delete(User productPrice) throws DAOException {
+	public void insert(Country country) throws DAOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
-		User productPriceRecord = entitymanager.find(User.class, productPrice.getId());
-		entitymanager.remove(productPriceRecord);
+		entitymanager.persist(country);
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 		emfactory.close();
-
 	}
 
 	@Override
-	public List getByUsername(String username) throws DAOException {
+	public void delete(Country country) throws DAOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		Country countryRecord = entitymanager.find(Country.class, country.getId());
+		entitymanager.remove(countryRecord);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+
+		emfactory.close();
+	}
+
+	@Override
+	public List getByCountryCode(String countryCode) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List getByFirstName(String firstName) throws DAOException {
+	public List getByCountryName(String countryName) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public List getByLastName(String lastName) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List getByEmail(String email) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List getByAddress(Integer address) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List getByContactsId(Integer contactsId) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 
 }

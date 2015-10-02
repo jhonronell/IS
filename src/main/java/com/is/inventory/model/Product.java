@@ -1,7 +1,9 @@
 package com.is.inventory.model;
 
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,16 +25,32 @@ public class Product {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
 	private String code;
 	private String sku;
 	private String description;
 	private Boolean status;
+
 	private Integer stock;
+	
+    @OneToMany
+    @JoinColumn(name="product_code",referencedColumnName="code")
+    private Collection<ProductItem> productItem;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_added")
 	private Date dateAdded;
 	
+	
+	
+	public Collection<ProductItem> getProductItem() {
+		return productItem;
+	}
+
+	public void setProductItem(Collection<ProductItem> productItem) {
+		this.productItem = productItem;
+	}
+
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_last_modified")
 	private Date dateLastModified;
@@ -144,9 +163,12 @@ public class Product {
 	/**
 	 * @return the stock
 	 */
-	public Integer getStock() {
-		return stock;
-	}
+		public Integer getStock() {
+			return stock;
+		}
+/*	public Integer getStock() {
+		return productItem.size();
+	}*/
 
 	/**
 	 * @param stock

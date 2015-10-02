@@ -1,4 +1,4 @@
-package com.is.inventory.controller;
+/*package com.is.inventory.controller;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -34,46 +34,6 @@ public class ProductController {
 							 @RequestParam("distributorID") int distributorID,  @RequestParam("modelID") int modelID
 							){
 		
-		Product product = new Product(name);
-		product.setDescription(description);
-		product.setCode(code);
-		
-		ProductModel productModel = new ProductModel();
-		productModel.setID(productModelID);
-		
-		Distributor distributor = new Distributor();
-		distributor.setID(distributorID);
-		product.setDistributor(distributor);
-		
-		product.setProductModel(productModel);
-		product.setCode(code);
-		
-		product.setWeight(weight);
-		product.setHeight(height);
-		
-		Color color = new Color();
-		color.setID(colorID);
-		
-		product.setColor(color);
-		product.setSku(Sku);
-		product.setDatePurchased(datePurchased);
-		product.setDateReceived(dateReceived);
-		product.setDateShipped(dateShipped);
-		
-		Price price = new Price();
-		price.setCapitalPrice(capitalPrice);
-		price.setMsrp(msrp);
-		price.setPrice(sellingPrice);
-		
-		product.setPrice(price);
-		
-		ProductType productType = new ProductType();
-		productType.setID(productTypeId);
-	
-		product.setProductType(productType);
-		
-		ProductServiceImpl productService = new ProductServiceImpl();
-		productService.addProduct(product);
 		
 		return "home";
 	}
@@ -86,3 +46,4 @@ public class ProductController {
 	
 	
 }
+*/
