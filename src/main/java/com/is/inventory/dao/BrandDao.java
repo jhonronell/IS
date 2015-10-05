@@ -21,4 +21,7 @@ public interface BrandDAO
 
   public List getByStatus(Byte isActive) throws DAOException;
 
+  public List<Brand> getBrands() throws DAOException;
+
+
 }

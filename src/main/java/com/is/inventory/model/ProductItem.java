@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -40,6 +39,17 @@ public class ProductItem {
 	@Column(name="serial_number")
 	private String serialNumber;
 	
+	@Column(name="status")
+	private Boolean status;
+	
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
 	private String sku;
 	
 	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
@@ -54,11 +64,10 @@ public class ProductItem {
 	@JoinColumn(name = "price_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductPrice productPrice;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_code", referencedColumnName="code" , unique = false, nullable = true, insertable = true, updatable = true)
-	private Product Product;
+	private Product product;
 	
-
 	/**
 	 * @return the productPrice
 	 */
@@ -77,14 +86,14 @@ public class ProductItem {
 	 * @return the product
 	 */
 	public Product getProduct() {
-		return Product;
+		return product;
 	}
 
 	/**
 	 * @param product the product to set
 	 */
 	public void setProduct(Product product) {
-		Product = product;
+		this.product = product;
 	}
 	
 	/**

@@ -19,7 +19,7 @@ public interface ProductDAO {
 	  // Finders
 	  public List<?> getAllProducts() throws DAOException;
 	  
-	  public List<?> getProductByStatus(Boolean status) throws DAOException;
+	  public List<Product> getProductByStatus(Boolean status) throws DAOException;
 	  
 	  public List<?> getByCode(String code) throws DAOException;
 

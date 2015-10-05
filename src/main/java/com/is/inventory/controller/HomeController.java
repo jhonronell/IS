@@ -12,9 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.is.inventory.dao.BrandDAO;
 import com.is.inventory.dao.DAOException;
 import com.is.inventory.dao.ProductDAO;
+import com.is.inventory.dao.impl.BrandDAOImpl;
 import com.is.inventory.dao.impl.ProductDAOImpl;
+import com.is.inventory.model.Brand;
+import com.is.inventory.model.Product;
 
 /**
  * Handles requests for the application home page.
@@ -33,10 +37,14 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		ProductDAO productDao = new ProductDAOImpl();
-		List<?> productList =  productDao.getAllProducts();
+		BrandDAO brandDao = new BrandDAOImpl();
+		List<Product> productList =  productDao.getProductByStatus(true);
+		List<Brand> brandList =  brandDao.getBrands();
 		
+		model.addAttribute("brandList", brandList );
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("productList", productList );
+		
 		return "starter";
 	}
 	

@@ -17,27 +17,29 @@ public interface ProductItemDAO
   public int delete(ProductItem productItem) throws DAOException;
 
   // Finders
-  public List getByProductCode(String productCode) throws DAOException;
+  public List<ProductItem> getByProductCode(String productCode) throws DAOException;
 
-  public List getByPriceId(Integer priceId) throws DAOException;
+  public List<ProductItem> getByPriceId(Integer priceId) throws DAOException;
 
-  public List getByDistributorId(Integer distributorId)
+  public List<ProductItem> getByDistributorId(Integer distributorId)
     throws DAOException;
 
-  public List getByColorId(Integer colorId) throws DAOException;
+  public List<ProductItem> getByColorId(Integer colorId) throws DAOException;
 
-  public List getByWeight(Double weight) throws DAOException;
+  public List<ProductItem> getByWeight(Double weight) throws DAOException;
 
-  public List getByHeight(Double height) throws DAOException;
+  public List<ProductItem> getByHeight(Double height) throws DAOException;
 
-  public List getByDateAdded(Date dateAdded) throws DAOException;
+  public List<ProductItem> getByDateAdded(Date dateAdded) throws DAOException;
 
-  public List getByDateLastModified(Date dateLastModified)
+  public List<ProductItem> getByDateLastModified(Date dateLastModified)
     throws DAOException;
 
-  public List getByAddedBy(Integer addedBy) throws DAOException;
+  public List<ProductItem> getByAddedBy(Integer addedBy) throws DAOException;
 
-  public List getBySerialNumber(String serialNumber) throws DAOException;
+  public List<ProductItem> getBySerialNumber(String serialNumber) throws DAOException;
 
-  public List getBySku(String sku) throws DAOException;
+  public List<ProductItem> getBySku(String sku) throws DAOException;
+
+  public List<ProductItem> getProductItemsByCode(String productCode);
 }

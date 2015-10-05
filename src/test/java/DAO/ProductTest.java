@@ -9,6 +9,7 @@ import com.is.inventory.dao.ProductDAO;
 import com.is.inventory.dao.impl.ProductDAOImpl;
 import com.is.inventory.model.Brand;
 import com.is.inventory.model.Product;
+import com.is.inventory.model.ProductItem;
 import com.is.inventory.model.ProductModel;
 import com.is.inventory.model.ProductType;
 
@@ -75,11 +76,13 @@ public class ProductTest {
 		
 		ProductDAO productDao = new ProductDAOImpl();
 		List<Product> list = (List<Product>) productDao.getProductByStatus(true);
+		System.out.println(list.size() + "#####################################");
+		System.out.println(list.size());
 		for (Product product : list){
-			System.out.println(product.getStock() + "|||" + product.getId() + "++++" + product.getProductModel().getName() + "111111111" );
-			/*for(ProductItem productItem : product.getProductItem()){
-				System.out.println(productItem.getId() + "AAAAAAAAAAAAAAAAAAAAAAAAAAA");
-			}*/
+			System.out.println(product.getId() + " " + product.getStock());
+			for(ProductItem productItem : product.getProductItem()){
+				System.out.println("----------" + productItem.getId());
+			}
 		}
 		
 	}

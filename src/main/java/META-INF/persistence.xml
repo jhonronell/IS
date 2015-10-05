@@ -30,7 +30,7 @@
 		<class>com.is.inventory.model.FormInputType</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://192.168.56.102:3306/InventorySystem" />
+				value="jdbc:mysql://localhost/InventorySystem" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="root" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

@@ -21,7 +21,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
    
     <!-- DataTables -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/datatables/dataTables.bootstrap.css">
-   
+    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/typeahead/typeahead.css">
    
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you

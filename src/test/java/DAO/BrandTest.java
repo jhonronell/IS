@@ -19,7 +19,7 @@ public class BrandTest {
 		countryOfOrigin.setId(5);
 		brand.setCountryOfOrigin(countryOfOrigin);
 		brand.setName("ISUZU");
-		brand.setIsActive(true);
+		
 		brand.setDescription("DEMO DEMO DEMO DEMO DEMO");
 		brandDao.insert(brand);
 	}
@@ -31,6 +31,13 @@ public class BrandTest {
 		brand.setId(1401);
 		Brand brandRecord = brandDao.getByPrimaryKey(brand);
 		System.out.println(brandRecord.getCountryOfOrigin().getCountryName() + "++++++++++++++++++++++++++++++++++++++++++" + brandRecord.getId()  );
+		
+	}
+	@Test
+	public void getBrands() throws DAOException {
+		
+		BrandDAO brandDao = new BrandDAOImpl();
+		brandDao.getBrands();
 		
 	}
 	@Test

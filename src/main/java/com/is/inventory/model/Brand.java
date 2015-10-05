@@ -26,8 +26,8 @@ public class Brand {
 	
 	@Column(name="date_added")
 	private String dateAdded;
-	@Column(name="is_active")
-	private Boolean isActive;
+	@Column(name="status")
+	private Boolean status;
 	private String description;
 
 	/**
@@ -91,18 +91,18 @@ public class Brand {
 	}
 
 	/**
-	 * @return the isActive
+	 * @return the status
 	 */
-	public Boolean getIsActive() {
-		return isActive;
+	public Boolean getStatus() {
+		return status;
 	}
 
 	/**
-	 * @param isActive
-	 *            the isActive to set
+	 * @param status
+	 *            the status to set
 	 */
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 	/**

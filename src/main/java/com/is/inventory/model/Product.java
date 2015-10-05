@@ -3,6 +3,7 @@ package com.is.inventory.model;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -35,7 +36,7 @@ public class Product {
 	
     @OneToMany
     @JoinColumn(name="product_code",referencedColumnName="code")
-    private Collection<ProductItem> productItem;
+    private List<ProductItem> productItem;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_added")
@@ -43,11 +44,11 @@ public class Product {
 	
 	
 	
-	public Collection<ProductItem> getProductItem() {
+	public List<ProductItem> getProductItem() {
 		return productItem;
 	}
 
-	public void setProductItem(Collection<ProductItem> productItem) {
+	public void setProductItem(List<ProductItem> productItem) {
 		this.productItem = productItem;
 	}
 
