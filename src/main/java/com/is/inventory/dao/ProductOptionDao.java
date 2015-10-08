@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.is.inventory.model.ProductOption;
+import com.is.inventory.model.ProductType;
 
 
 public interface ProductOptionDAO
@@ -21,6 +22,8 @@ public interface ProductOptionDAO
   // Finders
   public List getByProductOptionNameId(Integer productOptionNameId)
     throws DAOException;
+  
+  public List getProductOptionsByType(ProductType productType)  throws DAOException;
 
   public List getByProductTypeId(Integer productTypeId)
     throws DAOException;

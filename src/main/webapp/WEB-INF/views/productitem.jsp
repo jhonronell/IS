@@ -32,12 +32,11 @@
 						<table id="example2" class="table table-bordered table-hover">
 							<thead>
 								<tr>
-
 									<th>Distributor</th>
 									<th>MSRP</th>
 									<th>Stock</th>
-									<c:forEach var="row" items="${productOptions}">
-										<td><a href="">${row.ProductOptionName.name}</a></td>
+									<c:forEach var="row" items="${productItemsOptions}">
+										<th>${row.productOptionName.name}</th>
 									</c:forEach>
 								</tr>
 							</thead>

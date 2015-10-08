@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.is.inventory.dao.DAOException;
 import com.is.inventory.dao.ProductItemDAO;
+import com.is.inventory.dao.ProductOptionDAO;
 import com.is.inventory.dao.impl.ProductItemDAOImpl;
+import com.is.inventory.dao.impl.ProductOptionDAOImpl;
+import com.is.inventory.model.Product;
 import com.is.inventory.model.ProductItem;
+import com.is.inventory.model.ProductOption;
+import com.is.inventory.model.ProductType;
 
 @Controller
 public class ProductItemController {
@@ -20,14 +25,23 @@ public class ProductItemController {
 	@Qualifier("productServiceImpl")
 	private ProductService productService;
 	*/
-	@RequestMapping(value = "/items/{productCode}", method = RequestMethod.GET)
-	public String showProductList(@PathVariable String productCode, Model model) throws DAOException {
+	@RequestMapping(value = "/category/{type}/item/{productCode}", method = RequestMethod.GET)
+	public String showProductList(@PathVariable String productCode,@PathVariable Integer type, Model model) throws DAOException {
 		
 		ProductItemDAO productItem = new ProductItemDAOImpl();
+		ProductOptionDAO productOptionDao = new ProductOptionDAOImpl();
 		List<ProductItem> productItems = productItem.getProductItemsByCode(productCode);
 		
-		//productItems.sort(a < b);
+		ProductType productType = new ProductType();
+		productType.setId(type);
+		List<ProductOption> productItemOptions = productOptionDao.getProductOptionsByType(productType);
 		
+		
+		
+		
+//		/List<ProductOption> productOptions = productOptionDao.getProductOptionsByType(productType) 
+		//productItems.sort(a < b);
+		model.addAttribute("productItemsOptions",productItemOptions );
 		model.addAttribute("productItems",productItems );
 		return "productitem";
 	}

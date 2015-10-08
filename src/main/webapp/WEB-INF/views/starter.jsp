@@ -53,13 +53,13 @@
 							<tbody>
 								<c:forEach var="row" items="${productList}">
 									<tr>
-										<td><a href="${pageContext.request.contextPath}/items/${row.code}">${row.brand.name}</a></td>
-										<td><a href="${pageContext.request.contextPath}/items/${row.code}">${row.productModel.name}</a></td>
-										<td><a href="${pageContext.request.contextPath}/items/${row.code}">${row.productModel.yearModel}</a></td>
-										<td><a href="${pageContext.request.contextPath}/items/${row.code}">${row.productType.name}</a></td>
-										<td><a href="${pageContext.request.contextPath}/items/${row.code}">${row.stock}</a></td>
-										<td><a href="${pageContext.request.contextPath}/items/${row.code}">${row.code}</a></td>
-										<td><a href="${pageContext.request.contextPath}/items/${row.code}">${row.stock}</a></td>
+										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.brand.name}</a></td>
+										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.productModel.name}</a></td>
+										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.productModel.yearModel}</a></td>
+										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.productType.name}</a></td>
+										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.stock}</a></td>
+										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.code}</a></td>
+										<td><a href="${pageContext.request.contextPath}/category/${row.productType.id}/item/${row.code}">${row.stock}</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>

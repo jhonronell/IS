@@ -20,7 +20,7 @@ public class ProductItemTest {
 		ProductItem ProductItem = new ProductItem();
 		ProductItem.setId(3951);
 		ProductItem ProductItemRecord = ProductItemDao.getByPrimaryKey(ProductItem);
-		System.out.println(ProductItemRecord.getProduct().getId() + "+++++++++++++++++++++++++++++++++++++");
+		//System.out.println(ProductItemRecord.getProduct().getId() + "+++++++++++++++++++++++++++++++++++++");
 	}
 	
 }

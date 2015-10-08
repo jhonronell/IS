@@ -47,8 +47,9 @@ public class ProductTest {
 		
 		ProductDAO productDao = new ProductDAOImpl();
 		Product product = new Product();
-		product.setId(1401);
+		product.setId(10401);
 		Product productRecord = productDao.getByPrimaryKey(product);
+		
 		
 	}
 	@Test
@@ -75,11 +76,11 @@ public class ProductTest {
 	public void getProducs() throws DAOException {
 		
 		ProductDAO productDao = new ProductDAOImpl();
-		List<Product> list = (List<Product>) productDao.getProductByStatus(true);
+		List<Product> list = productDao.getProductByStatus(true);
 		System.out.println(list.size() + "#####################################");
 		System.out.println(list.size());
-		for (Product product : list){
-			System.out.println(product.getId() + " " + product.getStock());
+		for (Product product : list){	
+			System.out.println(product.getProductType().getName() + "**");
 			for(ProductItem productItem : product.getProductItem()){
 				System.out.println("----------" + productItem.getId());
 			}

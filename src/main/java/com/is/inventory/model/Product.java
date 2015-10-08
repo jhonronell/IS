@@ -1,19 +1,16 @@
 package com.is.inventory.model;
 
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -69,7 +66,9 @@ public class Product {
 	@JoinColumn(name = "model_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductModel productModel;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	
+	  
+	@OneToOne(fetch=FetchType.EAGER, cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductType productType;
 	

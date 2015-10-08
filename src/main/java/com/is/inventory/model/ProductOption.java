@@ -88,5 +88,33 @@ public class ProductOption {
 		this.productType = productType;
 	}
 
+	/**
+	 * @return the productOptionName
+	 */
+	public ProductOptionName getProductOptionName() {
+		return productOptionName;
+	}
+
+	/**
+	 * @param productOptionName the productOptionName to set
+	 */
+	public void setProductOptionName(ProductOptionName productOptionName) {
+		this.productOptionName = productOptionName;
+	}
+
+	/**
+	 * @return the addedBy
+	 */
+	public User getAddedBy() {
+		return addedBy;
+	}
+
+	/**
+	 * @param addedBy the addedBy to set
+	 */
+	public void setAddedBy(User addedBy) {
+		this.addedBy = addedBy;
+	}
+
 
 }

@@ -163,8 +163,10 @@ public class ProductDAOImpl implements ProductDAO {
 
 		Map<String, Comparable> parameters = new HashMap<String, Comparable>();
 		parameters.put("status", true);
+		
 		String queryString = "Select p from Product p where p.status = :status";
-		List<Product> productList = (List<Product>) getProductList(queryString, parameters);
+		
+		List<Product> productList =  getProductList(queryString, parameters);
 
 		for (Product product : productList) {
 			Map<String, Comparable> productItemsParameters = new HashMap<String, Comparable>();
@@ -175,7 +177,6 @@ public class ProductDAOImpl implements ProductDAO {
 			product.setProductItem((List<ProductItem>) productItemList);
 		}
 		return productList;
-
 	}
 
 	protected List<Product> getProductList(String query, Map<String, ?> parameters) {
@@ -194,6 +195,7 @@ public class ProductDAOImpl implements ProductDAO {
 		List<Product> products = _query.getResultList();
 		emfactory.close();
 		return products;
+		
 	}
 
 	protected List<ProductItem> getProductItemList(String query, Map<String, ?> parameters) {

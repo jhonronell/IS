@@ -1,6 +1,7 @@
 package com.is.inventory.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -67,6 +69,10 @@ public class ProductItem {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_code", referencedColumnName="code" , unique = false, nullable = true, insertable = true, updatable = true)
 	private Product product;
+	
+/*	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "product_type", referencedColumnName="id" , unique = false, nullable = true, insertable = true, updatable = true)
+	private List<ProductOption> productOption;*/
 	
 	/**
 	 * @return the productPrice
