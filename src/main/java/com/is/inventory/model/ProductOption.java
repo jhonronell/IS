@@ -19,28 +19,30 @@ import javax.persistence.TemporalType;
 @Table(name = "`product_option`")
 
 public class ProductOption {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+
+	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
 	@JoinColumn(name = "product_option_name_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOptionName productOptionName;
-	
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="date_added")
+	@Column(name = "date_added")
 	private Date dateAdded;
-	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+
+	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
 	@JoinColumn(name = "added_by", unique = false, nullable = true, insertable = true, updatable = true)
 	private User addedBy;
-	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+
+	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
 	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductType productType;
-	
+
+	@Column(name = "option_order")
+	private int optionOrder;
+
 	/**
 	 * @return the id
 	 */
@@ -55,7 +57,6 @@ public class ProductOption {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	/**
 	 * @return the dateAdded
@@ -72,7 +73,6 @@ public class ProductOption {
 		this.dateAdded = dateAdded;
 	}
 
-	
 	/**
 	 * @return the productType
 	 */
@@ -96,7 +96,8 @@ public class ProductOption {
 	}
 
 	/**
-	 * @param productOptionName the productOptionName to set
+	 * @param productOptionName
+	 *            the productOptionName to set
 	 */
 	public void setProductOptionName(ProductOptionName productOptionName) {
 		this.productOptionName = productOptionName;
@@ -110,11 +111,19 @@ public class ProductOption {
 	}
 
 	/**
-	 * @param addedBy the addedBy to set
+	 * @param addedBy
+	 *            the addedBy to set
 	 */
 	public void setAddedBy(User addedBy) {
 		this.addedBy = addedBy;
 	}
 
+	public int getOrder() {
+		return optionOrder;
+	}
+
+	public void setOrder(int order) {
+		this.optionOrder = order;
+	}
 
 }

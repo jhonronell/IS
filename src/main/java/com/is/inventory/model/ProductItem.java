@@ -80,14 +80,12 @@ public class ProductItem {
 	public ProductPrice getProductPrice() {
 		return productPrice;
 	}
-
 	/**
 	 * @param productPrice the productPrice to set
 	 */
 	public void setProductPrice(ProductPrice productPrice) {
 		this.productPrice = productPrice;
 	}
-
 	/**
 	 * @return the product
 	 */

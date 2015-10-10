@@ -99,7 +99,7 @@ public class ProductOptionDAOImpl implements ProductOptionDAO {
 		Map<String, Comparable> parameters = new HashMap<String, Comparable>();
 		parameters.put("productTypeId", productType.getId() );
 		//String queryString = "Select b from ProductOption b where b.status = :status";
-		String queryString = "Select productOption from ProductOption productOption left join productOption.productType productType where productType.id = :productTypeId";
+		String queryString = "Select productOption from ProductOption productOption left join productOption.productType productType where productType.id = :productTypeId order by productOption.optionOrder";
 		List<ProductOption> productOptions = getProductOptionList(queryString, parameters);
 		return productOptions;
 	}

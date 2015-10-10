@@ -2,21 +2,24 @@ package com.is.inventory.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "`product_item_option_name_value`")
-public class ProductItemOptionNameValue {
+@Table(name = "`product_item_option_value`")
+public class ProductItemOptionValue {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "product_option_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOption productOption;
 
@@ -24,10 +27,7 @@ public class ProductItemOptionNameValue {
 	@JoinColumn(name = "product_option_value", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOptionSelection productOptionValue;
 
-	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
-	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
-	private ProductType productType;
-
+	
 	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
 	@JoinColumn(name = "product_item_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductItem productItem;
@@ -56,13 +56,7 @@ public class ProductItemOptionNameValue {
 		this.productOptionValue = productOptionValue;
 	}
 
-	public ProductType getProductType() {
-		return productType;
-	}
 
-	public void setProductType(ProductType productType) {
-		this.productType = productType;
-	}
 
 	public ProductItem getProductItem() {
 		return productItem;

@@ -28,7 +28,7 @@
 		<class>com.is.inventory.model.ProductOptionName</class>
 		<class>com.is.inventory.model.ProductOptionSelection</class>
 		<class>com.is.inventory.model.FormInputType</class>
-		<class>com.is.inventory.model.ProductItemOptionNameValue</class>
+		<class>com.is.inventory.model.ProductItemOptionValue</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost/InventorySystem" />
