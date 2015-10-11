@@ -9,8 +9,8 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<div class="col-xs-8">
-				<p class="lead">Product List</p>
-				
+			<p class="lead">Product List</p>
+
 		</div>
 		<div class="col-xs-4">
 			<div class="input-group">
@@ -24,13 +24,13 @@
 
 	<!-- Main content -->
 	<section class="content">
-<jsp:include page="modal/productModal.jsp" />
+		<jsp:include page="modal/productModal.jsp" />
 
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="box">
 
-								<div class="box-body">
+					<div class="box-body">
 
 						<button class="btn btn-primary btn-sm pull-right"
 							data-toggle="modal" data-target="#myModal">Add New
@@ -53,13 +53,28 @@
 							<tbody>
 								<c:forEach var="row" items="${productList}">
 									<tr>
-										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.brand.name}</a></td>
-										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.productModel.name}</a></td>
-										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.productModel.yearModel}</a></td>
-										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.productType.name}</a></td>
-										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.stock}</a></td>
-										<td><a href="${pageContext.request.contextPath}/item/${row.code}">${row.code}</a></td>
-										<td><a href="${pageContext.request.contextPath}/category/${row.productType.id}/item/${row.code}">${row.stock}</a></td>
+										<td><a
+											href="${pageContext.request.contextPath}/item/${row.code}">${row.brand.name}</a></td>
+										<td><a
+											href="${pageContext.request.contextPath}/item/${row.code}">${row.productModel.name}</a></td>
+										<td><a
+											href="${pageContext.request.contextPath}/item/${row.code}">${row.productModel.yearModel}</a></td>
+										<td><a
+											href="${pageContext.request.contextPath}/item/${row.code}">${row.productType.name}</a></td>
+										<td><a
+											href="${pageContext.request.contextPath}/item/${row.code}">${row.stock}</a></td>
+										<td><a
+											href="${pageContext.request.contextPath}/item/${row.code}">${row.code}</a></td>
+										<td><a
+											href="${pageContext.request.contextPath}/category/${row.productType.id}/item/${row.code}">
+											<c:if test="${row.stock gt 0}">
+												on-stock
+											</c:if>
+											<c:if test="${row.stock lt 1}">
+												out-of-stock
+											</c:if>
+
+										</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>

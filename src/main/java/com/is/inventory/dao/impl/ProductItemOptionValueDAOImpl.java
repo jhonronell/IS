@@ -119,16 +119,17 @@ public class ProductItemOptionValueDAOImpl implements ProductItemOptionValueDAO 
 	@Override
 	public List<ProductItemOptionValue> getProductItemOptionValueByProductItem(ProductItem productItem) throws DAOException {
 
-		Map<String, Comparable> parameters = new HashMap<String, Comparable>();
-		parameters.put("pitid", 1);
+		if(productItem.equals(null))
+			return null;
 		
+		Map<String, Comparable> parameters = new HashMap<String, Comparable>();
+		parameters.put("pitid", productItem.getId() );
 		String queryString = "Select pi from ProductItemOptionValue pi inner join pi.productItem pit"
 				+ " inner join pi.productOption proOp "
 				+ " where pit.id =:pitid order by proOp.optionOrder";
 		List<ProductItemOptionValue> productItemOptionValueList =  getProductItemOptionValueList(queryString, parameters);
 		
 		return productItemOptionValueList;
-
 
 	}
 

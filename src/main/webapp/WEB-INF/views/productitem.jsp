@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="include/header.jsp" />
 <jsp:include page="include/sidebar.jsp" />
 
@@ -43,10 +44,14 @@
 							<tbody>
 								<c:forEach var="row" items="${productItems}">
 									<tr>
-										<td><a href="">${row.color.name}</a></td>
+										<td><a href="">${row.distributor.name}</a></td>
 										<td><a href="">${row.distributor.name}</a></td>
 										<td><a href="">${row.productPrice.msrp}</a></td>
-										<td><a href="">${row.id}</a></td>
+										<c:forEach var="rowOption" items="${row.productItemOptionValues}">
+											<td>
+												<a href=""> ${rowOption.productOptionValue.productOptionValue}</a>
+											</td>
+										</c:forEach>
 									</tr>
 								</c:forEach>
 							</tbody>

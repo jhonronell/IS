@@ -170,11 +170,13 @@ public class ProductDAOImpl implements ProductDAO {
 
 		for (Product product : productList) {
 			Map<String, Comparable> productItemsParameters = new HashMap<String, Comparable>();
-			String productItemQueryString = "Select pi from ProductItem pi left join pi.product pip where pip.code= :pcode";
+			
+			String productItemQueryString = "Select pi from ProductItem pi where pi.product.code = :pcode";
 			productItemsParameters.put("pcode", product.getCode());
 			List<ProductItem> productItemList = getProductItemList(productItemQueryString, productItemsParameters);
 			product.setStock(productItemList.size());
 			product.setProductItem((List<ProductItem>) productItemList);
+			
 		}
 		return productList;
 	}

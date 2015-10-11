@@ -25,7 +25,7 @@ public class ProductItemOptionValue {
 
 	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
 	@JoinColumn(name = "product_option_value", unique = false, nullable = true, insertable = true, updatable = true)
-	private ProductOptionSelection productOptionValue;
+	private ProductOptionSelection productOptionSelectionValue;
 
 	
 	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
@@ -49,11 +49,11 @@ public class ProductItemOptionValue {
 	}
 
 	public ProductOptionSelection getProductOptionValue() {
-		return productOptionValue;
+		return productOptionSelectionValue;
 	}
 
 	public void setProductOptionValue(ProductOptionSelection productOptionValue) {
-		this.productOptionValue = productOptionValue;
+		this.productOptionSelectionValue = productOptionValue;
 	}
 
 

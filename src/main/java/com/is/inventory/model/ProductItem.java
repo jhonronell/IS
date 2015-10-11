@@ -44,23 +44,16 @@ public class ProductItem {
 	@Column(name="status")
 	private Boolean status;
 	
-	public Boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
-
+	@Column(name="sku")
 	private String sku;
+	
+	//@OneToMany(fetch = FetchType.LAZY)
+	//@JoinColumn(name = "product_option_id", unique = false, nullable = true, insertable = true, updatable = true)
+	private List<ProductItemOptionValue> productItemOptionValues;
 	
 	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "color_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Color color;
-	
-/*	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
-	@JoinColumn(name = "brand_id", unique = false, nullable = true, insertable = true, updatable = true)
-	private Product productById;*/
 	
 	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "price_id", unique = false, nullable = true, insertable = true, updatable = true)
@@ -70,10 +63,14 @@ public class ProductItem {
 	@JoinColumn(name = "product_code", referencedColumnName="code" , unique = false, nullable = true, insertable = true, updatable = true)
 	private Product product;
 	
-/*	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "product_type", referencedColumnName="id" , unique = false, nullable = true, insertable = true, updatable = true)
-	private List<ProductOption> productOption;*/
-	
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
 	/**
 	 * @return the productPrice
 	 */
@@ -232,6 +229,14 @@ public class ProductItem {
 	 */
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	public List<ProductItemOptionValue> getProductItemOptionValues() {
+		return productItemOptionValues;
+	}
+
+	public void setProductItemOptionValues(List<ProductItemOptionValue> productItemOptionValues) {
+		this.productItemOptionValues = productItemOptionValues;
 	}
 
 	/**

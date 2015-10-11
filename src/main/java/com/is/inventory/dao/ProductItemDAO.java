@@ -41,5 +41,5 @@ public interface ProductItemDAO
 
   public List<ProductItem> getBySku(String sku) throws DAOException;
 
-  public List<ProductItem> getProductItemsByCode(String productCode);
+  public List<ProductItem> getProductItemsByCode(String productCode) throws DAOException;
 }

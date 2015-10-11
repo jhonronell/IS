@@ -14,9 +14,9 @@ import javax.persistence.Query;
 
 import com.is.inventory.dao.DAOException;
 import com.is.inventory.dao.ProductItemDAO;
-import com.is.inventory.model.Brand;
-import com.is.inventory.model.Product;
+import com.is.inventory.dao.ProductItemOptionValueDAO;
 import com.is.inventory.model.ProductItem;
+import com.is.inventory.model.ProductItemOptionValue;
 
 public class ProductItemDAOImpl implements ProductItemDAO {
 
@@ -41,11 +41,17 @@ public class ProductItemDAOImpl implements ProductItemDAO {
 
 	@Override
 	public void insert(ProductItem productItem) throws DAOException {
-		// TODO Auto-generated method stub
+
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
 		entitymanager.persist(productItem);
+		
+		// TODO Move to Service 
+		for(ProductItemOptionValue productOptionValue : productItem.getProductItemOptionValues()){
+			entitymanager.persist(productOptionValue);
+		}
+		
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 		emfactory.close();
@@ -124,15 +130,26 @@ public class ProductItemDAOImpl implements ProductItemDAO {
 	}
 
 	@Override
-	public List<ProductItem> getProductItemsByCode(String productCode) {
+	public List<ProductItem> getProductItemsByCode(String productCode) throws DAOException {
 	
+		ProductItemOptionValueDAO productItemOptionValueDao = new ProductItemOptionValueDAOImpl();
 		@SuppressWarnings("rawtypes")
 		Map<String, Comparable> parameters = new HashMap<String, Comparable>();
 		parameters.put("status", true);
-		String queryString = "Select pi from ProductItem pi where pi.status = :status";
+		parameters.put("pcode", productCode);
+		String queryString = "Select pi from ProductItem pi where pi.status = :status and pi.product.code = :pcode";
 		List<ProductItem> productItems = getProductItemList(queryString, parameters);
-		return productItems;
 		
+		if(!productItems.isEmpty()){
+			for(ProductItem productItem : productItems){
+				
+				List<ProductItemOptionValue> productItemOptionValues;
+				productItemOptionValues = productItemOptionValueDao.getProductItemOptionValueByProductItem(productItem);
+				productItem.setProductItemOptionValues(productItemOptionValues);
+				
+			}
+		}
+		return productItems;
 	}
 	
 	protected final List<ProductItem> getProductItemList(String query, Map<String, ?> parameters) {
