@@ -18,7 +18,7 @@
 
 	<!-- Main content -->
 	<section class="content">
-		<jsp:include page="modal/productModal.jsp" />
+		<jsp:include page="modal/productItemModal.jsp" />
 
 		<div class="row">
 			<div class="col-xs-12">
@@ -27,8 +27,7 @@
 					<div class="box-body">
 
 						<button class="btn btn-primary btn-sm pull-right"
-							data-toggle="modal" data-target="#myModal">Add New
-							Product</button>
+							data-toggle="modal" data-target="#myModal">Add Item</button>
 
 						<table id="example2" class="table table-bordered table-hover">
 							<thead>
@@ -36,7 +35,7 @@
 									<th>Distributor</th>
 									<th>MSRP</th>
 									<th>Stock</th>
-									<c:forEach var="row" items="${productItemsOptions}">
+									<c:forEach var="row" items="${productOptions}">
 										<th>${row.productOptionName.name}</th>
 									</c:forEach>
 								</tr>

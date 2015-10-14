@@ -27,12 +27,9 @@ public class ProductItemOptionValueTest {
 	}
 	@Test
 	public void getProductItemOptionValues() throws DAOException {
-		
 		ProductItemOptionValueDAO productItemOptionValueDao = new ProductItemOptionValueDAOImpl();
 		ProductItem productItem = new ProductItem();
 		List<ProductItemOptionValue> optionValues = productItemOptionValueDao.getProductItemOptionValueByProductItem(productItem);
-	
-
 	}
-	
+
 }

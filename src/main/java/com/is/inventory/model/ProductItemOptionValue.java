@@ -52,8 +52,8 @@ public class ProductItemOptionValue {
 		return productOptionSelectionValue;
 	}
 
-	public void setProductOptionValue(ProductOptionSelection productOptionValue) {
-		this.productOptionSelectionValue = productOptionValue;
+	public void setProductOptionValue(ProductOptionSelection productOptionSelectionValue) {
+		this.productOptionSelectionValue = productOptionSelectionValue;
 	}
 
 
