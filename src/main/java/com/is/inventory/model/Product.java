@@ -39,8 +39,16 @@ public class Product {
 	@Column(name="date_added")
 	private Date dateAdded;
 	
+	private String name;
 	
-	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public List<ProductItem> getProductItem() {
 		return productItem;
 	}

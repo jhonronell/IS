@@ -29,60 +29,68 @@ import com.is.inventory.service.ProductService;
  */
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	private ProductService productService;
 	@Autowired
 	private BrandService brandService;
 	@Autowired
 	private ProductModelService modelService;
-	
-	
+
 	@RequestMapping(value = "/starter", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) throws DAOException {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 
-		
-		//ProductDAO productDao = new ProductDAOImpl();
+		// ProductDAO productDao = new ProductDAOImpl();
 		BrandDAO brandDao = new BrandDAOImpl();
-	//	List<Product> productList = productDao.getProductByStatus(true);
+		// List<Product> productList = productDao.getProductByStatus(true);
 		List<Brand> brandList = brandDao.getBrands();
 
 		model.addAttribute("brandList", brandList);
 		model.addAttribute("serverTime", formattedDate);
-		//model.addAttribute("productList", productList);
+		// model.addAttribute("productList", productList);
 
 		return "starter";
 	}
 
-	@RequestMapping(value = "/products/newProduct", method = RequestMethod.GET)
-	public String addProduct( Model model, HttpServletRequest request , Locale locale)
-					throws DAOException {
-		
-		Brand brand= new Brand();
-		String name = request.getParameter("name");
-		String productCOde = request.getParameter("productCode");
-		String productModel = request.getParameter("model");
-		String description = request.getParameter("description");
-		String sku = request.getParameter("sku");
-		String yearModel = request.getParameter("yearModel");
-		
+	@RequestMapping(value = "/products/newProduct", method = RequestMethod.POST)
+	public String addProduct(Model model, HttpServletRequest request, Locale locale) throws DAOException {
+
+		String _productName = request.getParameter("name");
+		String _productCode = request.getParameter("productCode");
+		String _productModel = request.getParameter("model");
+		String _description = request.getParameter("description");
+		String _sku = request.getParameter("sku");
+
+		int _yearModel = Integer.valueOf(request.getParameter("yearModel"));
+		int brandId = Integer.valueOf(request.getParameter("brand"));
+
 		List<Product> productList = productService.getAllProducts();
 		List<Brand> brandList = brandService.getBrands();
-		
+
 		Product product = new Product();
 		ProductModel productModel = new ProductModel();
-		
-		
-		
-		
-		
-		
+		Brand brand = new Brand();
+
+		productModel.setYearModel(_yearModel);
+		productModel.setName(_productModel);
+
+		brand.setId(brandId);
+
+		product.setName(_productName);
+		product.setCode(_productCode);
+		product.setSku(_sku);
+		product.setProductModel(productModel);
+		product.setBrand(brand);
+		product.setDescription(_description);
+
 		model.addAttribute("brandList", brandList);
 		model.addAttribute("productList", productList);
 
+		productService.insert(product);
+		
 		return "starter";
 	}
 

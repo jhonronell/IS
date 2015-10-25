@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void insert(Product product) throws DAOException {
 		// TODO Auto-generated method stub
-		
+		productDAO.insert(product);
 	}
 
 	@Override
