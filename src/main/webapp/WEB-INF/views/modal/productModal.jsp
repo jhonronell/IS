@@ -23,16 +23,14 @@
 					</div>
 					<div class="col-md-3">
 						<label label-default="" class="control-label " for="textinput">Product
-							Code</label> <input type="text" name="name" class="form-control "
+							Code</label> <input type="text" name="productCode" class="form-control "
 							placeholder="">
 					</div>
 				</div>
-
 				<div class="row form-group">
-
 					<div  class="col-md-10">
 					 	<div> <label label-default="" class="control-label " for="textinput">Model</label> </div>
-					    <input class="typeahead form-control" type="text" placeholder="Countries">
+					    <input class="typeahead form-control" name="model" type="text" placeholder="Countries">
 					</div>
 					<div class="col-md-2">
 						<label label-default="" class="control-label " for="textinput">Year
@@ -41,12 +39,11 @@
 							<option>Three</option>
 						</select>
 					</div>
-
 				</div>
 				<div class="row form-group">
 					<div class="col-md-12">
 						<label label-default="" class="control-label " for="textinput">Brand</label>
-						<select name="yearModel" class="form-control">
+						<select name="brand" class="form-control">
 							<c:forEach var="brand" items="${brandList}">
 								<option value="${brand.id}">${brand.name}</option>
 							</c:forEach>
@@ -56,12 +53,9 @@
 				<div class="row form-group">
 					<div class="col-md-12">
 						<label label-default="" class="control-label " for="textinput">Description</label>
-						<textarea class="form-control" rows="3"></textarea>
+						<textarea name="description" class="form-control" rows="3"></textarea>
 					</div>
 				</div>
-
-
-
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -29,4 +29,6 @@ public interface DistributorDAO
   public List getByIsactive(Byte isactive) throws DAOException;
 
   public List getByAddressId(Integer addressId) throws DAOException;
+
+public List<Distributor> getDistributors();
 }

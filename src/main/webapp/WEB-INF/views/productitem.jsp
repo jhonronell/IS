@@ -18,8 +18,8 @@
 
 	<!-- Main content -->
 	<section class="content">
-		<jsp:include page="modal/productItemModal.jsp" />
-
+	 	<jsp:include page="modal/productItemModal.jsp" />
+ 
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="box">
@@ -35,8 +35,9 @@
 									<th>Distributor</th>
 									<th>MSRP</th>
 									<th>Stock</th>
-									<c:forEach var="row" items="${productOptions}">
-										<th>${row.productOptionName.name}</th>
+									
+									<c:forEach var="productOption" items="${productOptions}">
+										<th>1 ${productOption.productOptionName.name}</th>
 									</c:forEach>
 								</tr>
 							</thead>
@@ -44,7 +45,7 @@
 								<c:forEach var="row" items="${productItems}">
 									<tr>
 										<td><a href="">${row.distributor.name}</a></td>
-										<td><a href="">${row.distributor.name}</a></td>
+										<td></a></td>
 										<td><a href="">${row.productPrice.msrp}</a></td>
 										<c:forEach var="rowOption" items="${row.productItemOptionValues}">
 											<td>

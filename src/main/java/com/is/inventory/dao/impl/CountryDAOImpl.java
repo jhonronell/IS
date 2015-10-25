@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 import com.is.inventory.dao.DAOException;
 import com.is.inventory.model.Country;
 
-public class CountryDAO implements com.is.inventory.dao.CountryDAO {
+public class CountryDAOImpl implements com.is.inventory.dao.CountryDAO {
 
 	private final String EM_LINK = "IS";
 

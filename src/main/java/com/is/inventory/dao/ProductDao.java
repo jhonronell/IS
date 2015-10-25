@@ -17,33 +17,33 @@ public interface ProductDAO {
 	  public void delete(Product product) throws DAOException;
 
 	  // Finders
-	  public List<?> getAllProducts() throws DAOException;
+	  public List<Product> getAllProducts() throws DAOException;
 	  
 	  public List<Product> getProductByStatus(Boolean status) throws DAOException;
 	  
-	  public List<?> getByCode(String code) throws DAOException;
+	  public List<Product> getByCode(String code) throws DAOException;
 
-	  public List<?> getBySku(String sku) throws DAOException;
+	  public List<Product> getBySku(String sku) throws DAOException;
 
-	  public List<?> getByDescription(String description) throws DAOException;
+	  public List<Product> getByDescription(String description) throws DAOException;
 
-	  public List<?> getByStatus(Byte status) throws DAOException;
+	  public List<Product> getByStatus(Byte status) throws DAOException;
 
-	  public List<?> getByModelId(Integer modelId) throws DAOException;
+	  public List<Product> getByModelId(Integer modelId) throws DAOException;
 
-	  public List<?> getByBrandId(Integer brandId) throws DAOException;
+	  public List<Product> getByBrandId(Integer brandId) throws DAOException;
 
-	  public List<?> getByStock(Integer stock) throws DAOException;
+	  public List<Product> getByStock(Integer stock) throws DAOException;
 
-	  public List<?> getByProductTypeId(Integer productTypeId)
+	  public List<Product> getByProductTypeId(Integer productTypeId)
 	    throws DAOException;
 
-	  public List<?> getByDateAdded(Date dateAdded) throws DAOException;
+	  public List<Product> getByDateAdded(Date dateAdded) throws DAOException;
 
-	  public List<?> getByDateLastModified(Date dateLastModified)
+	  public List<Product> getByDateLastModified(Date dateLastModified)
 	    throws DAOException;
 
-	  public List<?> getByDateAddedBy(Integer dateAddedBy) throws DAOException;
+	  public List<Product> getByDateAddedBy(Integer dateAddedBy) throws DAOException;
 
-	  public List<?> getByBarcode(String barcode) throws DAOException;
+	  public List<Product> getByBarcode(String barcode) throws DAOException;
 }

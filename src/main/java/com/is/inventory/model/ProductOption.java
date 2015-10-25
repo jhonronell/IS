@@ -1,15 +1,18 @@
 package com.is.inventory.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,10 +27,12 @@ public class ProductOption {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
+	@OneToOne(fetch = FetchType.EAGER ,cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
 	@JoinColumn(name = "product_option_name_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOptionName productOptionName;
-
+	
+	
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_added")
 	private Date dateAdded;

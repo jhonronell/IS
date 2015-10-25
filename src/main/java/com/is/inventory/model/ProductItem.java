@@ -24,9 +24,11 @@ public class ProductItem {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	
+	@OneToOne(fetch = FetchType.EAGER,cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "distributor_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Distributor distributor;
+	
 	private Double weight;
 	private Double height;
 	

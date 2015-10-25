@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "`product_option_selection`")
+@Table(name = "product_option_selection")
 public class ProductOptionSelection {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)

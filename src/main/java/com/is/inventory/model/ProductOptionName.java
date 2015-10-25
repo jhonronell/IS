@@ -1,6 +1,7 @@
 package com.is.inventory.model;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -35,8 +36,12 @@ public class ProductOptionName {
 	@JoinColumn(name = "product_option_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOption productOption;
 	
-	private Set<ProductOptionSelection> productOptionSelections;
+	//private Set<ProductOptionSelection> productOptionSelections;
 
+	@OneToMany
+	@JoinColumn(name = "product_option_name_id",  unique = false, nullable = true, insertable = true, updatable = true)
+	private List<ProductOptionSelection> productOptionSelections = new ArrayList<ProductOptionSelection>();
+	
 	/**
 	 * @return the id
 	 */
@@ -102,7 +107,7 @@ public class ProductOptionName {
 	/**
 	 * @return the productOptionSelections
 	 */
-	public Set<ProductOptionSelection> getProductOptionSelections() {
+	public List<ProductOptionSelection> getProductOptionSelections() {
 		return productOptionSelections;
 	}
 
@@ -110,7 +115,7 @@ public class ProductOptionName {
 	 * @param productOptionSelections
 	 *            the productOptionSelections to set
 	 */
-	public void setProductOptionSelections(Set<ProductOptionSelection> productOptionSelections) {
+	public void setProductOptionSelections(List<ProductOptionSelection> productOptionSelections) {
 		this.productOptionSelections = productOptionSelections;
 	}
 

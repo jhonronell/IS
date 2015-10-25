@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.is.inventory.dao.DAOException;
 import com.is.inventory.dao.DistributorDAO;
@@ -102,6 +103,19 @@ public class DistributorDAOImpl implements DistributorDAO {
 	public List getByAddressId(Integer addressId) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Distributor> getDistributors() {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		Query query = entitymanager.createQuery("Select d from Distributor d");
+		List<Distributor> distributors = query.getResultList();
+		entitymanager.getTransaction().commit();
+		emfactory.close();
+		return distributors;
+		
 	}
 
 }

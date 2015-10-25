@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "`distributor`")
+@Table(name = "`form_input_type`")
 public class FormInputType {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)

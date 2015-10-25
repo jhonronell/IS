@@ -72,86 +72,86 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<?> getByCode(String code) throws DAOException {
+	public List<Product> getByCode(String code) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getBySku(String sku) throws DAOException {
+	public List<Product> getBySku(String sku) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByDescription(String description) throws DAOException {
+	public List<Product> getByDescription(String description) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByStatus(Byte status) throws DAOException {
+	public List<Product> getByStatus(Byte status) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByModelId(Integer modelId) throws DAOException {
+	public List<Product> getByModelId(Integer modelId) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByBrandId(Integer brandId) throws DAOException {
+	public List<Product> getByBrandId(Integer brandId) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByStock(Integer stock) throws DAOException {
+	public List<Product> getByStock(Integer stock) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByProductTypeId(Integer productTypeId) throws DAOException {
+	public List<Product> getByProductTypeId(Integer productTypeId) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByDateAdded(Date dateAdded) throws DAOException {
+	public List<Product> getByDateAdded(Date dateAdded) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByDateLastModified(Date dateLastModified) throws DAOException {
+	public List<Product> getByDateLastModified(Date dateLastModified) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByDateAddedBy(Integer dateAddedBy) throws DAOException {
+	public List<Product> getByDateAddedBy(Integer dateAddedBy) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getByBarcode(String barcode) throws DAOException {
+	public List<Product> getByBarcode(String barcode) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getAllProducts() throws DAOException {
+	public List<Product> getAllProducts() throws DAOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(EM_LINK);
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
 
 		Query query = entitymanager.createQuery("Select p from Product p where p.status = :s");
 		query.setParameter("s", true);
-		List<?> products = query.getResultList();
+		List<Product> products = query.getResultList();
 
 		entitymanager.getTransaction().commit();
 		emfactory.close();

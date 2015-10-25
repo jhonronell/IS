@@ -2,37 +2,59 @@ package com.is.inventory.service.impl;
 
 import java.util.List;
 
-import com.is.inventory.dao.impl.BrandDAOImpl;
+import com.is.inventory.dao.BrandDAO;
+import com.is.inventory.dao.DAOException;
 import com.is.inventory.model.Brand;
 import com.is.inventory.service.BrandService;
 
 public class BrandServiceImpl implements BrandService {
 
-	BrandDAOImpl brandDao = new BrandDAOImpl();
-	
+	private BrandDAO brandDAO;
+
+	public void setBrandDAO(BrandDAO brandDAO) {
+		this.brandDAO = brandDAO;
+	}
+
 	@Override
-	public void addBrand(Brand brand) {
+	public Brand getByPrimaryKey(Brand brand) throws DAOException {
 		// TODO Auto-generated method stub
-		brandDao.saveBrand(brand);
+		return null;
+	}
+
+	@Override
+	public void update(Brand brand) throws DAOException {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateBrand(Brand brand) {
+	public void insert(Brand brand) throws DAOException {
 		// TODO Auto-generated method stub
-		brandDao.updateBrand(brand);
+		
 	}
 
 	@Override
-	public void delete(Brand brand) {
+	public void delete(Brand brand) throws DAOException {
 		// TODO Auto-generated method stub
-		brandDao.delete(brand);
+		
 	}
 
 	@Override
-	public List<Brand> getBrands() {
+	public List getByName(String name) throws DAOException {
 		// TODO Auto-generated method stub
-		return brandDao.getBrands();
+		return null;
+	}
+
+	@Override
+	public List getByStatus(Byte isActive) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Brand> getBrands() throws DAOException {
+		 
+		return brandDAO.getBrands();
 	}
 
 }

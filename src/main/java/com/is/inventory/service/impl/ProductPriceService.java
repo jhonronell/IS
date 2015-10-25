@@ -1,4 +1,4 @@
-package com.is.inventory.service;
+package com.is.inventory.service.impl;
 
 import java.util.Date;
 import java.util.List;

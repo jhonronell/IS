@@ -88,8 +88,7 @@
     <!-- FastClick -->
     <script src="${pageContext.request.contextPath}/resources/plugins/fastclick/fastclick.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/plugins/typeahead/typeahead.bundle.js"></script>
-    <!-- AdminLTE App -->
-    <script src="${pageContext.request.contextPath}/resources/dist/js/app.min.js"></script>
+
     <!-- AdminLTE for demo purposes -->
     <script src="${pageContext.request.contextPath}/resources/dist/js/demo.js"></script>
     <!-- page script -->

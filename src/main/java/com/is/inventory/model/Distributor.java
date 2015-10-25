@@ -16,6 +16,7 @@ public class Distributor {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
 	private String name;
 	
 	@Column(name="date_added")

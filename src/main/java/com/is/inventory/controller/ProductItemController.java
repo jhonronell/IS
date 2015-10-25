@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.is.inventory.dao.DAOException;
+import com.is.inventory.dao.DistributorDAO;
 import com.is.inventory.dao.ProductItemDAO;
 import com.is.inventory.dao.ProductOptionDAO;
+import com.is.inventory.dao.impl.DistributorDAOImpl;
 import com.is.inventory.dao.impl.ProductItemDAOImpl;
 import com.is.inventory.dao.impl.ProductOptionDAOImpl;
+import com.is.inventory.model.Distributor;
 import com.is.inventory.model.ProductItem;
 import com.is.inventory.model.ProductItemOptionValue;
 import com.is.inventory.model.ProductOption;
@@ -36,17 +39,24 @@ public class ProductItemController {
 		ProductOptionDAO productOptionDao = new ProductOptionDAOImpl();
 		List<ProductItem> productItems = productItemDAO.getProductItemsByCode(productCode);
 		
+		DistributorDAO distributorDao = new DistributorDAOImpl();
+		List<Distributor> distributors = distributorDao.getDistributors();
+		
+		
 		ProductType productType = new ProductType();
 		productType.setId(type);
 		List<ProductOption> productOptions = productOptionDao.getProductOptionsByType(productType); 
 		
+		System.out.println(productOptions.size() + "SIZE");
+		
 		if( productOptions.size() > 0){
 			double productOptionSize;
 			productOptionSize = Math.round((productOptions.size() / 2.0 ));
+			
 			model.addAttribute("productOptionSize",productOptionSize );
 			model.addAttribute("productOptions",productOptions );
 		}
-		 
+		model.addAttribute("distributors", distributors );
 		model.addAttribute("productItems",productItems );
 		return "productitem";
 	}
