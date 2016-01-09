@@ -14,20 +14,13 @@
 		<class>com.is.inventory.model.Product</class>
 		<class>com.is.inventory.model.ProductModel</class>
 		<class>com.is.inventory.model.ProductItem</class>
-		<!--<class>com.is.inventory.model.FormInputType</class> <class>com.is.inventory.model.Product</class> 
-			<class>com.is.inventory.model.ProductItem</class> 
-			<class>com.is.inventory.model.ProductModel</class> 
-			<class>com.is.inventory.model.ProductOption</class> <class>com.is.inventory.dao.impl.ProductOptionNamDAOImpl</class> 
-			<class>com.is.inventory.model.ProductOptionSelection</class> <class>com.is.inventory.model.ProductPrice</class> 
-			<class>com.is.inventory.model.ProductType</class> <class>com.is.inventory.model.PromoTable</class> 
-			<class>com.is.inventory.model.TaxRate</class> -->
+		<class>com.is.inventory.model.FormInputType</class>
 		<class>com.is.inventory.model.User</class>
 		<class>com.is.inventory.model.ProductType</class>
 		<class>com.is.inventory.model.ProductPrice</class>
 		<class>com.is.inventory.model.ProductOption</class>
 		<class>com.is.inventory.model.ProductOptionName</class>
 		<class>com.is.inventory.model.ProductOptionSelection</class>
-		<class>com.is.inventory.model.FormInputType</class>
 		<class>com.is.inventory.model.ProductItemOptionValue</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url"

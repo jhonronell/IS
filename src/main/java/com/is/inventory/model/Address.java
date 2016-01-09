@@ -20,7 +20,7 @@ public class Address {
 	private String address_1;
 	private String address_2;
 
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.ALL } )
 	@JoinColumn(name = "address_lookup_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private AddressLookup addressLookup;
 

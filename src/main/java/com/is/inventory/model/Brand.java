@@ -20,7 +20,7 @@ public class Brand {
 	private int id;
 	private String name;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "country_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Country countryOfOrigin;
 	
