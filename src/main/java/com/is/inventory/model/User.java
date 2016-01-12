@@ -26,11 +26,11 @@ public class User {
 	private String lastName;
 	private String email;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "contact_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Contact contact;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "address", unique = false, nullable = true, insertable = true, updatable = true)
 	private Address address;
 

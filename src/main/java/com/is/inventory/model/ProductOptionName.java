@@ -22,17 +22,17 @@ public class ProductOptionName {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductType productType;
 	
 	private String name;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "form_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private FormInputType formInputType;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "product_option_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOption productOption;
 	

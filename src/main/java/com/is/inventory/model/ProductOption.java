@@ -27,7 +27,7 @@ public class ProductOption {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@OneToOne(fetch = FetchType.EAGER ,cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
+	@OneToOne(fetch = FetchType.EAGER ,cascade = { CascadeType.REFRESH, CascadeType.REFRESH })
 	@JoinColumn(name = "product_option_name_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOptionName productOptionName;
 	
@@ -37,11 +37,11 @@ public class ProductOption {
 	@Column(name = "date_added")
 	private Date dateAdded;
 
-	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
+	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH })
 	@JoinColumn(name = "added_by", unique = false, nullable = true, insertable = true, updatable = true)
 	private User addedBy;
 
-	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
+	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH })
 	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductType productType;
 

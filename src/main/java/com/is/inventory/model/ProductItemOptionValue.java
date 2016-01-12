@@ -23,12 +23,12 @@ public class ProductItemOptionValue {
 	@JoinColumn(name = "product_option_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOption productOption;
 
-	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
+	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH })
 	@JoinColumn(name = "product_option_value", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductOptionSelection productOptionSelectionValue;
 
 	
-	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH })
+	@OneToOne(cascade = { CascadeType.REFRESH, CascadeType.REFRESH })
 	@JoinColumn(name = "product_item_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductItem productItem;
 

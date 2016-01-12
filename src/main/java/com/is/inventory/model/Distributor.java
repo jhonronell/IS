@@ -23,15 +23,15 @@ public class Distributor {
 	private Integer dateAdded;
 	private Boolean isactive;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "contact_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Contact contact;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "added_by", unique = false, nullable = true, insertable = true, updatable = true)
 	private User addedBy;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "address_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Address address;
 

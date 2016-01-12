@@ -25,7 +25,7 @@ public class ProductItem {
 	private int id;
 	
 	
-	@OneToOne(fetch = FetchType.EAGER,cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(fetch = FetchType.EAGER,cascade = { CascadeType.REFRESH,CascadeType.REFRESH} )
 	@JoinColumn(name = "distributor_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Distributor distributor;
 	
@@ -53,11 +53,11 @@ public class ProductItem {
 	//@JoinColumn(name = "product_option_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private List<ProductItemOptionValue> productItemOptionValues;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH} )
 	@JoinColumn(name = "color_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Color color;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH} )
 	@JoinColumn(name = "price_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductPrice productPrice;
 
