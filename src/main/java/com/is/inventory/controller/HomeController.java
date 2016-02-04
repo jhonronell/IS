@@ -72,13 +72,12 @@ public class HomeController {
 
 		Product product = new Product();
 		ProductModel productModel = new ProductModel();
+		productModel.setId( 2 );
+		//productModel.setId( Integer.valueOf(_productModel) );
 		Brand brand = new Brand();
-
 		productModel.setYearModel(_yearModel);
-		productModel.setName(_productModel);
-
+		//productModel.setName(_productModel);
 		brand.setId(brandId);
-
 		product.setName(_productName);
 		product.setCode(_productCode);
 		product.setSku(_sku);

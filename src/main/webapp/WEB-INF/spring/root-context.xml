@@ -1,13 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="
-	http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-2.5.xsd
-	">
-	<context:annotation-config />
-    
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+		<bean id="addressServiceImpl" class="com.is.inventory.service.impl.AddressServiceImpl">
+		<property name="addressDAO" ref="addressServiceDAOImpl" />
+	</bean>
+	<bean id="addressServiceDAOImpl" class="com.is.inventory.dao.impl.AddressDAOImpl"></bean>
+
+	<bean id="brandServiceImpl" class="com.is.inventory.service.impl.BrandServiceImpl">
+		<property name="brandDAO" ref="brandServiceDAOImpl" />
+	</bean>
+	<bean id="brandServiceDAOImpl" class="com.is.inventory.dao.impl.BrandDAOImpl"></bean>
+
+	<bean id="colorServiceImpl" class="com.is.inventory.service.impl.ColorServiceImpl">
+		<property name="colorDAO" ref="colorServiceDAOImpl" />
+	</bean>
+	<bean id="colorServiceDAOImpl" class="com.is.inventory.dao.impl.ColorDAOImpl"></bean>
+	<bean id="contactServiceImpl" class="com.is.inventory.service.impl.ContactServiceImpl">
+		<property name="contactDAO" ref="contactServiceDAOImpl" />
+	</bean>
+	<bean id="contactServiceDAOImpl" class="com.is.inventory.dao.impl.ContactDAOImpl"></bean>
+	<bean id="countryServiceImpl" class="com.is.inventory.service.impl.CountryServiceImpl">
+		<property name="countryDAO" ref="countryServiceDAOImpl" />
+	</bean>
+	<bean id="countryServiceDAOImpl" class="com.is.inventory.dao.impl.CountryDAOImpl"></bean>
+	<bean id="distributorServiceImpl" class="com.is.inventory.service.impl.DistributorServiceImpl">
+		<property name="distributorDAO" ref="distributorServiceDAOImpl" />
+	</bean>
+	<bean id="distributorServiceDAOImpl" class="com.is.inventory.dao.impl.DistributorDAOImpl"></bean>
+	<bean id="productServiceImpl" class="com.is.inventory.service.impl.ProductServiceImpl">
+		<property name="productDAO" ref="productServiceDAOImpl" />
+	</bean>
+	<bean id="productServiceDAOImpl" class="com.is.inventory.dao.impl.ProductDAOImpl"></bean>
+	<bean id="productItemServiceImpl" class="com.is.inventory.service.impl.ProductItemServiceImpl">
+		<property name="productItemDAO" ref="productItemServiceDAOImpl" />
+	</bean>
+	<bean id="productItemServiceDAOImpl" class="com.is.inventory.dao.impl.ProductItemDAOImpl"></bean>
+	<bean id="productItemOptionValueServiceImpl"
+		class="com.is.inventory.service.impl.ProductItemOptionValueServiceImpl">
+		<property name="productItemOptionValueDAO" ref="productItemOptionValueServiceDAOImpl" />
+	</bean>
+	<bean id="productItemOptionValueServiceDAOImpl" class="com.is.inventory.dao.impl.ProductItemOptionValueDAOImpl"></bean>
+	<bean id="productModelServiceImpl" class="com.is.inventory.service.impl.ProductModelServiceImpl">
+		<property name="productModelDAO" ref="productModelServiceDAOImpl" />
+	</bean>
+	<bean id="productModelServiceDAOImpl" class="com.is.inventory.dao.impl.ProductModelDAOImpl"></bean>
+	<bean id="productOptionServiceImpl" class="com.is.inventory.service.impl.ProductOptionServiceImpl">
+		<property name="productOptionDAO" ref="productOptionServiceDAOImpl" />
+	</bean>
+	<bean id="productOptionServiceDAOImpl" class="com.is.inventory.dao.impl.ProductOptionDAOImpl"></bean>
+	<bean id="productOptionNameServiceImpl"
+		class="com.is.inventory.service.impl.ProductOptionNameServiceImpl">
+		<property name="productOptionNameDAO" ref="productOptionNameServiceDAOImpl" />
+	</bean>
+	<bean id="productOptionNameServiceDAOImpl" class="com.is.inventory.dao.impl.ProductOptionNameDAOImpl"></bean>
+	<bean id="productOptionSelectionServiceImpl"
+		class="com.is.inventory.service.impl.ProductOptionSelectionServiceImpl">
+		<property name="productOptionSelectionDAO" ref="productOptionSelectionServiceDAOImpl" />
+	</bean>
+	<bean id="productOptionSelectionServiceDAOImpl" class="com.is.inventory.dao.impl.ProductOptionSelectionDAOImpl"></bean>
+	<!-- <bean id="productPriceServiceImpl" class="com.is.inventory.service.impl.ProductPriceServiceImpl"> 
+		<property name="productPriceDAO" ref="productPriceServiceDAOImpl" /> </bean> -->
+
+	<!-- <bean id="productPriceServiceDAOImpl" class="com.is.inventory.dao.impl.ProductPriceDAOImpl"></bean> 
+		<bean id="productPromoServiceImpl" class="com.is.inventory.service.impl.ProductPromoServiceImpl"> 
+		<property name="productPromoDAO" ref="productPromoServiceDAOImpl" /> </bean> 
+		<bean id="productPromoServiceDAOImpl" class="com.is.inventory.dao.impl.ProductPromoDAOImpl"></bean> -->
+	<bean id="productTypeServiceImpl" class="com.is.inventory.service.impl.ProductTypeServiceImpl">
+		<property name="productTypeDAO" ref="productTypeServiceDAOImpl" />
+	</bean>
+	<bean id="productTypeServiceDAOImpl" class="com.is.inventory.dao.impl.ProductTypeDAOImpl"></bean>
+	<!-- <bean id="taxRateServiceImpl" class="com.is.inventory.service.impl.TaxRateServiceImpl"> 
+		<property name="taxRateDAO" ref="taxRateServiceDAOImpl" /> </bean> <bean 
+		id="taxRateServiceDAOImpl" class="com.is.inventory.dao.impl.TaxRateDAOImpl"></bean> -->
+	<bean id="userServiceImpl" class="com.is.inventory.service.impl.UserServiceImpl">
+		<property name="userDAO" ref="userServiceDAOImpl" />
+	</bean>
+	<bean id="userServiceDAOImpl" class="com.is.inventory.dao.impl.UserDAOImpl"></bean>
+
+		
 </beans>

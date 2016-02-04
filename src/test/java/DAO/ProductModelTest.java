@@ -9,7 +9,7 @@ import com.is.inventory.model.ProductModel;
 public class ProductModelTest {
 
 	@Test
-	public void insertContactTest() throws DAOException {
+	public void insertProductModel() throws DAOException {
 		ProductModelDAO productModelDao = new ProductModelDAOImpl();
 		ProductModel productModel = new ProductModel();
 		productModelDao.insert(productModel);

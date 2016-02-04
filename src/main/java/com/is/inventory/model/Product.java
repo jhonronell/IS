@@ -70,12 +70,10 @@ public class Product {
 	@JoinColumn(name = "brand_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private Brand brand;
 	
-	@OneToOne(cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
-	@JoinColumn(name = "model_id", unique = false, nullable = true, insertable = true, updatable = true)
+	@OneToOne(cascade = { CascadeType.REFRESH } )
+	@JoinColumn(name = "model_id", unique = true, nullable = true )
 	private ProductModel productModel;
-	
-	
-	  
+		  
 	@OneToOne(fetch=FetchType.EAGER, cascade = { CascadeType.REFRESH,CascadeType.REFRESH } )
 	@JoinColumn(name = "product_type_id", unique = false, nullable = true, insertable = true, updatable = true)
 	private ProductType productType;

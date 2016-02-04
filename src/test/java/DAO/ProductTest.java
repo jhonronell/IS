@@ -63,13 +63,11 @@ public class ProductTest {
 	
 	@Test
 	public void updateProduct() throws DAOException {
-		
+
 		ProductDAO productDao = new ProductDAOImpl();
 		Product product = new Product();
 		product.setId(2401);
-	
 		productDao.update(product);
-		
 	}
 	
 	@Test
